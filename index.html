@@ -1,109 +1,234 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Dialekt Verbindet — Pilot-Evaluation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-            color: #222;
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .logo {
-            max-width: 180px;
-            display: block;
-            margin: 0 auto 20px auto;
-        }
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 0.2em;
-            text-align: center;
-        }
-        h2 {
-            font-size: 1.2em;
-            font-weight: 400;
-            color: #555;
-            margin-top: 0;
-            margin-bottom: 2em;
-            text-align: center;
-        }
-        h3 {
-            margin-top: 2em;
-            color: #1f4e79;
-        }
-        ul {
-            padding-left: 1.2em;
-        }
-        li {
-            margin-bottom: 0.4em;
-        }
-        .box {
-            background: #f0f4f8;
-            padding: 15px 20px;
-            border-left: 4px solid #1f4e79;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
-        .contact {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            font-size: 0.95em;
-            color: #444;
-            text-align: center;
-        }
-        .footer {
-            text-align: center;
-            font-size: 0.85em;
-            color: #777;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dialekt Verbindet — Pilot-Evaluation</title>
+  <meta name="description" content="Zeitlich begrenzte, freiwillige und anonymisierte Pilot-Evaluation zur Prüfung des Mehrwerts einer digitalen Plattform zur Förderung regionaler Sprache und kultureller Identität." />
+
+  <style>
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --soft:#f9fafb;
+      --accent:#0f2f66;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    header{
+      padding:48px 0 22px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, var(--soft), #fff 70%);
+    }
+    .brand{
+      letter-spacing:.08em;
+      font-weight:700;
+      color:var(--accent);
+      font-size:.9rem;
+      text-transform:uppercase;
+      margin:0 0 10px;
+    }
+    h1{
+      margin:0;
+      font-size:2.1rem;
+    }
+    .subtitle{
+      margin:10px 0 18px;
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:60ch;
+    }
+    .notice{
+      margin-top:18px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      max-width:85ch;
+    }
+    .notice p{margin:0}
+    .notice p + p{margin-top:8px}
+    nav{
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    nav a{
+      margin-right:6px;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      font-size:.95rem;
+      color:var(--text);
+    }
+    nav a:hover{border-color:#cbd5e1}
+    main{padding:36px 0}
+    section{
+      padding:26px 0;
+      border-bottom:1px solid var(--line);
+    }
+    h2{margin:0 0 10px; font-size:1.25rem}
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+    td{
+      padding:10px 8px;
+      border-bottom:1px solid var(--line);
+    }
+    td:first-child{
+      width:35%;
+      font-weight:600;
+      color:var(--muted);
+    }
+    footer{
+      padding:24px 0;
+      font-size:.9rem;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
 
-    <img src="logo.png" alt="Dialekt Verbindet Logo" class="logo">
-
-    <h1>Dialekt Verbindet — Pilot-Evaluation</h1>
-    <h2>Digitale Plattform zur Förderung regionaler Sprache, kultureller Identität und gesellschaftlicher Teilhabe</h2>
-
-    <p>
-        Dieses Pilotprojekt dient der sachlichen Evaluation einer digitalen Plattform zur Stärkung regionaler Sprache und kultureller Identität.
-        Es handelt sich ausdrücklich nicht um eine Einführung, sondern um eine zeitlich begrenzte Testphase.
+<header>
+  <div class="wrap">
+    <p class="brand">Dialekt Verbindet</p>
+    <h1>Pilot-Evaluation</h1>
+    <p class="subtitle">
+      Digitale Plattform zur Förderung regionaler Sprache und kultureller Identität
     </p>
 
-    <h3>Ziel des Pilots</h3>
-    <p>
-        Bewertung von Wirkung, Akzeptanz und Nutzen in den Bereichen Bildung, Integration und Kultur.
-        Die Teilnahme ist freiwillig, anonym und jederzeit widerrufbar.
-    </p>
+    <div class="notice">
+      <p><strong>Dies ist eine zeitlich begrenzte, freiwillige und anonymisierte Pilot-Evaluation und stellt keine Einführung dar.</strong></p>
+      <p><strong>Es entstehen im Rahmen dieser Pilot-Evaluation keine Kosten, keine Verpflichtungen und keine rechtlichen Bindungen.</strong></p>
+    </div>
+  </div>
+</header>
 
-    <h3>Ablauf</h3>
-    <ul>
-        <li>Dauer: 6–12 Monate</li>
-        <li>Teilnahme: freiwillig</li>
-        <li>Nutzung: optional</li>
-        <li>Auswertung: anonymisiert</li>
-    </ul>
+<nav>
+  <div class="wrap">
+    <a href="#zweck">1. Zweck</a>
+    <a href="#rahmen">2. Rahmenbedingungen</a>
+    <a href="#datenschutz">3. Datenschutz</a>
+    <a href="#rolle">4. Rolle der Stellen</a>
+    <a href="#abgrenzung">5. Abgrenzung</a>
+    <a href="#transparenz">6. Transparenz</a>
+    <a href="#kontakt">7. Kontakt</a>
+  </div>
+</nav>
 
-    <h3>Datenschutz</h3>
-    <ul>
-        <li>Keine Weitergabe personenbezogener Daten</li>
+<main>
+  <div class="wrap">
+
+    <section id="zweck">
+      <h2>1. Zweck der Pilot-Evaluation</h2>
+      <p>
+        Ziel dieser Pilot-Evaluation ist es, teilnehmenden Stellen einen strukturierten,
+        transparenten und risikominimierten Rahmen zur Verfügung zu stellen, in dem sie
+        selbst prüfen können, ob und in welchem Umfang eine digitale Plattform zur Förderung
+        regionaler Sprache und kultureller Identität einen gesellschaftlichen, bildungsbezogenen
+        und integrativen Mehrwert leisten kann.
+      </p>
+      <ul>
+        <li>Wirkung auf Sprachbewusstsein und kulturelle Identität</li>
+        <li>Akzeptanz bei Nutzerinnen und Nutzern</li>
+        <li>Praktischer Nutzen in Bildung, Integration und Kultur</li>
+        <li>Gesellschaftliche Verträglichkeit und institutionelle Anschlussfähigkeit</li>
+      </ul>
+    </section>
+
+    <section id="rahmen">
+      <h2>2. Rahmenbedingungen</h2>
+      <table>
+        <tr><td>Dauer</td><td>6–12 Monate</td></tr>
+        <tr><td>Teilnahme</td><td>Freiwillig</td></tr>
+        <tr><td>Nutzung</td><td>Optional</td></tr>
+        <tr><td>Widerruf</td><td>Jederzeit ohne Angabe von Gründen</td></tr>
+        <tr><td>Auswertung</td><td>Anonymisiert und aggregiert</td></tr>
+        <tr><td>Kosten</td><td>Im Rahmen dieser Pilot-Evaluation kostenfrei</td></tr>
+      </table>
+    </section>
+
+    <section id="datenschutz">
+      <h2>3. Datenschutz und Datensicherheit</h2>
+      <ul>
+        <li>Keine Erhebung personenbezogener Daten</li>
         <li>Keine Profilbildung</li>
-        <li>Keine externe Nutzung</li>
-    </ul>
+        <li>Keine Weitergabe an Dritte</li>
+        <li>Keine kommerzielle Nutzung</li>
+        <li>Verarbeitung ausschließlich anonymisiert und aggregiert</li>
+      </ul>
+    </section>
 
-    <div class="box">
-        Die T
+    <section id="rolle">
+      <h2>4. Rolle der teilnehmenden Stellen</h2>
+      <p><strong>Teilnehmende Stellen nehmen ausschließlich die Rolle prüfender Institutionen ein.</strong></p>
+      <ul>
+        <li>keine operative Verantwortung</li>
+        <li>keine Datenbereitstellung</li>
+        <li>keine rechtlichen Risiken</li>
+        <li>keine Verpflichtung zur Nutzung oder Bewerbung</li>
+      </ul>
+    </section>
+
+    <section id="abgrenzung">
+      <h2>5. Abgrenzung</h2>
+      <ul>
+        <li>kein Rollout</li>
+        <li>keine Einführung</li>
+        <li>kein Produktivbetrieb</li>
+        <li>kein Verwaltungsinstrument</li>
+        <li>kein politisches Projekt</li>
+      </ul>
+    </section>
+
+    <section id="transparenz">
+      <h2>6. Transparenz</h2>
+      <p>
+        Alle Rahmenbedingungen, Zielsetzungen und Auswertungen werden transparent dokumentiert
+        und auf Wunsch den teilnehmenden Stellen zugänglich gemacht.
+      </p>
+      <p>
+        <strong>Hinweis:</strong> Diese Pilot-Evaluation ist kostenfrei.
+        Etwaige spätere Weiterentwicklungen, Produktivsetzungen oder Nutzungen würden einer
+        gesonderten Bewertung, Entscheidung und vertraglichen Regelung unterliegen.
+      </p>
+    </section>
+
+    <section id="kontakt" style="border-bottom:none">
+      <h2>7. Kontakt</h2>
+      <p><strong>Projektstelle Dialekt Verbindet — Pilot-Evaluation</strong></p>
+      <p>
+        Sandro Ritter<br>
+        E-Mail: <a href="mailto:ritter.sandro@gmx.li">ritter.sandro@gmx.li</a><br>
+        Telefon: <a href="tel:+4237913097">+423 791 30 97</a>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Dialekt Verbindet — Pilot-Evaluation
+  </div>
+</footer>
+
+</body>
+</html>

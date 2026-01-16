@@ -41,7 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* Layout & Spacing */
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
     .grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; margin: 24px 0; }
     
@@ -49,7 +48,6 @@
       .grid { grid-template-columns: 1fr; }
     }
 
-    /* Glassmorphism Header */
     header {
       position: sticky; top: 0; z-index: 100;
       backdrop-filter: blur(16px);
@@ -79,7 +77,6 @@
 
     @media (max-width: 768px) { nav { display: none; } }
 
-    /* Cards */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -89,7 +86,6 @@
     }
     .card-small { padding: 30px; border-radius: var(--radius-md); }
 
-    /* Typography */
     h1 {
       font-size: clamp(2.5rem, 5vw, 3.8rem);
       line-height: 1.05; font-weight: 900; letter-spacing: -2px;
@@ -101,7 +97,6 @@
     
     .lead { font-size: 18px; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
 
-    /* Interactive Demo Widget */
     .demo-box {
       background: rgba(0,0,0,0.2);
       border: 1px solid var(--card-border);
@@ -119,7 +114,6 @@
     }
     .play-btn:hover { transform: scale(1.1); background: #2563eb; }
     
-    /* KPI Grid */
     .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 40px; }
     .kpi {
       background: rgba(255,255,255,0.03);
@@ -130,22 +124,15 @@
     .kpi h3 { margin: 0 0 5px 0; font-size: 20px; color: var(--accent); }
     .kpi p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
-    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 14px 24px; border-radius: 14px; font-weight: 600;
       text-decoration: none; transition: 0.3s; font-size: 15px;
       cursor: pointer; border: 1px solid var(--card-border);
     }
-    .btn-primary {
-      background: #fff; color: #000; border: none;
-    }
+    .btn-primary { background: #fff; color: #000; border: none; }
     .btn-primary:hover { background: #e2e2e2; transform: translateY(-2px); }
     
-    .btn-outline { background: rgba(255,255,255,0.05); color: #fff; }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); }
-
-    /* Form */
     .form-group { margin-bottom: 15px; }
     label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; margin-left: 5px; }
     input, textarea {
@@ -212,7 +199,7 @@
           </div>
         </div>
         <div style="display: flex; gap: 8px;">
-          <span style="font-size: 11px; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px;">Region: Rheintal</span>
+          <span style="font-size: 11px; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px;">Region: Rheintal / FL</span>
           <span style="font-size: 11px; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px;">Lektion: Alltag</span>
         </div>
       </div>
@@ -250,6 +237,22 @@
     </section>
 
     <aside>
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px; border-color: rgba(59, 130, 246, 0.3);">
+        <div style="position: relative; height: 200px;">
+          <img src="https://images.unsplash.com/photo-1596431913160-c323f6630048?q=80&w=1000&auto=format&fit=crop" 
+               alt="Schloss Vaduz" 
+               style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 10%, transparent 90%);"></div>
+          <div style="position: absolute; bottom: 15px; left: 20px;">
+            <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 700;">Verwurzelt in</span>
+            <div style="font-weight: 800; font-size: 20px; letter-spacing: -0.5px;">Liechtenstein</div>
+          </div>
+        </div>
+        <div style="padding: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          Dialekt Verbindet ist ein Projekt mit regionalem Ursprung – entwickelt für die Menschen und die lebendige Kultur des Fürstentums und seiner Nachbarn.
+        </div>
+      </div>
+
       <div class="card card-small" id="datenschutz" style="margin-bottom: 24px;">
         <h3 style="margin-top: 0;">Vertrauen & Hosting</h3>
         <p style="font-size: 13px; color: var(--text-muted);">
@@ -260,83 +263,10 @@
         <p style="font-size: 12px; color: var(--text-muted);">
           <b>Herausgeber</b><br>
           Sandro Ritter<br>
-          info@dialektverbindet.li
+          <a href="mailto:info@dialektverbindet.li" style="color: var(--accent); text-decoration: none;">info@dialektverbindet.li</a>
         </p>
       </div>
 
       <div class="card card-small" id="kontakt">
         <h3 style="margin-top: 0;">Projekt-Dialog</h3>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 25px;">
-          Interessiert an einer Implementierung für Ihre Region oder Institution? Schreiben Sie uns unverbindlich.
-        </p>
-        
-        <form onsubmit="return handleForm(event)">
-          <div class="form-group">
-            <label>Institution / Name</label>
-            <input type="text" id="form-org" placeholder="z.B. Gemeinde Widnau" required>
-          </div>
-          <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" id="form-email" placeholder="name@beispiel.ch" required>
-          </div>
-          <div class="form-group">
-            <label>Nachricht</label>
-            <textarea id="form-msg" rows="4" placeholder="Ihr Ziel: Integration, Kulturpflege...?"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">E-Mail vorbereiten</button>
-        </form>
-        <p style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 15px;">
-          Hinweis: Öffnet Ihr lokales Mailprogramm.
-        </p>
-      </div>
-    </aside>
-
-  </div>
-</main>
-
-<footer class="container">
-  <div class="footer-flex">
-    <div>
-      <strong>Dialekt Verbindet</strong> · Digitale Infrastruktur für regionale Sprache
-    </div>
-    <div style="display: flex; gap: 20px;">
-      <span>© <span id="year"></span> Sandro Ritter</span>
-      <a href="#vision" style="color: inherit; text-decoration: none;">Nach oben ↑</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Aktuelles Datum setzen
-  const now = new Date();
-  document.getElementById('current-date').textContent = now.toLocaleDateString('de-CH', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  document.getElementById('year').textContent = now.getFullYear();
-
-  // Formular Handling
-  function handleForm(e) {
-    e.preventDefault();
-    const org = document.getElementById('form-org').value;
-    const email = document.getElementById('form-email').value;
-    const msg = document.getElementById('form-msg').value;
-    
-    const subject = encodeURIComponent("Anfrage Infrastruktur: Dialekt Verbindet");
-    const body = encodeURIComponent(`Hoi zäma\n\nInteresse an Dialekt Verbindet:\n\nOrganisation/Name: ${org}\nE-Mail: ${email}\n\nAnliegen:\n${msg}\n\nFreundliche Grüsse`);
-    
-    window.location.href = `mailto:info@dialektverbindet.li?subject=${subject}&body=${body}`;
-  }
-
-  // Demo Sound Effekt (Simuliert)
-  function playDemoSound() {
-    // Hier könnte ein echter Audio-File Pfad liegen
-    // console.log("Audio wird abgespielt...");
-    const btn = document.querySelector('.play-btn');
-    btn.style.transform = "scale(0.9)";
-    setTimeout(() => btn.style.transform = "scale(1.1)", 100);
-    setTimeout(() => btn.style.transform = "scale(1)", 200);
-    
-    alert("In der Live-Infrastruktur würde hier nun die authentische Audio-Aussprache der gewählten Region abgespielt werden.");
-  }
-</script>
-
-</body>
-</html>
+        <p style="font-size: 13px; color:

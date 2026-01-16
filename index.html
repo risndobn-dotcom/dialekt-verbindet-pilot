@@ -1,644 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de-CH">
 <head>
+  <!-- Basic -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Dialekt verbindet – Community, Lernen und Wörterbuch für Liechtenstein und die Region. Produktübersicht für Partner (B2B/B2G)." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dialekt Verbindet — Pilot-Evaluation</title>
+
+  <!-- SEO -->
+  <meta
+    name="description"
+    content="Pilot-Evaluation der Anwendung «Dialekt Verbindet» zur Förderung regionaler Sprache, kultureller Identität und gesellschaftlicher Vernetzung in Liechtenstein."
+  />
   <meta name="theme-color" content="#0B1220" />
-  <title>Dialekt verbindet – Produktübersicht (Liechtenstein)</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Dialekt verbindet" />
-  <meta property="og:description" content="Dialekt verbindet Menschen über regionale Sprache: Community, Austausch, Lernen, Wörterbuch. Partner-Overview." />
+  <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dialekt Verbindet — Pilot-Evaluation" />
+  <meta
+    property="og:description"
+    content="Pilot-Evaluation von «Dialekt Verbindet»: Regionale Sprache, Kultur und gesellschaftliche Vernetzung."
+  />
 
+  <!-- Styles (clean, minimal, pilot-safe) -->
   <style>
-    :root{
-      --bg: #070B14;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --line: rgba(255,255,255,.12);
-      --accent: #3B82F6;    /* Alpines Blau */
-      --accent2:#22C55E;    /* Warmes Grün */
-      --warn: #F59E0B;
-      --ok: #10B981;
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1160px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    :root {
+      --bg: #0b1220;
+      --panel: rgba(255, 255, 255, 0.06);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.65);
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #3b82f6;
+      --max: 960px;
+      --radius: 14px;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:var(--sans);
-      color:var(--text);
-      background:
-        radial-gradient(900px 600px at 12% 12%, rgba(59,130,246,.22), transparent 55%),
-        radial-gradient(900px 600px at 92% 18%, rgba(34,197,94,.18), transparent 60%),
-        radial-gradient(900px 600px at 62% 92%, rgba(245,158,11,.10), transparent 62%),
-        linear-gradient(180deg, #060A12, #070B14 35%, #050813);
-      min-height:100vh;
+
+    * {
+      box-sizing: border-box;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(7,11,20,.86), rgba(7,11,20,.60));
-      border-bottom:1px solid var(--line);
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: linear-gradient(180deg, #0b1220, #050814);
+      min-height: 100vh;
     }
-    .topbar .inner{
-      max-width:var(--max); margin:0 auto;
-      display:flex; align-items:center; gap:16px;
-      padding:14px 24px;
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.2);
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:240px;
-      text-decoration:none;
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem;
     }
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.25), transparent 60%),
-        linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.90));
-      box-shadow: 0 10px 28px rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.16);
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
     }
-    .brand .t1{font-weight:800; letter-spacing:.2px; line-height:1.1}
-    .brand .t2{font-size:12px; color:var(--muted); margin-top:2px}
-    nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; flex:1;
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
     }
-    nav a{
-      text-decoration:none;
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid transparent;
-      color:rgba(255,255,255,.82);
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-    nav a:hover{border-color:var(--line); background:rgba(255,255,255,.04)}
-    .cta{
-      display:flex; gap:10px; align-items:center;
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
     }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05);
-      color:rgba(255,255,255,.90);
-      text-decoration:none;
-      font-weight:650;
-      font-size:13.5px;
-      box-shadow: 0 12px 26px rgba(0,0,0,.22);
-      cursor:pointer;
+
+    p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
     }
-    .btn:hover{background:rgba(255,255,255,.08)}
-    .btn.primary{
-      border-color: rgba(59,130,246,.45);
-      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.70));
-      color:#06101f;
-      box-shadow: 0 18px 48px rgba(59,130,246,.22);
-    }
-    .btn.primary:hover{filter:saturate(1.05) brightness(1.03)}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      font-size:12px;
-      color:rgba(255,255,255,.78);
-      width:max-content;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      margin-top:24px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr}
-      .brand{min-width:auto}
-      nav{display:none}
-    }
-    .card{
-      border-radius:var(--radius2);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .card .pad{padding:22px}
-    h1{
-      margin:10px 0 10px;
-      font-size:44px;
-      line-height:1.04;
-      letter-spacing:-.9px;
-    }
-    @media (max-width: 520px){
-      h1{font-size:36px}
-    }
-    .lead{
-      color:rgba(255,255,255,.78);
-      font-size:16px;
-      line-height:1.55;
-      max-width:66ch;
-      margin:0;
-    }
-    .hero-claim{
-      font-size:14px;
-      color:rgba(255,255,255,.76);
-      margin:14px 0 0;
-    }
-    .hero-claim strong{color:rgba(255,255,255,.92)}
-    .kpis{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-      margin-top:18px;
-    }
-    @media (max-width: 520px){
-      .kpis{grid-template-columns:1fr}
-    }
-    .kpi{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      padding:12px 12px;
-    }
-    .kpi .n{
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:.2px;
-      margin-bottom:4px;
-    }
-    .kpi .d{color:var(--muted); font-size:12px; line-height:1.35}
-    .section{
-      margin-top:18px;
-      border-radius:var(--radius2);
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      overflow:hidden;
-    }
-    .section .head{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:14px 16px;
-      border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-    }
-    .section .head h2{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.25px;
-      color:rgba(255,255,255,.86);
-      text-transform:uppercase;
-    }
-    .section .body{padding:16px}
-    .cols{
-      display:grid; grid-template-columns: 1fr 1fr; gap:14px;
-    }
-    @media (max-width: 780px){ .cols{grid-template-columns:1fr} }
-    .item{
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.035);
-      padding:14px 14px;
-    }
-    .item h3{margin:0 0 8px; font-size:16px}
-    .item p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
-    .list{
-      margin:10px 0 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:8px;
-    }
-    .li{
-      display:flex; gap:10px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      padding:10px 12px;
-      color:rgba(255,255,255,.82);
-      font-size:13px;
-      line-height:1.4;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px; flex:0 0 10px;
-      background:linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.90));
-      margin-top:4px;
-      box-shadow: 0 10px 18px rgba(0,0,0,.25);
-    }
-    .codebox{
-      font-family:var(--mono);
-      font-size:12px;
-      line-height:1.55;
-      color:rgba(255,255,255,.85);
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:18px;
-      padding:14px;
-      overflow:auto;
-    }
-    .footer{
-      margin:34px 0 18px;
-      color:rgba(255,255,255,.62);
-      font-size:12px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,.10);
-      padding-top:16px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:rgba(255,255,255,.72);
-    }
-    .tiny{font-size:12px; color:var(--muted)}
-    .right .pad{padding:22px}
-    .callout{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      padding:14px;
-      margin-top:12px;
-    }
-    .callout b{color:rgba(255,255,255,.92)}
-    .hr{
-      height:1px; background:rgba(255,255,255,.10); margin:14px 0;
-    }
-    .form{
-      display:grid; gap:10px; margin-top:12px;
-    }
-    label{font-size:12px; color:rgba(255,255,255,.70)}
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.25);
-      color:rgba(255,255,255,.90);
-      outline:none;
-      font-family:var(--sans);
-    }
-    textarea{min-height:96px; resize:vertical}
-    input:focus, textarea:focus{border-color:rgba(59,130,246,.55); box-shadow:0 0 0 4px rgba(59,130,246,.12)}
-    .notice{
-      font-size:12px; color:rgba(255,255,255,.62); line-height:1.45;
-      margin-top:10px;
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Dialekt verbindet",
-    "url":"https://dialektverbindet.li/",
-    "description":"Community, Lernen und Wörterbuch für Dialekte – Schwerpunkt Liechtenstein und Region.",
-    "sameAs":[
-      "https://dialektverbindet.ch/"
-    ]
-  }
-  </script>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="inner">
-      <a class="brand" href="#top">
-        <span class="logo" aria-hidden="true"></span>
-        <span>
-          <div class="t1">Dialekt verbindet</div>
-          <div class="t2">Liechtenstein · Community · Lernen · Wörter</div>
-        </span>
-      </a>
-
-      <nav aria-label="Navigation">
-        <a href="#produkt">Produkt</a>
-        <a href="#liechtenstein">Liechtenstein-Setup</a>
-        <a href="#features">Funktionen</a>
-        <a href="#integration">Integration</a>
-        <a href="#datenschutz">Datenschutz</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-
-      <div class="cta">
-        <a class="btn" href="#integration">Partner-Info</a>
-        <a class="btn primary" href="#kontakt">Kontakt aufnehmen</a>
-      </div>
+  <header>
+    <div class="header-inner">
+      <h1>Dialekt Verbindet — Pilot-Evaluation</h1>
     </div>
   </header>
 
-  <main id="top" class="wrap">
-    <div class="grid">
-      <!-- Left / Hero -->
-      <section class="card">
-        <div class="pad">
-          <span class="pill">B2B / B2G Partner-Overview · Stand: <span id="date"></span></span>
-          <h1>Dini Sproch.<br/>Dini Wält.<br/><span style="color:rgba(255,255,255,.92)">Dialekt verbindet.</span></h1>
-          <p class="lead">
-            Eine digitale Plattform, die Menschen über Dialekt zusammenbringt: lokale Communitys, Sprachaustausch,
-            Lernmodule und ein Wörterbuch – konsequent <b>regionnah</b>, <b>seriös</b> und <b>skalierbar</b>.
-          </p>
-          <p class="hero-claim">
-            Für <strong>Gemeinden, Schulen, Kultur- und Bildungsinstitutionen</strong> sowie Partner, die regionale Identität
-            digital stärken wollen – ohne Klamauk, ohne Chaos.
-          </p>
+  <main>
+    <section>
+      <h2>1. Zielsetzung</h2>
+      <p>
+        Diese Pilot-Evaluation dient der Erprobung der Anwendung
+        «Dialekt Verbindet» als digitales Werkzeug zur Förderung regionaler
+        Sprache, kultureller Identität und gesellschaftlicher Vernetzung.
+      </p>
+    </section>
 
-          <div class="kpis">
-            <div class="kpi">
-              <div class="n">90 Sek.</div>
-              <div class="d">bis Partner verstehen, was es ist – und warum es wirkt.</div>
-            </div>
-            <div class="kpi">
-              <div class="n">1 Plattform</div>
-              <div class="d">Community + Lernen + Wörterbuch + Audio in einem System.</div>
-            </div>
-            <div class="kpi">
-              <div class="n">Liechtenstein</div>
-              <div class="d">Gemeinden & Nähe als Kernlogik, nicht als „Filter“.</div>
-            </div>
-          </div>
+    <section>
+      <h2>2. Rahmenbedingungen</h2>
+      <p>
+        Die Pilotphase ist zeitlich begrenzt, unverbindlich und kostenfrei.
+        Sie dient ausschließlich der Evaluation von Akzeptanz, Nutzen und
+        Wirkung der Anwendung.
+      </p>
+    </section>
 
-          <div class="section" id="produkt" style="margin-top:18px;">
-            <div class="head">
-              <h2>Produkt in einem Satz</h2>
-              <span class="badge">White-Front · Mobile-first · Partnerfähig</span>
-            </div>
-            <div class="body">
-              <div class="item">
-                <h3>Dialekt verbindet ist die digitale Infrastruktur für regionale Sprache.</h3>
-                <p>
-                  Nicht nur Content – sondern ein System: Nutzer finden lokale Gruppen, hören echte Aussprache (Audio),
-                  lernen strukturiert und tauschen sich direkt aus. Damit wird Dialekt <b>lebendig</b> und <b>nachhaltig</b>.
-                </p>
-              </div>
-            </div>
-          </div>
+    <section>
+      <h2>3. Umfang</h2>
+      <p>
+        Teilnehmende Institutionen erhalten Zugriff auf eine Pilotversion der
+        Anwendung sowie begleitende Informationen zur Nutzung und Rückmeldung.
+      </p>
+    </section>
 
-          <div class="section" id="liechtenstein">
-            <div class="head">
-              <h2>Liechtenstein-Setup (Kernlogik)</h2>
-              <span class="badge">Gemeinde vor Feature</span>
-            </div>
-            <div class="body">
-              <div class="cols">
-                <div class="item">
-                  <h3>Start: Gemeinde statt „Region“</h3>
-                  <p>Onboarding fragt zuerst: <b>Wo bisch dihei?</b> → Gemeinde. Alles danach wird automatisch lokal kuratiert.</p>
-                  <ul class="list">
-                    <li class="li"><span class="dot"></span>Startscreen: „Hoi, [Name]. Schaan · Liechtaschta.“</li>
-                    <li class="li"><span class="dot"></span>Home: „Hüt i diner Gmeind“ (1 Event / 1 Gruppe)</li>
-                    <li class="li"><span class="dot"></span>Wort vom Tag: 1 Satz + Audio. Kurz. Wahr. Wiederholbar.</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <h3>Benennung ohne Anglizismen</h3>
-                  <p>UI-Labels sind respektvoll, nicht verkleidet. Kein Marketing-Geschrei – nur klare Begriffe.</p>
-                  <ul class="list">
-                    <li class="li"><span class="dot"></span>Start · Gmeind · Austausch · Wörter · Ich</li>
-                    <li class="li"><span class="dot"></span>„Dialekt lerna“ statt „Learning Hub“</li>
-                    <li class="li"><span class="dot"></span>„Gmeind & Lüüt“ statt „Community Feed“</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section>
+      <h2>4. Datenschutz</h2>
+      <p>
+        Während der Pilotphase werden keine personenbezogenen Daten zu
+        kommerziellen Zwecken verarbeitet. Die Anwendung erfüllt die geltenden
+        Datenschutzbestimmungen.
+      </p>
+    </section>
 
-          <div class="section" id="features">
-            <div class="head">
-              <h2>Funktionen (Partner-Sicht)</h2>
-              <span class="badge">Proof über Nutzen</span>
-            </div>
-            <div class="body">
-              <div class="cols">
-                <div class="item">
-                  <h3>Community & Events</h3>
-                  <p>Lokale Gruppen (Vereine, Stammtische, Schulen) + Event-Listen. Moderations- & Rollenmodell partnerfähig.</p>
-                </div>
-                <div class="item">
-                  <h3>Austausch (1:1 & Gruppen)</h3>
-                  <p>Chats inkl. Audio-Snippets. Dialekt wird hörbar – nicht nur „Text-Content“.</p>
-                </div>
-                <div class="item">
-                  <h3>Wörterbuch (Audio-first)</h3>
-                  <p>Wort → Bedeutung → Beispielsatz → Audio. Region-Tags, Varianten, kuratierbar.</p>
-                </div>
-                <div class="item">
-                  <h3>Lernen & Quiz</h3>
-                  <p>Kurze Module, Fortschritt, Quiz. Für Schulen besonders interessant: messbar, modular, erweiterbar.</p>
-                </div>
-              </div>
+    <section>
+      <h2>5. Teilnahme</h2>
+      <p>
+        Die Teilnahme an der Pilotphase ist freiwillig. Es entstehen keinerlei
+        Verpflichtungen oder Kosten.
+      </p>
+    </section>
 
-              <div class="callout">
-                <b>Wichtig:</b> Wir bauen nicht „eine App mit Features“. Wir bauen ein <b>regionnahes System</b>,
-                das Partnern erlaubt, Inhalte und Communities sauber zu betreiben.
-              </div>
-            </div>
-          </div>
-
-          <div class="section" id="integration">
-            <div class="head">
-              <h2>Integration (technisch & organisatorisch)</h2>
-              <span class="badge">API-ready · Rollen · Audio</span>
-            </div>
-            <div class="body">
-              <div class="cols">
-                <div class="item">
-                  <h3>Partner-Modell (Beispiel)</h3>
-                  <p>Gemeinde / Schule / Institution erhält Rollen: Admin, Moderator, Redaktor (Wörter), Event-Owner.</p>
-                  <ul class="list">
-                    <li class="li"><span class="dot"></span>Admin: Freigaben, Rollen, Reportings</li>
-                    <li class="li"><span class="dot"></span>Moderator: Gruppen, Inhalte, Meldungen</li>
-                    <li class="li"><span class="dot"></span>Redaktor: Wörter & Audio, Variantenpflege</li>
-                  </ul>
-                </div>
-                <div class="item">
-                  <h3>Technische Schnittstellen (Beispiel-API)</h3>
-                  <p>Einfach, bewährt, skalierbar. (Technologie offen – wichtig ist die Struktur.)</p>
-                  <div class="codebox" aria-label="Beispiel Endpoints">
-GET /regions
-GET /municipalities
-GET /groups?municipality=Schaan
-GET /events?municipality=Schaan
-GET /dictionary/search?q=...
-GET /dictionary/entries/{id}
-POST /chats/{chat_id}/messages
-POST /audio/upload
-                  </div>
-                </div>
-              </div>
-
-              <div class="hr"></div>
-
-              <div class="item">
-                <h3>Implementationspfad (realistisch und sauber)</h3>
-                <ul class="list">
-                  <li class="li"><span class="dot"></span><b>Phase 1:</b> Liechtenstein Core (Gemeinden, Wörter, Audio, Gruppen)</li>
-                  <li class="li"><span class="dot"></span><b>Phase 2:</b> Schulen/Partner-Workflows (Rollen, Freigaben, Reports)</li>
-                  <li class="li"><span class="dot"></span><b>Phase 3:</b> Skalierung CH-Kantone + regionale Content-Pakete</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="section" id="datenschutz">
-            <div class="head">
-              <h2>Datenschutz & Compliance (kurz, klar)</h2>
-              <span class="badge">Minimalprinzip</span>
-            </div>
-            <div class="body">
-              <div class="cols">
-                <div class="item">
-                  <h3>Datensparsamkeit</h3>
-                  <p>
-                    Nur Daten, die für Betrieb nötig sind (Account, Gemeinde/Region, Inhalte). Audio-Dateien getrennt gespeichert.
-                    Zugriff über Rollen.
-                  </p>
-                </div>
-                <div class="item">
-                  <h3>Partnerfähigkeit</h3>
-                  <p>
-                    Moderation, Meldesystem, Löschkonzepte, Export/Archiv-Workflows können partnerseitig definiert werden.
-                    (Details im Partner-Scope.)
-                  </p>
-                </div>
-              </div>
-              <p class="notice">
-                Hinweis: Diese Seite ist eine Produkt- und Partnerübersicht, keine rechtsverbindliche Datenschutz- oder AGB-Seite.
-                Für Produktion wird ein vollständiges Datenschutz-/AGB-Paket ergänzt.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Right / Partner CTA -->
-      <aside class="card right" id="kontakt">
-        <div class="pad">
-          <span class="pill">Kontakt · Partner · Umsetzung</span>
-          <h2 style="margin:12px 0 6px; font-size:22px; letter-spacing:-.3px;">Partneranfrage</h2>
-          <p class="tiny" style="margin:0 0 10px;">
-            Wenn du ein B2B/B2G-Partner bist (Gemeinde, Schule, Kultur, Bildung, Medien), bekommst du hier den direkten Draht.
-          </p>
-
-          <div class="callout">
-            <b>Pitch, ohne Theater:</b><br/>
-            Dialekt ist Identität. Identität braucht Infrastruktur. Wir liefern sie.
-          </div>
-
-          <form class="form" onsubmit="return sendMail(event)">
-            <div>
-              <label for="org">Organisation</label>
-              <input id="org" name="org" placeholder="z.B. Gemeinde Schaan / Schule / Verband" autocomplete="organization" />
-            </div>
-            <div>
-              <label for="name">Kontaktperson</label>
-              <input id="name" name="name" placeholder="Vorname Nachname" autocomplete="name" />
-            </div>
-            <div>
-              <label for="email">E-Mail</label>
-              <input id="email" name="email" placeholder="name@domain.li" autocomplete="email" />
-            </div>
-            <div>
-              <label for="msg">Anliegen</label>
-              <textarea id="msg" name="msg" placeholder="Kurz: Was wollt ihr erreichen? (Community, Schule, Wörterbuch, Events, Kulturprojekt)"></textarea>
-            </div>
-
-            <!-- IMPORTANT: replace the mailto below with your real partner email -->
-            <button class="btn primary" type="submit">Mail vorbereiten</button>
-            <a class="btn" href="#integration">Technik / Integration ansehen</a>
-
-            <p class="notice">
-              Diese Seite sendet keine Daten an einen Server. Der Button öffnet dein Mailprogramm mit vorausgefülltem Text.
-            </p>
-          </form>
-
-          <div class="hr"></div>
-
-          <div class="item">
-            <h3>Deploy-Checkliste (Infomaniak/Apache)</h3>
-            <ul class="list">
-              <li class="li"><span class="dot"></span>1) `index.html` ins Webroot (z.B. `/web/` oder `public_html/`)</li>
-              <li class="li"><span class="dot"></span>2) Optional: `.htaccess` (HTTPS + Redirects)</li>
-              <li class="li"><span class="dot"></span>3) Test: `https://dialektverbindet.li` und `.ch` laden</li>
-            </ul>
-          </div>
-
-          <div class="callout">
-            <b>Wichtig:</b> Ersetze in der Mail-Funktion unten die Zieladresse (placeholder) durch deine echte Partner-Mail.
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <footer class="footer">
-      <div>
-        <div><b>Dialekt verbindet</b> · Partner-Overview · Liechtenstein/CH</div>
-        <div class="tiny">© <span id="year"></span> – Alle Rechte vorbehalten. Version: 1.0</div>
-      </div>
-      <div class="tiny">
-        Shortcut: <a href="#top">nach oben</a> · <a href="#kontakt">Kontakt</a>
-      </div>
-    </footer>
+    <section>
+      <h2>6. Kontakt</h2>
+      <p>
+        Projektleitung: <strong>Dialekt Verbindet</strong><br />
+        Sandro Ritter<br />
+        E-Mail:
+        <a href="mailto:info@dialektverbindet.li" style="color: var(--accent)"
+          >info@dialektverbindet.li</a
+        >
+      </p>
+    </section>
   </main>
 
-  <script>
-    // Date/Year
-    (function(){
-      const d = new Date();
-      const pad = n => String(n).padStart(2,'0');
-      document.getElementById("date").textContent = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
-      document.getElementById("year").textContent = d.getFullYear();
-    })();
-
-    // Mailto composer (no backend; no data leaves the browser)
-    function sendMail(e){
-      e.preventDefault();
-      const org = (document.getElementById("org").value || "").trim();
-      const name = (document.getElementById("name").value || "").trim();
-      const email = (document.getElementById("email").value || "").trim();
-      const msg = (document.getElementById("msg").value || "").trim();
-
-      // TODO: Replace with your real partner inbox
-      const TO = "partner@dialektverbindet.li";
-
-      const subject = encodeURIComponent("Partneranfrage – Dialekt verbindet");
-      const body = encodeURIComponent(
-`Hoi zäma
-
-Organisation: ${org || "-"}
-Kontaktperson: ${name || "-"}
-E-Mail: ${email || "-"}
-
-Anliegen:
-${msg || "-"}
-
-Nächste Schritte (Vorschlag):
-1) 20 Minuten Kurzcall (Ziel, Scope, Partnerrolle)
-2) Pilot in einer Gemeinde/Schule (4–8 Wochen)
-3) Rollout + Contentpakete (Wörter/Audio/Moderation)
-
-Gruss
-${name || ""}`
-      );
-
-      window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
-      return false;
-    }
-  </script>
+  <footer>
+    © 2026 Dialekt Verbindet — Pilot-Evaluation. Alle Rechte vorbehalten.
+  </footer>
 </body>
 </html>

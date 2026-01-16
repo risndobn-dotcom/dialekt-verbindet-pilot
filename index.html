@@ -1,172 +1,202 @@
 <!DOCTYPE html>
 <html lang="de-CH">
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dialekt Verbindet — Pilot-Evaluation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO -->
-  <meta
-    name="description"
-    content="Pilot-Evaluation der Anwendung «Dialekt Verbindet» zur Förderung regionaler Sprache, kultureller Identität und gesellschaftlicher Vernetzung in Liechtenstein."
-  />
+  <title>Dialekt Verbindet</title>
+
+  <meta name="description"
+        content="Dialekt Verbindet ist digitale Infrastruktur für regionale Sprache. Menschen finden Gemeinschaft, Sprache wird verstanden, geteilt und weitergetragen." />
+
   <meta name="theme-color" content="#0B1220" />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Dialekt Verbindet — Pilot-Evaluation" />
-  <meta
-    property="og:description"
-    content="Pilot-Evaluation von «Dialekt Verbindet»: Regionale Sprache, Kultur und gesellschaftliche Vernetzung."
-  />
+  <meta property="og:title" content="Dialekt Verbindet" />
+  <meta property="og:description"
+        content="Digitale Infrastruktur für regionale Sprache, kulturellen Kontext und gesellschaftliche Verständigung." />
 
-  <!-- Styles (clean, minimal, pilot-safe) -->
   <style>
-    :root {
-      --bg: #0b1220;
-      --panel: rgba(255, 255, 255, 0.06);
-      --text: rgba(255, 255, 255, 0.92);
-      --muted: rgba(255, 255, 255, 0.65);
-      --line: rgba(255, 255, 255, 0.14);
-      --accent: #3b82f6;
-      --max: 960px;
-      --radius: 14px;
-      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, sans-serif;
+    :root{
+      --bg:#070B14;
+      --panel:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.66);
+      --line:rgba(255,255,255,.12);
+      --accent:#3B82F6;
+      --radius:18px;
+      --max:1100px;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:linear-gradient(180deg,#060A12,#070B14 40%,#050813);
+      min-height:100vh;
     }
 
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      color: var(--text);
-      background: linear-gradient(180deg, #0b1220, #050814);
-      min-height: 100vh;
+    header{
+      border-bottom:1px solid var(--line);
+      background:rgba(7,11,20,.9);
     }
 
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(0, 0, 0, 0.2);
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:32px 28px;
     }
 
-    .header-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem;
+    h1{
+      font-size:48px;
+      margin:0 0 18px;
+      letter-spacing:-.9px;
+      line-height:1.05;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      letter-spacing: 0.5px;
+    h2{
+      font-size:22px;
+      margin:0 0 14px;
     }
 
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
+    p{
+      margin:0 0 16px;
+      color:var(--muted);
+      line-height:1.7;
+      max-width:78ch;
     }
 
-    section {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
+    section{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:32px;
+      margin-bottom:28px;
     }
 
-    h2 {
-      margin-top: 0;
-      font-size: 1.1rem;
-      letter-spacing: 0.3px;
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:48px;
+      padding-top:20px;
+      font-size:12px;
+      color:var(--muted);
     }
 
-    p {
-      margin: 0.5rem 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
+    a{color:var(--text); text-decoration:none}
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-inner">
-      <h1>Dialekt Verbindet — Pilot-Evaluation</h1>
-    </div>
-  </header>
 
-  <main>
-    <section>
-      <h2>1. Zielsetzung</h2>
-      <p>
-        Diese Pilot-Evaluation dient der Erprobung der Anwendung
-        «Dialekt Verbindet» als digitales Werkzeug zur Förderung regionaler
-        Sprache, kultureller Identität und gesellschaftlicher Vernetzung.
-      </p>
-    </section>
+<header>
+  <div class="wrap">
+    <strong>Dialekt Verbindet</strong>
+  </div>
+</header>
 
-    <section>
-      <h2>2. Rahmenbedingungen</h2>
-      <p>
-        Die Pilotphase ist zeitlich begrenzt, unverbindlich und kostenfrei.
-        Sie dient ausschließlich der Evaluation von Akzeptanz, Nutzen und
-        Wirkung der Anwendung.
-      </p>
-    </section>
+<main class="wrap">
 
-    <section>
-      <h2>3. Umfang</h2>
-      <p>
-        Teilnehmende Institutionen erhalten Zugriff auf eine Pilotversion der
-        Anwendung sowie begleitende Informationen zur Nutzung und Rückmeldung.
-      </p>
-    </section>
+  <!-- Kern -->
+  <section>
+    <h1>Dini Sproch. Dini Wält.</h1>
 
-    <section>
-      <h2>4. Datenschutz</h2>
-      <p>
-        Während der Pilotphase werden keine personenbezogenen Daten zu
-        kommerziellen Zwecken verarbeitet. Die Anwendung erfüllt die geltenden
-        Datenschutzbestimmungen.
-      </p>
-    </section>
+    <p>
+      <strong>Dialekt Verbindet ist digitale Infrastruktur für regionale Sprache.</strong>
+    </p>
 
-    <section>
-      <h2>5. Teilnahme</h2>
-      <p>
-        Die Teilnahme an der Pilotphase ist freiwillig. Es entstehen keinerlei
-        Verpflichtungen oder Kosten.
-      </p>
-    </section>
+    <p>
+      Nicht als Sammlung von Inhalten, sondern als konsistentes System:
+      Menschen finden lokale Gemeinschaften, hören authentische Aussprache,
+      lernen strukturiert und treten direkt in Austausch.
+    </p>
 
-    <section>
-      <h2>6. Kontakt</h2>
-      <p>
-        Projektleitung: <strong>Dialekt Verbindet</strong><br />
-        Sandro Ritter<br />
-        E-Mail:
-        <a href="mailto:info@dialektverbindet.li" style="color: var(--accent)"
-          >info@dialektverbindet.li</a
-        >
-      </p>
-    </section>
-  </main>
+    <p>
+      So wird Dialekt nicht konsumiert,
+      sondern gelebt, verstanden und weitergetragen.
+    </p>
+  </section>
 
-  <footer>
-    © 2026 Dialekt Verbindet — Pilot-Evaluation. Alle Rechte vorbehalten.
-  </footer>
+  <!-- Bedeutung -->
+  <section>
+    <h2>Sprache schafft Zugehörigkeit</h2>
+
+    <p>
+      Sprache ist mehr als Kommunikation.
+      Sie vermittelt Haltung, Gewohnheiten und unausgesprochene Regeln
+      des Zusammenlebens.
+    </p>
+
+    <p>
+      Dialekt Verbindet ermöglicht Zugang zu regionaler Sprache
+      und kulturellem Kontext – für alle Menschen,
+      unabhängig davon, ob sie hier aufgewachsen sind
+      oder neu in einer Region ankommen.
+    </p>
+
+    <p>
+      Verständnis entsteht dort,
+      wo Sprache nicht erklärt,
+      sondern erlebt wird.
+    </p>
+  </section>
+
+  <!-- Wirkung -->
+  <section>
+    <h2>Wirkung im Alltag</h2>
+
+    <p>
+      Wer Sprache und kulturelle Gepflogenheiten versteht,
+      findet sich sicherer im Alltag zurecht,
+      begegnet anderen mit mehr Selbstvertrauen
+      und kann aktiv am gesellschaftlichen Leben teilnehmen.
+    </p>
+
+    <p>
+      Dialekt Verbindet schafft Orientierung,
+      fördert gegenseitiges Verständnis
+      und stärkt das Miteinander –
+      leise, kontinuierlich und nachhaltig.
+    </p>
+  </section>
+
+  <!-- Technik & Vertrauen -->
+  <section>
+    <h2>Struktur, nicht Oberfläche</h2>
+
+    <p>
+      Dialekt Verbindet ist als langfristig tragfähige Plattform konzipiert.
+      Der Fokus liegt auf klaren Strukturen,
+      nachvollziehbaren Abläufen
+      und einem respektvollen Umgang mit Sprache und Daten.
+    </p>
+
+    <p>
+      Die Datenverarbeitung erfolgt auf einer in der Schweiz betriebenen
+      Infrastruktur bei <strong>Infomaniak Network SA</strong>,
+      unter Einhaltung der geltenden Datenschutzbestimmungen.
+    </p>
+  </section>
+
+  <!-- Kontakt -->
+  <section>
+    <h2>Kontakt</h2>
+
+    <p>
+      <strong>Dialekt Verbindet</strong><br/>
+      Sandro Ritter<br/>
+      <a href="mailto:info@dialektverbindet.li">info@dialektverbindet.li</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © 2026 Dialekt Verbindet
+</footer>
+
 </body>
 </html>

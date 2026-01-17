@@ -1,164 +1,192 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-LI">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dialekt verbindet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialekt Verbindet | Üsri Sproch</title>
+    <style>
+        :root {
+            --li-blue: #002B7F;
+            --li-red: #CE1126;
+            --li-gold: #FFD700;
+            --bg-white: #ffffff;
+            --glass-shine: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+        }
 
-<style>
-:root{
-  --ident:#002b7f;
-  --base:#ffffff;
-  --context:#f3f4f6;
-  --line:#e1e1e1;
-  --text:#1f1f1f;
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-  --radius:36px;
-  --r-small:20px;
-  --space:40px;
-  --maxw:1000px;
-}
+        body {
+            margin: 0; background: var(--bg-white); color: #1d1d1f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-*{box-sizing:border-box}
+        /* Hintergrund-Füllung mit Liechtensteiner Symbolik gegen Leere */
+        body::before {
+            content: "Fürstentum Liechtenstein";
+            position: fixed; top: 10%; left: -5%;
+            font-size: 12vw; font-weight: 900; color: rgba(0,0,0,0.02);
+            white-space: nowrap; transform: rotate(-5deg); z-index: -2; pointer-events: none;
+        }
 
-body{
-  margin:0;
-  background:var(--context);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  color:var(--text);
-}
+        body::after {
+            content: "Hoi • Salü • Grüazi";
+            position: fixed; bottom: 10%; right: -5%;
+            font-size: 10vw; font-weight: 900; color: rgba(0,0,0,0.02);
+            white-space: nowrap; transform: rotate(-5deg); z-index: -2; pointer-events: none;
+        }
 
-.app{
-  max-width:var(--maxw);
-  margin:32px auto;
-  background:var(--base);
-  border-radius:48px;
-  overflow:hidden;
-  border:1px solid var(--line);
-}
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; }
 
-/* IDENTITÄT */
-.header{
-  height:42vh;
-  background:var(--ident);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  padding:var(--space);
-}
+        /* HEADER */
+        header { text-align: center; padding: 80px 20px 60px; }
+        .subtitle { color: var(--li-blue); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 20px; }
+        .main-title { font-size: clamp(45px, 8vw, 85px); font-weight: 900; letter-spacing: -3px; color: #1d1d1f; margin: 0; line-height: 1.1; }
+        
+        .vision-box {
+            max-width: 850px; margin: 40px auto 0; padding: 35px;
+            background: rgba(255, 255, 255, 0.8); border-radius: 35px;
+            backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+        .vision-text { font-size: 22px; font-weight: 600; color: #1d1d1f; margin: 10px 0; }
+        .dialect-quote { font-style: italic; color: #515154; font-size: 19px; line-height: 1.6; display: block; margin-top: 15px; }
+        .highlight-red { color: var(--li-red); }
 
-.header h1{
-  font-size:44px;
-  font-weight:700;
-  margin:0;
-}
+        /* HOLOGRAMM-KARTEN */
+        .holo-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(40px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px; padding: 50px; margin-bottom: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.04);
+            position: relative; overflow: hidden;
+        }
 
-.header p{
-  margin-top:18px;
-  font-size:18px;
-  opacity:.9;
-}
+        .holo-card::before {
+            content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
+            background: var(--glass-shine); transform: skewX(-20deg);
+            animation: holo-swipe 8s infinite ease-in-out;
+        }
 
-/* SEKTIONEN */
-.section{
-  padding:var(--space);
-  border-top:1px solid var(--line);
-}
+        @keyframes holo-swipe {
+            0% { left: -150%; opacity: 0; }
+            40% { opacity: 0.8; }
+            100% { left: 150%; opacity: 0; }
+        }
 
-.statement{
-  font-size:20px;
-  line-height:1.5;
-}
+        .border-blue { border-top: 10px solid var(--li-blue); }
+        .border-red { border-top: 10px solid var(--li-red); }
 
-/* GEOGRAFIE */
-.geo{
-  margin-top:24px;
-  font-size:17px;
-  line-height:1.6;
-}
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
-/* FUNKTIONALE RÄUME */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
-}
+        .content-box {
+            background: white; padding: 30px; border-radius: 30px;
+            border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            position: relative;
+        }
 
-.card{
-  border:1px solid var(--line);
-  border-radius:var(--r-small);
-  padding:28px;
-  min-height:140px;
-}
+        /* Füll-Elemente für die Zugehörigkeit */
+        .li-badge {
+            display: inline-block; padding: 5px 12px; background: #f0f2f5; 
+            border-radius: 10px; font-size: 12px; font-weight: 700; color: var(--li-blue);
+            margin-bottom: 10px;
+        }
 
-.card h3{
-  margin:0 0 12px 0;
-  font-size:18px;
-  font-weight:600;
-}
+        /* PARTNER BOX */
+        .logo-slot {
+            height: 120px; background: #fff; border-radius: 25px;
+            border: 2px dashed #d2d2d7; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px; font-weight: 600; color: #86868b;
+        }
 
-.card p{
-  margin:0;
-  line-height:1.5;
-}
-
-/* ABSCHLUSS */
-.footer{
-  padding:32px 40px;
-  background:var(--context);
-  font-size:14px;
-}
-</style>
+        footer { background: #fafafa; padding: 80px 20px; border-top: 1px solid #efefef; text-align: center; }
+        
+        h2 { font-size: 30px; font-weight: 800; margin-top: 0; margin-bottom: 35px; }
+        h3 { font-size: 20px; margin: 0 0 10px; }
+    </style>
 </head>
-
 <body>
 
-<div class="app">
-
-  <!-- IDENTITÄT -->
-  <div class="header">
-    <div>
-      <h1>Dialekt verbindet</h1>
-      <p>Sprache ist Alltag. Herkunft. Zugehörigkeit.</p>
+<header class="container">
+    <span class="subtitle">Üsri Sproch</span>
+    <h1 class="main-title">Dialekt Verbindet</h1>
+    <div class="vision-box">
+        <p class="vision-text">"An Standort wo sini Sproch zagt, bliebt im Gedächtnis."</p>
+        <span class="dialect-quote">
+            Dialekt isch me als a Sproch - er isch <span class="highlight-red">Identität, Alltag und Zuagehörigkeit</span>.
+        </span>
     </div>
-  </div>
+</header>
 
-  <!-- HALTUNG -->
-  <div class="section">
-    <div class="statement">
-      Dialekt ist kein Lernobjekt.<br>
-      Er wird gesprochen, gehört, weitergegeben.
-    </div>
+<main class="container">
 
-    <div class="geo">
-      Bi üs im Ländle.<br>
-      Vo Schaa bis Balzers.<br>
-      Vo Bendera bis in Hinterschellabärg.
-    </div>
-  </div>
+    <section class="holo-card border-blue">
+        <h2>🎙️ Dialekt Einspeisung</h2>
+        <div class="grid">
+            <div class="content-box">
+                <span class="li-badge">Oberland</span>
+                <h3>Vaduz bis Planken</h3>
+                <p>Regionaler Wortschatz und Aussprachehilfen.</p>
+            </div>
+            <div class="content-box">
+                <span class="li-badge">Unterland</span>
+                <h3>Eschen bis Schellenberg</h3>
+                <p>Regionale Sprach-Themen-Chats.</p>
+            </div>
+            <div class="content-box" style="border: 2px solid var(--li-gold);">
+                <span class="li-badge" style="background: var(--li-gold); color: #000;">Walser Erbe</span>
+                <h3>Triesabärg</h3>
+                <p>Authentischer Walser Dialekt & Bräuche.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- RÄUME -->
-  <div class="section grid">
-    <div class="card">
-      <h3>Regionen</h3>
-      <p>Oberland, Unterland, Walserraum.</p>
-    </div>
-    <div class="card">
-      <h3>Stimmen</h3>
-      <p>Original. Unglättet. Echt.</p>
-    </div>
-    <div class="card">
-      <h3>Alltag & Kultur</h3>
-      <p>Was man sagt. Wie man lebt.</p>
-    </div>
-  </div>
+    <section class="holo-card border-red">
+        <h2>🏔️ Ländle Erleben</h2>
+        <div class="grid">
+            <div class="content-box"><h3>🏛️ Museen</h3><p>Landesmuseum, Kunstmuseum, Landwirtschaft.</p></div>
+            <div class="content-box"><h3>📜 Traditionen</h3><p>Sagenwelt, Bräuche & Geschichte.</p></div>
+            <div class="content-box"><h3>🍲 Rezepte</h3><p>Kulinarische Identität aus Liechtenstein.</p></div>
+        </div>
+    </section>
 
-  <!-- ABSCHLUSS -->
-  <div class="footer">
-    Digitale Kulturplattform · Serverstandort Schweiz · Datenschutz konform
-  </div>
+    <section class="holo-card border-blue">
+        <h2>💼 Markt & News</h2>
+        <div class="grid">
+            <div class="content-box"><h3>💼 Jobbörse</h3><p>Karriere im Fürstentum.</p></div>
+            <div class="content-box"><h3>🏠 Immobörse</h3><p>Wohnen im Ländle.</p></div>
+            <div class="content-box"><h3>📰 News</h3><p>Aktuelles aus allen 11 Gemeinden.</p></div>
+        </div>
+    </section>
 
-</div>
+    <section style="text-align: center; padding: 60px 0;">
+        <h2 style="margin-bottom: 50px;">🤝 Unsere Partner</h2>
+        <div class="grid" style="max-width: 900px; margin: 0 auto;">
+            <div><div class="logo-slot">OSPELT</div><strong>Ospelt Schaan</strong></div>
+            <div><div class="logo-slot">HOI LADEN</div><strong>Hoi Laden Vaduz</strong></div>
+            <div><div class="logo-slot">INFOMANIAK</div><strong>Infomaniak SA</strong></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left;">
+        <div>
+            <h3>Impressum</h3>
+            <p><strong>Sandro Ritter</strong><br>Dammstrasse 4, 9444 Diepoldsau</p>
+        </div>
+        <div style="background: #fff; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h4>🔒 Datensicherheit</h4>
+            <p style="font-size: 14px; color: #86868b;">
+                Infrastruktur: Infomaniak (Schweiz).<br>
+                Konform mit DPA vom 04.01.2026.
+            </p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

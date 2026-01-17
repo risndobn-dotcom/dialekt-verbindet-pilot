@@ -1,1 +1,28 @@
-<!DOCTYPE html> <html lang="de-LI"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Dialekt Verbindet | Üsri Sproch</title>     <style>         :root {             --li-blue: #002B7F;             --li-red: #CE1126;             --li-gold: #FFD700;             --bg-white: #ffffff;             --glass-shine: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);         }         * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }         body {             margin: 0; background: var(--bg-white); color: #1d1d1f;             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;             overflow-x: hidden;             position: relative;         }         /* Hintergrund-Füllung mit Liechtensteiner Symbolik gegen Leere */         body::before {             content: "Fürstentum Liechtenstein";             position: fixed; top: 10%; left: -5%;             font-size: 12vw; font-weight: 900; color: rgba(0,0,0,0.02);             white-space: nowrap; transform: rotate(-5deg); z-index: -2; pointer-events: none;         }         body::after {             content: "Hoi • Salü • Grüazi";             position: fixed; bottom: 10%; right: -5%;             font-size: 10vw; font-weight: 900; color: rgba(0,0,0,0.02);             white-space: nowrap; transform: rotate(-5deg); z-index: -2; pointer-events: none;         }         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; }         /* HEADER */         header { text-align: center; padding: 80px 20px 60px; }         .subtitle { color: var(--li-blue); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 20px; }         .main-title { font-size: clamp(45px, 8vw, 85px); font-weight: 900; letter-spacing: -3px; color: #1d1d1f; margin: 0; line-height: 1.1; }   
+<section class="boersen-section" aria-labelledby="boersen-title">
+  <header class="boersen-header">
+    <h1 id="boersen-title">Börsen</h1>
+    <p class="boersen-subline">
+      Jobbörse und Immobörse aus der Region.
+    </p>
+  </header>
+
+  <div class="boersen-content">
+    <!-- Jobbörse -->
+    <article class="boerse-card">
+      <h2>Jobbörse</h2>
+      <p>
+        Regionale Arbeitsstellen.<br>
+        Direkt. Übersichtlich. Nah.
+      </p>
+    </article>
+
+    <!-- Immobörse -->
+    <article class="boerse-card">
+      <h2>Immobörse</h2>
+      <p>
+        Wohnen im Ländle.<br>
+        Angebote mit Bezug.
+      </p>
+    </article>
+  </div>
+</section>

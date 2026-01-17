@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dialekt Verbindet | Liechtenstein</title>
+  <title>Dialekt Verbindet | Das Liechtenstein-Portal</title>
 
   <style>
     :root{
       --bg:#070B14;
-      --panel:rgba(255,255,255,.06);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.66);
       --line:rgba(255,255,255,.12);
@@ -17,7 +16,7 @@
       --radius2:30px;
       --max:1160px;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      --shadow:0 18px 60px rgba(0,0,0,.55);
+      --grad: linear-gradient(135deg, var(--accent), var(--accent2));
     }
 
     *{box-sizing:border-box}
@@ -26,97 +25,58 @@
     body{
       margin:0; font-family:var(--sans); color:var(--text);
       background:
-        radial-gradient(980px 640px at 12% 10%, rgba(59,130,246,.15), transparent 55%),
-        radial-gradient(980px 640px at 88% 16%, rgba(34,197,94,.12), transparent 60%),
-        linear-gradient(180deg,#060A12,#070B14 38%,#050813);
+        radial-gradient(1000px 700px at 10% 10%, rgba(59,130,246,.12), transparent 50%),
+        radial-gradient(1000px 700px at 90% 90%, rgba(34,197,94,.08), transparent 50%),
+        linear-gradient(180deg,#060A12,#070B14 40%,#050813);
       min-height:100vh;
     }
 
     .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(7,11,20,.90), rgba(7,11,20,.65));
+      position:sticky; top:0; z-index:100;
+      backdrop-filter:saturate(150%) blur(12px);
+      background:linear-gradient(180deg, rgba(7,11,20,.95), rgba(7,11,20,.75));
       border-bottom:1px solid var(--line);
     }
-    .topbar .inner{
-      max-width:var(--max); margin:0 auto; padding:14px 22px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand{display:flex; align-items:center; gap:12px;}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background:linear-gradient(135deg, #E62117, #FFD700);
-      border:1px solid rgba(255,255,255,.2);
-    }
+    .topbar .inner{ max-width:var(--max); margin:0 auto; padding:15px 22px; display:flex; align-items:center; justify-content:space-between; }
+    .brand-title { font-weight: 800; font-size: 18px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px 22px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:30px 22px; position: relative;}
     
-    /* Layout Grid */
-    .grid{
-      display:grid; grid-template-columns: 1.15fr .85fr; gap:20px;
-      align-items:stretch; margin-top:18px;
-    }
-    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+    .grid-main{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap:25px; margin-bottom: 25px; }
+    @media (max-width: 980px){ .grid-main{grid-template-columns:1fr} }
 
     .card{
       border-radius:var(--radius2);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      box-shadow: 0 20px 70px rgba(0,0,0,.6);
       overflow: hidden;
     }
-    .pad{padding:30px}
+    .pad{padding:40px}
 
-    /* Roadmap & Feature Bereiche */
-    .roadmap-box {
-      margin-top: 25px; padding: 24px;
-      background: rgba(0,0,0,0.3); border-radius: 24px;
-      border: 1px solid var(--line);
+    /* Modul-Grid für die neuen Sektionen */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 25px; }
+    .feature-box {
+      background: rgba(255,255,255,0.03); padding: 25px; border-radius: 22px; border: 1px solid rgba(255,255,255,0.05);
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .roadmap-title {
-      font-size: 11px; font-weight: 900; color: var(--accent2);
-      text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 18px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .roadmap-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-    }
-    .roadmap-item {
-      font-size: 13px; color: var(--text); padding: 14px;
-      background: rgba(255,255,255,0.03); border-radius: 12px;
-      display: flex; align-items: center; gap: 10px;
-      border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
-    }
-    .roadmap-item:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); }
-    .roadmap-item b { color: var(--accent); }
+    .feature-box:hover { transform: translateY(-5px); background: rgba(255,255,255,0.06); border-color: var(--accent); }
+    .feature-box h3 { margin: 15px 0 10px; font-size: 18px; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .feature-box p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .icon-circle { width: 40px; height: 40px; border-radius: 12px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #000; }
 
-    .badge-pill {
-      background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent2);
-      padding: 6px 12px; border-radius: 100px; font-size: 10px;
-      display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
-    }
-
-    h1{ margin:12px 0 10px; font-size:46px; line-height:1.04; letter-spacing:-.9px; }
-    h2{ font-size: 22px; margin: 0 0 15px; }
-    .lead{ color:var(--muted); font-size:16px; line-height:1.55; }
-    
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 20px; border-radius:14px; border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.05); color:white; font-weight:650; cursor:pointer; text-decoration: none;
+      padding:14px 28px; border-radius:14px; border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05); color:white; font-weight:700; cursor:pointer; text-decoration: none; transition: 0.2s;
     }
-    .btn.primary{ background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#06101f; border:none; }
+    .btn.primary{ background: var(--grad); color:#06101f; border:none; box-shadow: 0 10px 20px rgba(34,197,94,.2); }
+    .btn:hover { opacity: 0.9; transform: scale(1.02); }
 
-    .form{display:grid; gap:10px; margin-top:20px}
-    input, textarea{
-      width:100%; padding:14px; border-radius:14px; border:1px solid var(--line);
-      background:rgba(0,0,0,.4); color:white; outline:none; font-family: inherit;
-    }
+    .roadmap-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .roadmap-tag { background: rgba(0,0,0,0.3); padding: 12px; border-radius: 12px; font-size: 13px; border: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
 
-    .info-footer {
-        font-size: 11px; color: var(--muted); margin-top: 20px; 
-        text-align: center; border-top: 1px solid var(--line); padding-top: 15px;
-    }
+    footer { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--line); margin-top: 40px; }
   </style>
 </head>
 
@@ -125,125 +85,128 @@
 <header class="topbar">
   <div class="inner">
     <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <div style="font-weight: 800; font-size: 16px;">Dialekt Verbindet</div>
-        <div style="font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2);">Liechtenstein & Region</div>
-      </div>
+      <div class="brand-title">Dialekt Verbindet</div>
+      <div style="font-size: 9px; text-transform: uppercase; color: var(--muted); font-weight: 600;">Infrastruktur Liechtenstein</div>
     </div>
-    <a class="btn primary" href="#kontakt" style="font-size: 12px; padding: 8px 18px;">Projekt anfragen</a>
+    <div style="display:flex; gap:12px;">
+        <a class="btn" href="#ecosystem" style="font-size: 12px; padding: 10px 20px;">Ökosystem</a>
+        <a class="btn primary" href="#kontakt" style="font-size: 12px; padding: 10px 20px;">Partner werden</a>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="grid">
 
+  <div class="grid-main">
     <section class="card">
       <div class="pad">
-        <div style="font-size: 11px; color: var(--accent); font-weight: 800; margin-bottom: 12px; text-transform: uppercase;">Digitale Infrastruktur aus Liechtenstein</div>
-        <h1>Dini Sproch.<br/>Dini Wält.<br/><span style="opacity:0.4">Dialekt Verbindet.</span></h1>
-
+        <div style="font-size: 11px; color: var(--accent2); font-weight: 800; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px;">Nationales Netzwerk</div>
+        <h1>Vo de Berga id d'Wirtschaft.</h1>
         <p class="lead">
-          Wir entwickeln das digitale Fundament für regionale Identität. Ein modulares System, um Sprache, Brauchtum und Bildung interaktiv in die Zukunft zu führen.
+          Wir vereinen Kultur, Tourismus und Wirtschaft in einem digitalen Hub. Von der Sprach-KI bis zur regionalen Job- und Immobiliensuche – alles mit dem Fokus auf die Identität Liechtensteins.
         </p>
-
-        <div class="roadmap-box">
-          <div class="roadmap-title">
-             <span style="display:inline-block; width:8px; height:8px; background:var(--accent2); border-radius:50%;"></span>
-             Roadmap: Geplante Module & Erweiterungen
-          </div>
-          <div class="roadmap-grid">
-            <div class="roadmap-item"><span>🎮</span> <b>Gamification</b> (Badges & Quizzes)</div>
-            <div class="roadmap-item"><span>🎙️</span> <b>TTS / STT</b> (Dialekt-KI)</div>
-            <div class="roadmap-item"><span>📜</span> <b>Sagen & Bräuche</b> (Kultur-Archiv)</div>
-            <div class="roadmap-item" style="border-color: var(--accent2);"><span>🍲</span> <b>Heimat-Rezepte</b> (Kulinarik)</div>
-            <div class="roadmap-item" style="border-color: var(--accent);"><span>➕</span> <b>Heimat-Mathe</b> (Sachrechnen)</div>
-            <div class="roadmap-item"><span>🏆</span> <b>Belohnungssystem</b></div>
-          </div>
-          
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px;">
-            <div class="badge-pill">🏆 Dialekt-Botschafter</div>
-            <div class="badge-pill">🍳 Heimat-Koch</div>
-            <div class="badge-pill">🧮 Rechen-Künstler</div>
-            <div class="badge-pill">📜 Sagen-Kenner</div>
-          </div>
-        </div>
-
-        <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid var(--line); display: flex; align-items: center; gap: 15px;">
-            <div style="font-size: 24px;">🇱🇮</div>
-            <div style="font-size: 13px; color: var(--muted); line-height: 1.4;">
-                <strong>Liechtenstein im Fokus:</strong> Unsere Lösung ist gezielt auf die liechtensteinische Identität und die Förderung regionaler Bildungswerte ausgerichtet.
-            </div>
+        
+        <div class="roadmap-list">
+          <div class="roadmap-tag"><span>🎙️</span> Dialekt Sprach-KI</div>
+          <div class="roadmap-tag"><span>➕</span> Heimat-Mathe</div>
+          <div class="roadmap-tag"><span>🏢</span> Immobilien FL</div>
+          <div class="roadmap-tag"><span>💼</span> Jobangebote</div>
+          <div class="roadmap-tag"><span>🏔️</span> Tourismus-Guide</div>
+          <div class="roadmap-tag"><span>🍲</span> Restaurant-Finder</div>
         </div>
       </div>
     </section>
 
-    <aside style="display: flex; flex-direction: column; gap: 20px;">
-      
-      <div class="card">
+    <aside>
+      <div class="card" style="height: 100%;">
         <div class="pad">
-          <h2>Datenschutz</h2>
-          <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">
-            Die Verarbeitung personenbezogener Daten erfolgt über <strong>Infomaniak (Schweiz)</strong> – strikt gemäss unserer Datenschutzvereinbarung (DPA) und unter Einhaltung des DSG/GDPR.
+          <h3>Hosting & Sicherheit</h3>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+            Unsere Infrastruktur läuft bei <strong>Infomaniak (Schweiz)</strong>. Alle Daten bleiben gemäss DPA geschützt und werden unter Schweizer/Liechtensteiner Recht verwaltet.
           </p>
-          <div style="height: 1px; background: var(--line); margin: 15px 0;"></div>
-          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2); font-weight: 700;">Projektleitung</div>
-          <div style="font-weight: 600; margin-top: 5px; font-size: 15px;">Sandro Ritter</div>
-        </div>
-      </div>
-
-      <div class="card" id="kontakt">
-        <div class="pad">
-          <h2>Kontakt</h2>
-          <form class="form" onsubmit="return sendMail(event)">
-            <input id="org" placeholder="Name / Institution" required />
-            <textarea id="msg" placeholder="Welche Module (z.B. Mathe, Rezepte, Gamification) interessieren dich besonders?"></textarea>
-            <button class="btn primary" type="submit" style="width: 100%; height: 48px;">Anfrage senden</button>
-          </form>
-          <div class="info-footer">
-            info@dialektverbindet.li · Liechtenstein
+          <div style="margin: 20px 0; padding: 15px; background: rgba(34,197,94,0.05); border-radius: 15px; border: 1px solid var(--accent2);">
+            <div style="font-size: 10px; text-transform: uppercase; font-weight: 900; color: var(--accent2);">Projekt-Lead</div>
+            <div style="font-size: 16px; font-weight: 700; margin-top: 4px;">Sandro Ritter</div>
           </div>
+          <div style="font-size: 12px; color: var(--muted);">Standort: Diepoldsau/Liechtenstein</div>
         </div>
       </div>
-
     </aside>
   </div>
 
-  <section class="card" style="margin-top: 20px; margin-bottom: 40px;">
+  <section class="card" id="ecosystem">
     <div class="pad">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-        <div>
-          <h3 style="color: var(--accent);">➕ Heimat-Mathe</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.5;">
-            Wir verbinden Logik mit Heimatkunde. Sachaufgaben im Dialekt-Kontext fördern das Verständnis für regionale Masseinheiten und Alltagsgeschichten.
-          </p>
+      <h2>Das Liechtenstein-Ökosystem</h2>
+      <p class="lead">Module für Bürger, Unternehmen und Besucher.</p>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <div class="icon-circle">🏔️</div>
+          <h3>Tourismus</h3>
+          <p>Interaktive Routen durch unsere Bergwelt, Sagen-Wanderwege und digitale Guides für Gäste, die das echte Liechtenstein erleben wollen.</p>
         </div>
-        <div>
-          <h3 style="color: var(--accent2);">🍲 Heimat-Rezepte</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.5;">
-            Kulinarik ist gelebte Sprache. Von <i>Käschnöpfle</i> bis <i>Ribel</i> – wir sichern Zubereitungsarten und das dazugehörige Vokabular für kommende Generationen.
-          </p>
+
+        <div class="feature-box">
+          <div class="icon-circle">🍲</div>
+          <h3>Gastronomie</h3>
+          <p>Finden Sie die besten Restaurants. Integriert mit Dialekt-Speisekarten und Bonus-Aktionen (Punkte sammeln durch Dialekt-Quizzes).</p>
         </div>
-        <div>
-          <h3 style="color: white;">📜 Sagen & Bräuche</h3>
-          <p style="font-size: 14px; color: var(--muted); line-height: 1.5;">
-            Interaktive Audio-Archive machen liechtensteinische Sagen erlebbar. Gamification-Elemente motivieren dazu, tiefer in die lokale Geschichte einzutauchen.
-          </p>
+
+        <div class="feature-box">
+          <div class="icon-circle">💼</div>
+          <h3>Jobbörse</h3>
+          <p>Regionale Stellenangebote direkt im Portal. Wir verbinden lokale Arbeitgeber mit Talenten aus der Region.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon-circle">🏠</div>
+          <h3>Immobilien</h3>
+          <p>Exklusive Inserate für Wohnen und Gewerbe im Fürstentum – direkt vernetzt mit dem lokalen Standort-Marketing.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon-circle">🖼️</div>
+          <h3>Kunst & Museen</h3>
+          <p>Digitale Schnittstellen zum Landesmuseum und der Kunstszene. Geschichte interaktiv für Schulen aufbereitet.</p>
+        </div>
+
+        <div class="feature-box" style="border-color: var(--accent2);">
+          <div class="icon-circle">🎁</div>
+          <h3>Lokal-Bonus</h3>
+          <p>Belohnungen verdienen und im <strong>Hoi Laden</strong> oder bei Partnern vor Ort einlösen. Wirtschaftsförderung durch Gamification.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <section class="card" id="kontakt">
+    <div class="pad" style="text-align: center;">
+      <h2>Werden Sie Teil der Vision</h2>
+      <p class="lead" style="max-width: 700px; margin: 0 auto 30px;">Ob als Sponsor für "Heimat-Mathe", als Restaurant-Partner oder als Arbeitgeber – lassen Sie uns gemeinsam die digitale Identität Liechtensteins stärken.</p>
+      
+      <div style="max-width: 500px; margin: 0 auto;">
+        <form onsubmit="return sendMail(event)" style="display: grid; gap: 12px;">
+          <input id="org" placeholder="Unternehmen / Organisation" required style="width:100%; padding:15px; border-radius:12px; border:1px solid var(--line); background:rgba(0,0,0,.4); color:white;">
+          <textarea id="msg" placeholder="Interesse an Jobs, Immobilien, Tourismus oder Sponsoring?" style="width:100%; padding:15px; border-radius:12px; border:1px solid var(--line); background:rgba(0,0,0,.4); color:white; height:100px;"></textarea>
+          <button class="btn primary" type="submit">Kooperation anfragen</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<footer>
+    DIALEKT VERBINDET · SANDRO RITTER · LIECHTENSTEIN · INFO@DIALEKTVERBINDET.LI <br>
+    GEHOSTET BEI INFOMANIAK (SCHWEIZ) · DSG/GDPR KONFORM
+</footer>
 
 <script>
   function sendMail(e){
     e.preventDefault();
     const org = document.getElementById("org").value;
     const msg = document.getElementById("msg").value;
-    const TO = "info@dialektverbindet.li";
-    const subject = encodeURIComponent("Anfrage Dialekt Verbindet (FL)");
-    const body = encodeURIComponent(`Absender: ${org}\n\nNachricht:\n${msg}`);
-    window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@dialektverbindet.li?subject=Anfrage Liechtenstein-Hub&body=Partner: ${org}%0A%0AInteresse: ${msg}`;
   }
 </script>
 

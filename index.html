@@ -4,160 +4,273 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dialekt Verbindet | Üseri Sproch. Üsers Land.</title>
+  
   <style>
     :root {
       --li-blue: #002B7F; 
       --li-red: #CE1126;  
       --li-gold: #FFD700; 
-      --bg: #05080F;
-      --panel: rgba(255,255,255,0.03);
-      --text: rgba(255,255,255,0.95);
-      --muted: rgba(255,255,255,0.6);
-      --sans: system-ui, -apple-system, sans-serif;
-      --radius: 20px;
-      --max: 1100px;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-hover: rgba(255, 255, 255, 0.07);
+      --text: #ffffff;
+      --muted: #a0a0a0;
+      --radius: 24px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; transition: all 0.3s ease; }
+    
     body {
-      margin: 0; font-family: var(--sans); color: var(--text);
-      background: var(--bg);
-      background-image: radial-gradient(circle at 50% 0%, rgba(0,43,127,0.2) 0%, transparent 75%);
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #020408;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .li-border-blue { border: 3px solid var(--li-blue); box-shadow: 0 0 15px rgba(0,43,127,0.3); }
-    .li-border-red { border: 3px solid var(--li-red); box-shadow: 0 0 15px rgba(206,17,38,0.3); }
-    
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 20px; }
-    .card { background: var(--panel); border-radius: var(--radius); padding: 30px; margin-bottom: 40px; }
-    
-    header { text-align: center; padding: 40px 20px; }
-    h1 { font-size: 56px; margin: 10px 0; letter-spacing: -1px; }
-    h2 { font-size: 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-    
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media(max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
-
-    .dialect-box {
-      background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; 
-      text-align: center; transition: 0.3s;
-    }
-    .dialect-box:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
-
-    .btn-gold {
-      border: 1px solid var(--li-gold); color: var(--li-gold);
-      padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 14px;
+    /* Ambient Background Glow */
+    body::before {
+      content: "";
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% -10%, var(--li-blue), transparent 60%),
+                  radial-gradient(circle at 0% 100%, var(--li-red), transparent 40%);
+      opacity: 0.15; z-index: -1;
     }
 
-    footer { text-align: center; padding: 40px; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.1); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+    /* Header Styling */
+    header { text-align: center; padding: 80px 20px; }
+    header h1 { 
+      font-size: clamp(40px, 8vw, 72px); 
+      margin: 0; 
+      letter-spacing: -2px; 
+      font-weight: 900;
+      background: linear-gradient(to bottom, #fff 60%, var(--muted));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tagline { color: var(--li-gold); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+
+    /* Sektions-Styles mit Landesfarben-Rahmen */
+    section {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .border-blue { border: 2px solid var(--li-blue); box-shadow: 0 10px 30px rgba(0, 43, 127, 0.2); }
+    .border-red { border: 2px solid var(--li-red); box-shadow: 0 10px 30px rgba(206, 17, 38, 0.2); }
+    .border-gold { border: 2px solid var(--li-gold); }
+
+    h2 { font-size: 32px; margin-top: 0; display: flex; align-items: center; gap: 15px; }
+    h2 span { font-size: 24px; opacity: 0.8; }
+
+    /* Grid Systeme */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* Module & Karten */
+    .module-card {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: 100%;
+    }
+    .module-card:hover { 
+      background: var(--glass-hover); 
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .module-card h3 { margin-top: 0; color: #fff; }
+    .module-card p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+    /* Akzente */
+    .gold-text { color: var(--li-gold); }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(0,43,127,0.2), rgba(206,17,38,0.2));
+      border: 1px solid var(--li-gold);
+      padding: 20px; border-radius: 15px; text-align: center;
+    }
+
+    /* Footer */
+    footer { 
+      background: rgba(0,0,0,0.8); padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 100px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 1100px; margin: 0 auto; gap: 40px; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
 <header>
-  <div style="color: var(--li-gold); font-weight: bold; margin-bottom: 10px;">ÜSERI SPROCH. ÜSERS LAND.</div>
-  <h1>Fürstentum Liechtenstein</h1>
-  <p>Sicher gehostet in der Schweiz gemäss DPA-Vereinbarung vom 04.01.2026.</p>
+  <div class="tagline">Fürstentum Liechtenstein</div>
+  <h1>Üseri Sproch.<br>Üsers Land.</h1>
 </header>
 
-<main class="wrap">
+<div class="container">
 
-  <section class="card li-border-blue">
-    <h2>🎙️ Dialekt Einspeisung</h2>
+  <section class="border-blue">
+    <h2><span>🎙️</span> Dialekt Einspeisung</h2>
     <div class="grid-3">
-      <div class="dialect-box">
+      <div class="module-card">
         <h3>Oberland</h3>
-        <p>Vaduz, Schaan, Triesen, Balzers, Planken</p>
+        <p>Vaduz, Schaan, Balzers, Triesen, Planken</p>
       </div>
-      <div class="dialect-box">
+      <div class="module-card">
         <h3>Unterland</h3>
         <p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p>
       </div>
-      <div class="dialect-box" style="border: 1px solid var(--li-gold);">
-        <h3 style="color: var(--li-gold);">Triesabärg</h3>
-        <p>Walser Dialekt</p>
+      <div class="module-card" style="border: 1px solid var(--li-gold);">
+        <h3 class="gold-text">Triesabärg</h3>
+        <p>Authentischer Walser Dialekt – Bewahrung der Berg-Identität.</p>
       </div>
     </div>
   </section>
 
-  <section class="card li-border-red">
-    <h2>➕ Heimat-Mathe</h2>
-    <p>Mathematik mit Bezug zu üserem Land – Berechnungen zu Bergen, Klaftern und Einwohnerzahlen.</p>
+  <section class="border-red">
+    <h2><span>➕</span> Heimat-Mathe</h2>
+    <div class="grid-2">
+      <div class="module-card">
+        <p>Mathematik mit Wurzeln. Wir rechnen mit den Höhenmetern üserer Alpen, Klafter-Massen und historischen Daten Liechtensteins. Bildung, die nach Heimat schmeckt.</p>
+      </div>
+      <div class="highlight-box">
+        <small class="gold-text">DEMO-AUFGABE</small>
+        <p style="margin: 10px 0;">Berechne die Steigung vom Rheindamm bis auf Gaflei in Prozent.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="card li-border-blue">
-    <h2>🏛️ Museen</h2>
+  <section class="border-blue">
+    <h2><span>🏛️</span> Museen</h2>
     <div class="grid-3">
-      <div class="dialect-box"><h3>Landesmuseum</h3></div>
-      <div class="dialect-box"><h3>Kunstmuseum</h3></div>
-      <div class="dialect-box"><h3>Landwirtschaftsmuseum</h3></div>
+      <div class="module-card">
+        <h3>Landesmuseum</h3>
+        <p>Geschichte interaktiv erleben – alle Inhalte auch in Mundart verfügbar.</p>
+      </div>
+      <div class="module-card">
+        <h3>Kunstmuseum</h3>
+        <p>Üseri Kultur im modernen Kontext.</p>
+      </div>
+      <div class="module-card">
+        <h3>Landwirtschaftsmuseum</h3>
+        <p>Traditionelles Handwerk und bäuerliches Leben von früher.</p>
+      </div>
     </div>
   </section>
 
-  <section class="card li-border-red">
-    <h2>📜 Sagen-Welt, Traditionen & Bräuche</h2>
+  <section class="border-red">
+    <h2><span>📜</span> Sagen-Welt, Traditionen & Bräuche</h2>
     <div class="grid-3">
-      <div class="dialect-box"><h4>Sagen-Welt</h4></div>
-      <div class="dialect-box"><h4>Traditionen</h4></div>
-      <div class="dialect-box"><h4>Bräuche</h4></div>
-    </div>
-  </section>
-
-  <section class="card li-border-blue">
-    <h2>🍲 Rezepte & Geschichten</h2>
-    <div class="grid-2">
-      <div class="dialect-box"><h4>Üseri Rezepte</h4></div>
-      <div class="dialect-box"><h4>Gschichten vo früher</h4></div>
-    </div>
-  </section>
-
-  <section class="card li-border-red">
-    <h2>🛍️ Gewerbe & Belohnung</h2>
-    <div class="grid-2">
-      <div class="dialect-box">
-        <h3>Lokale Läden</h3>
-        <p>Ospelt Schaan, Hoi Laden Vaduz u.v.m.</p>
+      <div class="module-card">
+        <h3>Sagen-Welt</h3>
+        <p>Vom Lindwurm bis zum Wildmannli – hörbar auf üseren Wanderwegen.</p>
       </div>
-      <div class="dialect-box">
-        <h3>Läden vernetzen</h3>
-        <p>Werden Sie Teil des digitalen Marktplatzes.</p>
+      <div class="module-card">
+        <h3>Traditionen</h3>
+        <p>Alpabfahrt, Handwerk und gelebtes Erbe.</p>
+      </div>
+      <div class="module-card">
+        <h3>Bräuche</h3>
+        <p>Funkensonntag, Staatsfeiertag und religiöse Feste.</p>
       </div>
     </div>
-    <div class="dialect-box" style="margin-top:20px; border: 1px solid var(--li-gold);">
-      <h3 style="color: var(--li-gold);">🎁 Lokales Gewinnspiel</h3>
-      <p>Punkte sammeln durch Dialekt-Einspeisung und tolle Preise gewinnen!</p>
-    </div>
   </section>
 
-  <section class="card li-border-blue">
+  <section class="border-blue">
+    <h2><span>🍲</span> Rezepte & Geschichten</h2>
     <div class="grid-2">
-      <div class="dialect-box"><h3>💼 Jobbörse</h3></div>
-      <div class="dialect-box"><h3>🏠 Immobörse</h3></div>
+      <div class="module-card">
+        <h3>Üseri Rezepte</h3>
+        <p>Käsknöpfle, Ribel und Triesenberger Spezialitäten – mit Dialekt-Kochanleitung.</p>
+      </div>
+      <div class="module-card">
+        <h3>Gschichten vo früher</h3>
+        <p>Audio-Archiv: Üseri Ältesten erzählen aus ihrem Leben.</p>
+      </div>
     </div>
   </section>
 
-  <section class="card li-border-red">
-    <h2>📰 News vom Ländle</h2>
-    <p>Aktuelle Informationen aus allen 11 Gemeinden.</p>
+  <section class="border-red">
+    <h2><span>🛍️</span> Lokale Läden & Marktplatz</h2>
+    <div class="grid-2" style="margin-bottom: 25px;">
+      <div class="module-card" style="border-left: 4px solid var(--li-gold);">
+        <h3>Ospelt - Schaan</h3>
+        <p class="gold-text">"Wo ma mi kennt."</p>
+        <p>Vernetzter Partner für üser lokales Belohnungssystem.</p>
+      </div>
+      <div class="module-card">
+        <h3>Hoi Laden - Vaduz</h3>
+        <p>Souvenirs und Präsente aus dem Herzen Liechtensteins.</p>
+      </div>
+    </div>
+    <div class="module-card" style="text-align: center;">
+      <h3>Läden vernetzen</h3>
+      <p style="margin-bottom: 20px;">Werde Teil der digitalen Gewerbe-Gemeinschaft Liechtensteins.</p>
+      <div class="highlight-box">
+        <h3 class="gold-text">🎟️ Lokales Gewinnspiel</h3>
+        <p>Wer Dialekt einspeist oder lernt, gewinnt! Monatliche Verlosung von Gutscheinen üserer Partner.</p>
+      </div>
+    </div>
   </section>
 
-  <section style="text-align: center; padding: 20px;">
-    <h2>🤝 Sponsoren</h2>
-    <div class="grid-3" style="opacity: 0.7;">
+  <section class="border-blue">
+    <div class="grid-2">
+      <div class="module-card">
+        <h3>💼 Jobbörse</h3>
+        <p>Regionale Stellenangebote für Schaan, Vaduz und das ganze Land.</p>
+      </div>
+      <div class="module-card">
+        <h3>🏠 Immobörse</h3>
+        <p>Wohnen und Arbeiten im Ländle – üser lokaler Marktplatz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-red">
+    <h2><span>📰</span> News vom Ländle</h2>
+    <div class="module-card">
+      <p>Aktuelle Meldungen, Gemeinde-Infos und Veranstaltungen aus allen 11 Gemeinden Liechtensteins.</p>
+    </div>
+  </section>
+
+  <section class="border-gold" style="text-align: center; background: rgba(255,215,0,0.02);">
+    <h2 style="justify-content: center;">🤝 Sponsoren & Partner</h2>
+    <div class="grid-3" style="margin-top: 30px; font-weight: bold; letter-spacing: 1px;">
       <div>Ospelt Schaan</div>
       <div>Hoi Laden Vaduz</div>
       <div>Infomaniak SA</div>
     </div>
   </section>
 
-</main>
+</div>
 
 <footer>
-  <p>Verantwortlich: Sandro Ritter, Dammstrasse 4, 9444 Diepoldsau [cite: 5, 7, 8]</p>
-  <p>Infrastruktur: Infomaniak Network SA, Genf (Schweiz) [cite: 12, 14, 15]</p>
-  <p>Datenschutz: Gemäss Vereinbarung Artikel 9 DSG und Artikel 28 DSGVO [cite: 20]</p>
+  <div class="footer-grid">
+    <div>
+      <h3 class="gold-text">Impressum</h3>
+      <p style="font-size: 14px; color: var(--muted);">
+        <strong>Sandro Ritter</strong><br>
+        Dammstrasse 4, 9444 Diepoldsau<br>
+        Infrastruktur: Infomaniak Network SA, Genf
+      </p>
+    </div>
+    <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
+      <h3 class="gold-text">Datenschutz & DPA</h3>
+      <p style="font-size: 13px; color: var(--muted);">
+        Sämtliche Daten werden gemäss der **DPA-Vereinbarung vom 04.01.2026** auf Schweizer Servern verarbeitet. 
+        Sicherheit durch jährliche Penetrationstests und strikte Datentrennung (Art. 28 DSGVO / Art. 9 DSG).
+      </p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 60px; font-size: 11px; opacity: 0.4;">
+    © 2026 DIALEKT VERBINDET | PROJEKTLEITUNG SANDRO RITTER
+  </div>
 </footer>
 
 </body>

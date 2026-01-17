@@ -3,97 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dialekt Verbindet | Üseri Sproch</title>
+    <title>Dialekt Verbindet | Üsri Sproch</title>
     <style>
         :root {
             --li-blue: #002B7F;
             --li-red: #CE1126;
             --li-gold: #FFD700;
-            --holo-white: rgba(255, 255, 255, 0.9);
-            --bg-light: #F8F9FB;
-            --glass: rgba(255, 255, 255, 0.7);
+            --bg-white: #ffffff;
+            --holo-glow: rgba(255, 255, 255, 0.95);
         }
 
         * { box-sizing: border-box; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
         body {
-            margin: 0; background: var(--bg-light); color: #1d1d1f;
+            margin: 0;
+            background-color: var(--bg-white);
+            color: #1d1d1f;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(0, 43, 127, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(206, 17, 38, 0.03) 0%, transparent 40%);
+            /* Ein extrem dezentes Raster, das den technologischen Aspekt unterstreicht */
+            background-image: radial-gradient(#e5e5e7 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         /* HEADER */
-        header { text-align: center; padding: 100px 20px; }
-        .main-title { 
-            font-size: clamp(48px, 8vw, 84px); font-weight: 800; letter-spacing: -3px;
-            color: #1d1d1f; margin: 0; line-height: 1;
+        header { text-align: center; padding: 120px 20px 80px; position: relative; }
+        .subtitle { 
+            color: var(--li-blue); font-weight: 700; letter-spacing: 4px; 
+            text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 20px;
         }
-        .subtitle { color: var(--li-blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 14px; }
+        .main-title { 
+            font-size: clamp(45px, 8vw, 85px); font-weight: 900; letter-spacing: -3px;
+            color: #1d1d1f; margin: 0; line-height: 1.1;
+        }
+        .vision-box {
+            max-width: 850px; margin: 40px auto 0; padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 30px; border: 1px solid #f2f2f7;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .vision-text { font-size: 20px; color: #424245; margin: 10px 0; }
+        .highlight { color: var(--li-red); font-weight: 600; }
 
-        /* HOLOGRAMM FUSION CARDS */
+        /* INTENSIVE HOLOGRAMM KARTEN */
         .holo-card {
-            background: var(--glass);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 40px; padding: 50px; margin-bottom: 50px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.04);
+            background: var(--holo-glow);
+            backdrop-filter: blur(50px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 50px; padding: 60px; margin-bottom: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.03);
             position: relative; overflow: hidden;
         }
 
-        /* Weisslicher Hologramm-Effekt (Animation) */
+        /* Bewegtes Weißes Licht (Hologramm Effekt) */
         .holo-card::before {
             content: ""; position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
-            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.6) 50%, transparent 55%);
-            transform: rotate(20deg); animation: holo-flow 8s infinite ease-in-out;
-            pointer-events: none; z-index: 1;
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.8) 180deg,
+                transparent 360deg
+            );
+            animation: rotate-holo 15s infinite linear;
+            pointer-events: none; z-index: 0;
         }
 
-        @keyframes holo-flow {
-            0% { transform: translate(-10%, -10%) rotate(20deg); }
-            100% { transform: translate(20%, 20%) rotate(20deg); }
+        /* Der wandernde Lichtstreifen */
+        .holo-card::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,0.9) 50%, transparent 60%);
+            background-size: 200% 100%;
+            animation: shine-scan 6s infinite ease-in-out;
+            pointer-events: none;
         }
 
-        .holo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+        @keyframes rotate-holo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shine-scan {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .border-blue { border-top: 10px solid var(--li-blue); }
+        .border-red { border-top: 10px solid var(--li-red); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; position: relative; z-index: 1; }
+
+        .content-box {
+            background: #ffffff; padding: 35px; border-radius: 35px;
+            border: 1px solid #f2f2f7; box-shadow: 0 5px 15px rgba(0,0,0,0.01);
+        }
+        .content-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.06);
             border-color: var(--li-gold);
         }
 
-        /* Landesfarben Akzente */
-        .border-blue { border-top: 5px solid var(--li-blue); }
-        .border-red { border-top: 5px solid var(--li-red); }
-
-        h2 { font-size: 30px; font-weight: 800; margin-top: 0; margin-bottom: 30px; letter-spacing: -1px; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-
-        .card-content {
-            background: rgba(255, 255, 255, 0.4); padding: 30px; border-radius: 25px;
-            border: 1px solid rgba(0,0,0,0.02); position: relative; z-index: 2;
+        /* PARTNER LOGO PLATZHALTER */
+        .logo-container {
+            width: 100%; height: 130px; background: #fff; border-radius: 25px;
+            border: 2px dashed #e5e5e7; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; transition: 0.3s;
         }
+        .logo-container:hover { border-color: var(--li-blue); background: #fbfbfd; }
 
-        /* API INTERAKTION */
-        .api-label { font-size: 10px; font-weight: 800; color: #00CC66; text-transform: uppercase; letter-spacing: 1px; }
-        .points-large { font-size: 64px; font-weight: 900; color: var(--li-blue); margin: 10px 0; }
+        footer { background: #fff; padding: 100px 20px; border-top: 1px solid #f2f2f7; }
 
-        footer { 
-            background: #ffffff; padding: 100px 20px; border-top: 1px solid #efefef;
-            margin-top: 100px;
-        }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+        h2 { font-size: 32px; font-weight: 800; margin-top: 0; margin-bottom: 40px; }
+        h3 { font-size: 22px; margin-top: 0; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="subtitle">Üsers Ländle. Üseri KI.</div>
+<header class="container">
+    <span class="subtitle">Üsri Sproch</span>
     <h1 class="main-title">Dialekt Verbindet</h1>
+    <div class="vision-box">
+        <p class="vision-text"><strong>"An Standort wo sini Sproch zagt, bliebt im Gedächtnis."</strong></p>
+        <p class="vision-text">Dialekt ist mehr als Sprache – er ist <span class="highlight">Identität, Alltag und Zugehörigkeit</span>.</p>
+    </div>
 </header>
 
 <main class="container">
@@ -101,123 +134,114 @@
     <section class="holo-card border-blue">
         <h2>🎙️ Dialekt Einspeisung</h2>
         <div class="grid">
-            <div class="card-content">
-                <h3>Oberland</h3>
-                <p>Vaduz, Schaan, Triesen, Balzers, Planken</p>
-            </div>
-            <div class="card-content">
-                <h3>Unterland</h3>
-                <p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p>
-            </div>
-            <div class="card-content" style="background: rgba(255,215,0,0.05); border: 1px solid var(--li-gold);">
+            <div class="content-box"><h3>Oberland</h3><p>Vaduz, Schaan, Triesen, Balzers, Planken</p></div>
+            <div class="content-box"><h3>Unterland</h3><p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p></div>
+            <div class="content-box" style="border: 2px solid var(--li-gold);">
                 <h3 style="color:var(--li-blue)">Triesabärg</h3>
-                <p>Authentischer Walser Dialekt (API-Sync)</p>
+                <p>Authentischer Walser Dialekt</p>
             </div>
         </div>
     </section>
 
     <section class="holo-card border-red">
         <h2>➕ Heimat-Mathe</h2>
-        <div class="grid">
-            <div class="card-content">
-                <p>Interaktive Sachaufgaben basierend auf Liechtensteiner Geodaten, Höhenmetern und Dorfstatistiken.</p>
-            </div>
-            <div class="card-content" style="border-style: dashed;">
-                <span class="api-label">Live API Aufgabe</span>
-                <p>Berechne die Fläche von Schaan in Klafter.</p>
-            </div>
+        <div class="content-box">
+            <p>Interaktive Mathematik-Module mit Bezug zu Liechtensteiner Bergen, Klaftern und regionalen Statistiken.</p>
         </div>
     </section>
 
     <section class="holo-card border-blue">
         <h2>🏛️ Museen</h2>
         <div class="grid">
-            <div class="card-content"><h3>Landesmuseum</h3></div>
-            <div class="card-content"><h3>Kunstmuseum</h3></div>
-            <div class="card-content"><h3>Landwirtschaftsmuseum</h3></div>
+            <div class="content-box"><h3>Landesmuseum</h3><p>Geschichte digital erleben.</p></div>
+            <div class="content-box"><h3>Kunstmuseum</h3><p>Moderne Kultur im Fokus.</p></div>
+            <div class="content-box"><h3>Landwirtschaftsmuseum</h3><p>Tradition aus Schellenberg.</p></div>
         </div>
     </section>
 
     <section class="holo-card border-red">
-        <h2>📜 Kultur & Erbe</h2>
+        <h2>📜 Sagen, Traditionen & Bräuche</h2>
         <div class="grid">
-            <div class="card-content"><h3>Sagen-Welt</h3><p>Digitale Hörpfade.</p></div>
-            <div class="card-content"><h3>Traditionen</h3><p>Gelebtes Brauchtum.</p></div>
-            <div class="card-content"><h3>Bräuche</h3><p>Funkensonntag & mehr.</p></div>
+            <div class="content-box"><h3>Sagen-Welt</h3></div>
+            <div class="content-box"><h3>Traditionen</h3></div>
+            <div class="content-box"><h3>Bräuche</h3></div>
         </div>
     </section>
 
     <section class="holo-card border-blue">
-        <h2>🍲 Kulinarium & Geschichte</h2>
+        <h2>🍲 Rezepte & Geschichten</h2>
         <div class="grid">
-            <div class="card-content"><h3>Üseri Rezepte</h3><p>Ribel, Knöpfle & mehr.</p></div>
-            <div class="card-content"><h3>Gschichten vo früher</h3><p>Zeitzeugen Audio-Archiv.</p></div>
+            <div class="content-box"><h3>Rezepte</h3><p>Von Ribel bis Käsknöpfle.</p></div>
+            <div class="content-box"><h3>Geschichten</h3><p>Zeitzeugen erzählen von früher.</p></div>
         </div>
     </section>
 
     <section class="holo-card border-red">
-        <h2>🛍️ Lokales Gewerbe</h2>
+        <h2>🛍️ Lokale Läden & Gewinnspiel</h2>
         <div class="grid">
-            <div class="card-content" style="border-left: 5px solid var(--li-gold);">
+            <div class="content-box" style="border-left: 10px solid var(--li-gold);">
                 <h3>Ospelt Schaan</h3>
-                <p><em>"Wo ma mi kennt."</em></p>
+                <p>Exklusiver Partner</p>
             </div>
-            <div class="card-content">
-                <span class="api-label">Dein Status</span>
-                <div class="points-large">3'120</div>
-                <p>Punkte gesammelt (API)</p>
+            <div class="content-box" style="background: #fbfbfd;">
+                <h3>Gewinnspiel</h3>
+                <p>Punkte sammeln und gegen regionale Gutscheine einlösen.</p>
             </div>
-        </div>
-        <div class="card-content" style="margin-top:25px; text-align:center; background: linear-gradient(to right, #fff, var(--bg-light));">
-            <h3 style="color:var(--li-red)">🎁 Lokales Gewinnspiel</h3>
-            <p>Punkte jetzt gegen Gutscheine im Ländle eintauschen.</p>
         </div>
     </section>
 
     <section class="holo-card border-blue">
         <div class="grid">
-            <div class="card-content"><h3>💼 Jobbörse</h3><p>Stellen im Ländle.</p></div>
-            <div class="card-content"><h3>🏠 Immobörse</h3><p>Wohnen im Fürstentum.</p></div>
+            <div class="content-box"><h3>💼 Jobbörse</h3><p>Stellenangebote aus dem Ländle.</p></div>
+            <div class="content-box"><h3>🏠 Immobörse</h3><p>Wohnen und Bauen im Fürstentum.</p></div>
         </div>
     </section>
 
     <section class="holo-card border-red">
-        <h2>📰 News-Feed</h2>
-        <div class="card-content">
-            <p>Aktuelle Meldungen aus den 11 Gemeinden (Echtzeit-API).</p>
+        <h2>📰 News vom Ländle</h2>
+        <div class="content-box">
+            <p>Aktuelle Nachrichten aus allen 11 Gemeinden Liechtensteins.</p>
         </div>
     </section>
 
-    <section style="text-align: center; padding: 40px; opacity: 0.6;">
-        <h2 style="justify-content: center;">🤝 Unsere Partner</h2>
-        <div class="grid" style="font-weight: 700;">
-            <span>Ospelt Schaan</span>
-            <span>Hoi Laden Vaduz</span>
-            <span>Infomaniak Network SA</span>
+    <section style="text-align: center; padding: 80px 20px;">
+        <h2 style="margin-bottom: 60px;">🤝 Unsere Partner & Sponsoren</h2>
+        <div class="grid">
+            <div>
+                <div class="logo-container">HIER LOGO EINSETZEN</div>
+                <strong>Ospelt Schaan</strong>
+            </div>
+            <div>
+                <div class="logo-container">HIER LOGO EINSETZEN</div>
+                <strong>Hoi Laden Vaduz</strong>
+            </div>
+            <div>
+                <div class="logo-container">HIER LOGO EINSETZEN</div>
+                <strong>Infomaniak SA</strong>
+            </div>
         </div>
     </section>
 
 </main>
 
 <footer>
-    <div class="footer-grid">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
         <div>
             <h3 style="color: var(--li-blue);">Impressum</h3>
             <p><strong>Sandro Ritter</strong><br>Dammstrasse 4, 9444 Diepoldsau</p>
-            <p>Infrastruktur: Infomaniak Network SA, Genf</p>
+            <p>E-Mail: info@dialektverbindet.li</p>
         </div>
-        <div style="background: #F2F4F7; padding: 30px; border-radius: 30px;">
-            <span class="api-label">Sicherheitssiegel 2026</span>
-            <h4>🔒 DPA & Datenschutz</h4>
-            <p style="font-size: 13px; line-height: 1.6;">
-                Sämtliche Datenverarbeitung erfolgt auf Basis der DPA vom <strong>04.01.2026</strong>. 
-                Hosting in der Schweiz (Genf/Winterthur). Konform mit Art. 9 DSG (CH) und Art. 28 DSGVO. 
-                Sicherheit durch jährliche Penetrationstests zertifiziert.
+        <div style="background: #fbfbfd; padding: 40px; border-radius: 35px; border: 1px solid #f2f2f7;">
+            <h4>🔒 Datensicherheit</h4>
+            <p style="font-size: 14px; color: #424245; line-height: 1.8;">
+                Infrastruktur-Partner: <strong>Infomaniak (Schweiz)</strong>. <br>
+                Sicherheitsstandard gemäß DPA vom 04.01.2026. <br>
+                Datenverarbeitung physisch getrennt in Genf & Winterthur.
             </p>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 60px; font-size: 10px; opacity: 0.4;">
-        © 2026 DIALEKT VERBINDET | LIECHTENSTEIN
+    <div style="text-align: center; margin-top: 60px; font-size: 11px; opacity: 0.3;">
+        © 2026 DIALEKT VERBINDET | FÜRSTENTUM LIECHTENSTEIN
     </div>
 </footer>
 

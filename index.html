@@ -1,141 +1,211 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-LI">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dialekt – Raster Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialekt Verbindet | Üseri Sproch</title>
+    <style>
+        :root {
+            --li-blue: #002B7F;
+            --li-red: #CE1126;
+            --li-gold: #FFD700;
+            --bg-light: #FBFBFD;
+            --glass-white: rgba(255, 255, 255, 0.85);
+        }
 
-<style>
-:root{
-  --c-ident:#002b7f;
-  --c-base:#ffffff;
-  --c-context:#f2f3f5;
-  --c-line:#e0e0e0;
-  --radius:24px;
-  --space:32px;
-  --maxw:1000px;
-  --text:#222;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--c-context);
-  color:var(--text);
-}
-.app{
-  max-width:var(--maxw);
-  margin:24px auto;
-  background:var(--c-base);
-  border-radius:40px;
-  overflow:hidden;
-  border:1px solid var(--c-line);
-}
-.header{
-  height:40vh;
-  background:var(--c-ident);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-align:center;
-}
-.header h1{
-  font-size:42px;
-  margin:0;
-  font-weight:700;
-}
-.header p{
-  margin-top:16px;
-  opacity:.9;
-}
-.section{
-  padding:var(--space);
-  border-top:1px solid var(--c-line);
-}
-.split{
-  display:grid;
-  grid-template-columns:60% 40%;
-  gap:var(--space);
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:var(--space);
-}
-.card{
-  border:1px solid var(--c-line);
-  border-radius:var(--radius);
-  padding:24px;
-}
-.card h3{
-  margin:0 0 12px 0;
-  font-size:18px;
-}
-.footer{
-  padding:var(--space);
-  background:var(--c-context);
-  font-size:14px;
-}
-</style>
+        * { box-sizing: border-box; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        body {
+            margin: 0; background: var(--bg-light); color: #1d1d1f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5; overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* HEADER MIT DINERA SPRÜCH */
+        header { text-align: center; padding: 100px 20px 60px; }
+        .main-title { 
+            font-size: clamp(35px, 7vw, 70px); font-weight: 800; letter-spacing: -2px;
+            color: #1d1d1f; margin: 0; 
+        }
+        .subtitle { 
+            color: var(--li-blue); font-weight: 700; letter-spacing: 2px; 
+            text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 10px;
+        }
+        .vision-text { 
+            max-width: 800px; margin: 30px auto 0; font-size: 19px; color: #424245;
+            line-height: 1.6; font-weight: 400;
+        }
+        .highlight-text { color: var(--li-red); font-weight: 600; }
+
+        /* HOLOGRAPHIC FUSION CARDS */
+        .holo-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 40px; padding: 50px; margin-bottom: 50px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.04);
+            position: relative; overflow: hidden;
+        }
+
+        /* Subtiler weisslicher Hologramm-Schimmer */
+        .holo-card::before {
+            content: ""; position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.6) 50%, transparent 55%);
+            transform: rotate(20deg); animation: shine-flow 12s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes shine-flow {
+            0% { transform: translate(-15%, -15%) rotate(20deg); }
+            100% { transform: translate(25%, 25%) rotate(20deg); }
+        }
+
+        .border-blue { border-top: 6px solid var(--li-blue); }
+        .border-red { border-top: 6px solid var(--li-red); }
+
+        h2 { font-size: 28px; font-weight: 800; margin-top: 0; margin-bottom: 30px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+        .item-box {
+            background: rgba(255, 255, 255, 0.5); padding: 25px; border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        /* LOGO SEKTION */
+        .logo-box {
+            width: 100%; height: 100px; background: #fff; border-radius: 15px;
+            border: 1px dashed #d2d2d7; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 10px; color: #86868b; font-size: 13px;
+        }
+
+        footer { 
+            background: #fff; padding: 80px 20px; border-top: 1px solid #d2d2d7; margin-top: 100px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="app">
+<header class="container">
+    <span class="subtitle">Üsri Sproch</span>
+    <h1 class="main-title">Dialekt Verbindet</h1>
+    <div class="vision-text">
+        <p>"An Standort wo sini Sproch zagt, bliebt im Gedächtnis."</p>
+        <p>Dialekt ist mehr als Sprache – er ist <span class="highlight-text">Identität, Alltag und Zugehörigkeit</span>.</p>
+    </div>
+</header>
 
-  <!-- IDENTITÄT -->
-  <div class="header">
-    <div>
-      <h1>Dialekt verbindet</h1>
-      <p>Sprache ist Herkunft. Alltag. Zugehörigkeit.</p>
-    </div>
-  </div>
+<main class="container">
 
-  <!-- SINN / KONTEXT -->
-  <div class="section split">
-    <div class="card">
-      <h3>Worum es geht</h3>
-      <p>
-        Dialekt ist kein Lerninhalt.<br>
-        Er ist gelebter Alltag.<br><br>
-        Diese Plattform bewahrt Sprache digital,
-        ohne sie zu glätten oder zu erklären.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Für wen</h3>
-      <p>
-        Gemeinden<br>
-        Bildung<br>
-        Menschen mit Bezug zur Region
-      </p>
-    </div>
-  </div>
+    <section class="holo-card border-blue">
+        <h2>🎙️ Dialekt Einspeisung</h2>
+        <div class="grid">
+            <div class="item-box"><h3>Oberland</h3><p>Vaduz, Schaan, Triesen, Balzers, Planken</p></div>
+            <div class="item-box"><h3>Unterland</h3><p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p></div>
+            <div class="item-box" style="border: 1px solid var(--li-gold);">
+                <h3 style="color:var(--li-blue)">Triesabärg</h3>
+                <p>Authentischer Walser Dialekt</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- FUNKTIONALE RÄUME -->
-  <div class="section grid">
-    <div class="card">
-      <h3>Regionen</h3>
-      <p>Oberland · Unterland · Walserraum</p>
-    </div>
-    <div class="card">
-      <h3>Sprache hören</h3>
-      <p>Originalstimmen. Kein Studio.</p>
-    </div>
-    <div class="card">
-      <h3>Kultur</h3>
-      <p>Alltag, Bräuche, Erzählungen.</p>
-    </div>
-  </div>
+    <section class="holo-card border-red">
+        <h2>➕ Heimat-Mathe</h2>
+        <div class="item-box">
+            <p>Rechnen mit Bezug zu üseren Bergen, Klaftern und Liechtensteiner Zahlen.</p>
+        </div>
+    </section>
 
-  <!-- RUHIGER ABSCHLUSS -->
-  <div class="footer">
-    Serverstandort Schweiz · Datenschutz konform ·
-    Digitale Kulturplattform
-  </div>
+    <section class="holo-card border-blue">
+        <h2>🏛️ Museen</h2>
+        <div class="grid">
+            <div class="item-box"><h3>Landesmuseum</h3></div>
+            <div class="item-box"><h3>Kunstmuseum</h3></div>
+            <div class="item-box"><h3>Landwirtschaftsmuseum</h3></div>
+        </div>
+    </section>
 
-</div>
+    <section class="holo-card border-red">
+        <h2>📜 Sagen-Welt, Traditionen & Bräuche</h2>
+        <div class="grid">
+            <div class="item-box"><h3>Sagen-Welt</h3></div>
+            <div class="item-box"><h3>Traditionen</h3></div>
+            <div class="item-box"><h3>Bräuche</h3></div>
+        </div>
+    </section>
+
+    <section class="holo-card border-blue">
+        <h2>🍲 Rezepte & Geschichten</h2>
+        <div class="grid">
+            <div class="item-box"><h3>Rezepte</h3></div>
+            <div class="item-box"><h3>Geschichten</h3></div>
+        </div>
+    </section>
+
+    <section class="holo-card border-red">
+        <h2>🛍️ Lokale Läden & Gewinnspiel</h2>
+        <div class="grid">
+            <div class="item-box" style="border-left: 5px solid var(--li-gold);">
+                <h3>Ospelt Schaan</h3>
+                <p>Exclusiver Partner</p>
+            </div>
+            <div class="item-box">
+                <h3>Gewinnspiel</h3>
+                <p>Mitmachen und Preise gewinnen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="holo-card border-blue">
+        <div class="grid">
+            <div class="item-box"><h3>💼 Jobbörse</h3></div>
+            <div class="item-box"><h3>🏠 Immobörse</h3></div>
+        </div>
+    </section>
+
+    <section class="holo-card border-red">
+        <h2>📰 News vom Ländle</h2>
+        <p>Aktuelles aus den 11 Gemeinden.</p>
+    </section>
+
+    <section style="text-align: center; padding: 40px 20px;">
+        <h2 style="margin-bottom: 50px;">🤝 Unsere Partner & Sponsoren</h2>
+        <div class="grid">
+            <div>
+                <div class="logo-box">Logo Ospelt (Anfrage ausstehend)</div>
+                <strong>Ospelt Schaan</strong>
+            </div>
+            <div>
+                <div class="logo-box">Logo Hoi Laden (Anfrage ausstehend)</div>
+                <strong>Hoi Laden Vaduz</strong>
+            </div>
+            <div>
+                <div class="logo-box">Logo Infomaniak (Anfrage ausstehend)</div>
+                <strong>Infomaniak SA</strong>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+        <div>
+            <h3>Impressum</h3>
+            <p><strong>Sandro Ritter</strong><br>Dammstrasse 4, 9444 Diepoldsau</p>
+        </div>
+        <div style="background: #f5f5f7; padding: 30px; border-radius: 25px;">
+            <h4>🔒 Datensicherheit</h4>
+            <p style="font-size: 13px; color: #86868b;">
+                Alle Daten werden sicher verarbeitet. <br>
+                Infrastruktur-Partner: Infomaniak (Schweiz). <br>
+                Stand: 04.01.2026.
+            </p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

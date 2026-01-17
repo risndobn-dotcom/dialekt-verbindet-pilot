@@ -7,17 +7,10 @@
   <title>Dialekt Verbindet – Pilot-Evaluation</title>
 
   <meta name="description"
-        content="Dialekt Verbindet ist die digitale Infrastruktur für regionale Sprache. Pilot-Evaluation für Gemeinden, Institutionen und Kulturträger im Fürstentum Liechtenstein." />
+        content="Dialekt Verbindet ist die digitale Infrastruktur für regionale Sprache. Ein souveränes System für Identität, Integration und kulturelle Verständigung." />
 
   <meta name="theme-color" content="#070B14" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Dialekt Verbindet – Pilot-Evaluation" />
-  <meta property="og:description"
-        content="Digitale Infrastruktur für regionale Sprache, kulturelle Integration und institutionelle Entlastung." />
-
-  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -25,15 +18,14 @@
   <style>
     :root {
       --bg: #05080f;
-      --panel: rgba(255,255,255,0.035);
+      --panel: rgba(255,255,255,0.04);
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --muted: rgba(255,255,255,0.65);
       --accent: #3b82f6;
       --accent2: #22c55e;
-      --radius-lg: 28px;
-      --radius-md: 18px;
-      --max: 1180px;
+      --radius: 28px;
+      --max: 1200px;
     }
 
     * { box-sizing: border-box; }
@@ -42,55 +34,41 @@
     body {
       margin: 0;
       font-family: 'Inter', system-ui, sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(900px 600px at 10% 15%, rgba(59,130,246,0.15), transparent 55%),
-        radial-gradient(900px 600px at 90% 85%, rgba(34,197,94,0.12), transparent 55%),
+        radial-gradient(circle at 15% 20%, rgba(59,130,246,0.15), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(34,197,94,0.12), transparent 40%),
         var(--bg);
-      line-height: 1.6;
+      color: var(--text);
     }
 
-    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(5,8,15,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
     .container {
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 28px;
-      margin-top: 32px;
-    }
-
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(5,8,15,0.85);
-      border-bottom: 1px solid var(--border);
-    }
-
     .header-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 16px 0;
     }
 
     .brand {
       display: flex;
-      gap: 14px;
       align-items: center;
+      gap: 14px;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
     }
 
     .logo {
@@ -98,77 +76,85 @@
       height: 42px;
       border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 24px rgba(59,130,246,0.4);
+    }
+
+    .brand b {
+      display: block;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     nav {
       display: flex;
-      gap: 8px;
+      gap: 18px;
+      font-size: 14px;
     }
 
     nav a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 14px;
-      padding: 8px 14px;
-      border-radius: 10px;
     }
 
-    nav a:hover {
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-    }
-
-    @media (max-width: 768px) {
-      nav { display: none; }
-    }
+    nav a:hover { color: var(--text); }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 22px;
+      padding: 10px 18px;
       border-radius: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid var(--border);
-    }
-
-    .btn-primary {
       background: #fff;
       color: #000;
-      border: none;
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .btn-primary:hover {
-      background: #e5e5e5;
+    main { padding: 80px 0; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: stretch;
     }
 
-    /* Cards */
-    .card {
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    .hero-text {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 42px;
+      border-radius: var(--radius);
+      padding: 56px;
     }
 
-    .card-small {
-      padding: 28px;
-      border-radius: var(--radius-md);
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(59,130,246,0.4);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
     }
 
-    /* Hero */
     h1 {
-      font-size: clamp(2.6rem, 5vw, 3.9rem);
-      line-height: 1.05;
+      font-size: clamp(3rem, 6vw, 4.6rem);
+      line-height: 1.03;
+      margin: 0 0 24px 0;
       font-weight: 900;
       letter-spacing: -2px;
-      margin: 22px 0;
     }
 
-    .gradient {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    h1 span {
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.45));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -177,64 +163,40 @@
       font-size: 18px;
       color: var(--muted);
       max-width: 620px;
-      margin-bottom: 30px;
     }
 
-    /* KPI */
-    .kpis {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
-      margin-top: 36px;
-    }
-
-    @media (max-width: 640px) {
-      .kpis { grid-template-columns: 1fr; }
-    }
-
-    .kpi {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .kpi h3 {
-      margin: 0 0 6px;
-      color: var(--accent);
-    }
-
-    .kpi p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* Castle */
-    .castle {
-      min-height: 100%;
-      border-radius: var(--radius-lg);
+    .hero-image {
+      border-radius: var(--radius);
+      overflow: hidden;
       border: 1px solid var(--border);
       background:
-        linear-gradient(180deg, rgba(5,8,15,0.35), rgba(5,8,15,0.95)),
-        url("assets/schloss-vaduz.jpg") center / cover no-repeat;
+        linear-gradient(to bottom, rgba(5,8,15,0.3), rgba(5,8,15,0.85)),
+        url("schloss-vaduz.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 520px;
       display: flex;
       align-items: flex-end;
       padding: 28px;
     }
 
-    .castle span {
+    .image-caption {
       font-size: 13px;
       color: var(--muted);
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      margin-top: 80px;
-      padding: 32px 0;
+      padding: 40px 0;
       font-size: 13px;
       color: var(--muted);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
     }
   </style>
 </head>
@@ -243,11 +205,11 @@
 
 <header>
   <div class="container header-inner">
-    <a class="brand" href="#">
+    <a href="#" class="brand">
       <div class="logo"></div>
       <div>
-        <strong>Dialekt Verbindet</strong><br>
-        <span style="font-size:11px;color:var(--muted);letter-spacing:1px;">SOUVERÄNE INFRASTRUKTUR</span>
+        <b>Dialekt Verbindet</b>
+        <span>Souveräne Infrastruktur</span>
       </div>
     </a>
 
@@ -257,89 +219,50 @@
       <a href="#vertrauen">Vertrauen</a>
     </nav>
 
-    <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+    <a href="mailto:info@dialektverbindet.li" class="btn">Anfragen</a>
   </div>
 </header>
 
 <main class="container">
-  <div class="grid">
 
-    <!-- LEFT -->
-    <section class="card" id="vision">
+  <section class="hero" id="vision">
+
+    <div class="hero-text">
+      <div class="badge">PILOT · EVALUATION · SKALIERBAR</div>
+
       <h1>
         Dini Sproch.<br>
         Dini Wält.<br>
-        <span class="gradient">Dialekt Verbindet.</span>
+        <span>Dialekt Verbindet.</span>
       </h1>
 
       <p class="lead">
         Dialekt Verbindet ist die <strong>digitale Infrastruktur für regionale Sprache</strong>.
-        Kein reines Content-Projekt, sondern ein strukturiertes System für kulturelle Weitergabe,
-        Integration und institutionelle Entlastung.
+        Nicht Content – sondern ein System: für Identität, Integration und nachhaltige kulturelle Verständigung.
       </p>
+    </div>
 
-      <p class="lead">
-        Die Plattform ermöglicht es Gemeinden und Institutionen,
-        Neuzugezogene, Ausländer und Asylsuchende frühzeitig mit Sprache,
-        Mentalität, Regeln und Alltagsgewohnheiten vertraut zu machen –
-        niedrigschwellig, respektvoll und wirksam.
-      </p>
-
-      <div class="kpis">
-        <div class="kpi">
-          <h3>Souverän</h3>
-          <p>Datenhaltung in der Schweiz. Volle Kontrolle für öffentliche Träger.</p>
-        </div>
-        <div class="kpi">
-          <h3>Modular</h3>
-          <p>Wörterbuch, Audio-Lernen und Community-Strukturen in einem System.</p>
-        </div>
-        <div class="kpi">
-          <h3>Entlastend</h3>
-          <p>Gezielte sprachliche Förderung reduziert Verwaltungs- und Integrationsaufwand.</p>
-        </div>
+    <div class="hero-image">
+      <div class="image-caption">
+        Verwurzelt in Liechtenstein · Schloss Vaduz
       </div>
-    </section>
+    </div>
 
-    <!-- RIGHT -->
-    <aside class="castle" aria-label="Schloss Vaduz">
-      <span>Verwurzelt im Fürstentum Liechtenstein</span>
-    </aside>
-
-  </div>
-
-  <section class="card" id="vertrauen" style="margin-top:32px;">
-    <h2>Vertrauen & Hosting</h2>
-    <p class="lead">
-      Die technische Infrastruktur wird bei <strong>Infomaniak Network SA (Schweiz)</strong> betrieben.
-      Die Plattform ist vollständig DSG- und GDPR-konform.
-      Es bestehen entsprechende Datenschutz- und Auftragsverarbeitungsvereinbarungen.
-    </p>
   </section>
 
-  <section class="card" id="kontakt" style="margin-top:32px;">
-    <h2>Kontakt & Pilot-Evaluation</h2>
-    <p class="lead">
-      Diese Seite dient der Pilot-Evaluation.
-      Details zu Laufzeit, Umfang und Teilnahme werden im direkten Austausch geklärt.
-    </p>
-
-    <a class="btn btn-primary"
-       href="mailto:info@dialektverbindet.li?subject=Pilot-Evaluation%20Dialekt%20Verbindet">
-      Kontakt aufnehmen
-    </a>
-  </section>
 </main>
 
 <footer>
   <div class="container">
-    © <span id="year"></span> Dialekt Verbindet · Sandro Ritter
+    <div>
+      <strong>Dialekt Verbindet</strong><br>
+      Digitale Infrastruktur für regionale Sprache
+    </div>
+    <div>
+      © 2026 Sandro Ritter · info@dialektverbindet.li
+    </div>
   </div>
 </footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>

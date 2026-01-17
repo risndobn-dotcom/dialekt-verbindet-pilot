@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dialekt Verbindet | Liechtenstein</title>
+  <title>Dialekt Verbindet | Üseri Sproch. Üsers Land.</title>
 
   <style>
     :root{
@@ -15,8 +15,9 @@
       --accent: #3B82F6; 
       --accent2: #22C55E; 
       --walser: #F59E0B; 
-      --culture: #A78BFA; /* Sanftes Lila für Museen */
-      --shop: #F472B6;    /* Pink für Läden */
+      --culture: #A78BFA; 
+      --shop: #F472B6;    
+      --mountain: #34D399; /* Grün-Blau für die Natur */
       --radius: 24px;
       --max: 1200px;
       --sans: system-ui, -apple-system, sans-serif;
@@ -30,13 +31,13 @@
       background: #070B14; overflow-x: hidden;
     }
 
-    /* Hintergründe */
-    .mountains {
-      position: fixed; bottom: 0; left: 0; width: 100%; height: 35vh;
+    /* Stilisierte Berg-Silhouette */
+    .mountains-bg {
+      position: fixed; bottom: 0; left: 0; width: 100%; height: 38vh;
       background: linear-gradient(to top, rgba(15, 23, 42, 1), transparent);
       z-index: -1;
-      clip-path: polygon(0% 100%, 12% 35%, 28% 75%, 45% 20%, 60% 65%, 75% 28%, 92% 80%, 100% 100%);
-      opacity: 0.18; pointer-events: none;
+      clip-path: polygon(0% 100%, 10% 45%, 20% 70%, 35% 20%, 50% 60%, 65% 15%, 80% 65%, 90% 30%, 100% 100%);
+      opacity: 0.2; pointer-events: none;
     }
 
     .topbar{
@@ -56,27 +57,23 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:40px 20px;}
     .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; margin-bottom: 30px; }
     
-    /* Sektions-Styling */
     .section-header { margin-bottom: 30px; border-left: 4px solid var(--accent); padding-left: 20px; }
-    .section-header.culture { border-color: var(--culture); }
+    .section-header.mountain { border-color: var(--mountain); }
     .section-header.shop { border-color: var(--shop); }
 
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-
-    /* Spezifische Inhalts-Boxen */
+    
     .feature-box {
       background: rgba(255,255,255,0.02); border: 1px solid var(--line);
       padding: 25px; border-radius: 20px; transition: 0.3s;
     }
     .feature-box:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
 
-    /* Dialekt-Buttons */
     .dialect-btn {
       padding: 20px; border-radius: 18px; border: 1px solid var(--line);
       text-align: center; cursor: pointer; transition: 0.2s; background: rgba(0,0,0,0.2);
     }
     .dialect-btn:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); }
-    .dialect-btn.walser:hover { border-color: var(--walser); background: rgba(245,158,11,0.1); }
 
     .btn-main {
       display: inline-block; padding: 12px 25px; border-radius: 12px;
@@ -88,12 +85,12 @@
 </head>
 <body>
 
-<div class="mountains"></div>
+<div class="mountains-bg"></div>
 
 <header class="topbar">
   <div class="inner">
     <div class="brand-title">Dialekt Verbindet</div>
-    <div style="font-size: 11px; font-weight: 600; color: var(--muted);">INFRASTRUKTUR LIECHTENSTEIN</div>
+    <div style="font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase;">Liechtenstein Hub</div>
     <a href="#kontakt" class="btn-main" style="font-size: 12px;">Partner werden</a>
   </div>
 </header>
@@ -102,95 +99,83 @@
 
   <section style="margin-bottom: 80px; text-align: center;">
     <div style="font-size: 12px; color: var(--accent2); font-weight: 800; letter-spacing: 2px; margin-bottom: 20px;">PROJEKT-LEITUNG: SANDRO RITTER</div>
-    <h1 style="font-size: 64px; margin: 0;">Üseri Sproch.<br>Üsers Land.</h1>
+    <h1 style="font-size: 64px; margin: 0; letter-spacing: -1.5px;">Üseri Sproch.<br>Üsers Land.</h1>
     <p style="font-size: 20px; color: var(--muted); max-width: 800px; margin: 25px auto;">
-      Ein digitales Ökosystem, das die liechtensteinische Identität bewahrt und mit der Zukunft vernetzt. Gehostet auf Schweizer Servern bei <b>Infomaniak</b> (DPA konform).
+      Die digitale Heimat für unsere Berge, unsere Kultur und unser Gewerbe. Sicher gehostet bei <b>Infomaniak</b> (DPA konform).
     </p>
   </section>
 
-  <section class="card">
-    <div class="section-header">
-      <h2>🎙️ Dialekt-Einspeisung</h2>
-      <p>Wähle deine Region für die KI-Datensammlung.</p>
-    </div>
-    <div class="grid-3">
-      <div class="dialect-btn">
-        <div style="font-size: 30px; margin-bottom: 10px;">🏰</div>
-        <h3>Oberland</h3>
-        <p style="font-size: 12px; color: var(--muted);">Vaduz, Balzers, Triesen, Schaan, Planken</p>
-      </div>
-      <div class="dialect-btn">
-        <div style="font-size: 30px; margin-bottom: 10px;">🌾</div>
-        <h3>Unterland</h3>
-        <p style="font-size: 12px; color: var(--muted);">Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p>
-      </div>
-      <div class="dialect-btn walser">
-        <div style="font-size: 30px; margin-bottom: 10px; color: var(--walser);">🏔️</div>
-        <h3 style="color: var(--walser);">Triesabärg</h3>
-        <p style="font-size: 12px; color: var(--muted);">Authentischer <b>Walser Dialekt</b></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="card" style="border-color: var(--culture);">
-    <div class="section-header culture">
-      <h2 style="color: var(--culture);">📜 Sagen & Museen</h2>
-      <p>Kultur erleben – digital und vor Ort.</p>
+  <section class="card" style="border-color: var(--mountain);">
+    <div class="section-header mountain">
+      <h2 style="color: var(--mountain);">🏔️ Üseri Bärge & Routen</h2>
+      <p>Entdecke die Gipfel und Wanderwege mit digitalen Sagen-Guides.</p>
     </div>
     <div class="grid-3">
       <div class="feature-box">
-        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🏛️</div>
-        <h3>Landesmuseum</h3>
-        <p>Interaktive Audio-Guides im Dialekt. Geschichte zum Mitnehmen auf dem Smartphone.</p>
+        <div style="font-size: 24px; margin-bottom: 10px;">🥾</div>
+        <h3>Interaktive Wanderkarten</h3>
+        <p>Alle Wanderwege von Ruggell bis zum Grauspitz. Inklusive Echtzeit-Daten zu Höhenmetern für die "Heimat-Mathe" Module.</p>
       </div>
       <div class="feature-box">
-        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🎨</div>
-        <h3>Kunstmuseum</h3>
-        <p>Digitale Kunstvermittlung. Werke verstehen in der Sprache, in der wir denken.</p>
+        <div style="font-size: 24px; margin-bottom: 10px;">🎙️</div>
+        <h3>Sagen-Hörpfade</h3>
+        <p>An markierten Plätzen (z.B. am Fürstensteig) erzählt die App im lokalen Dialekt die passenden Sagen und Mythen der Region.</p>
       </div>
       <div class="feature-box">
-        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🐉</div>
-        <h3>Sagen-Welt</h3>
-        <p>Vom Lindwurm bis zu den Wildmannli. GPS-gesteuerte Wander-Hörspiele durch das ganze Land.</p>
+        <div style="font-size: 24px; margin-bottom: 10px;">🏠</div>
+        <h3>Berghütten-Guide</h3>
+        <p>Öffnungszeiten, Speisekarten und Verfügbarkeit der Liechtensteiner Berghütten auf einen Blick.</p>
       </div>
     </div>
   </section>
 
   <section class="card" style="border-color: var(--shop);">
     <div class="section-header shop">
-      <h2 style="color: var(--shop);">🛍️ Lokale Läden & Marktplatz</h2>
-      <p>Unterstütze das liechtensteinische Gewerbe.</p>
+      <h2 style="color: var(--shop);">🛍️ Lokale Läden & Partner</h2>
+      <p>Wer mitmacht, wird belohnt. Punkte sammeln und lokal einlösen.</p>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; @media(max-width:800px){grid-template-columns:1fr;}">
-      <div class="feature-box" style="background: rgba(244, 114, 182, 0.05);">
-        <h3>Hoi Laden & Partner</h3>
-        <p>Wer in der App Punkte sammelt (durch Dialekt-Einspeisung oder Mathe), kann diese hier direkt in Gutscheine umwandeln.</p>
-        <div style="margin-top: 20px; display: flex; gap: 10px;">
-          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">🎁 Souvenirs</span>
-          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">☕ Gastronomie</span>
-          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">📚 Buchhandel</span>
-        </div>
+      <div class="feature-box" style="background: rgba(244, 114, 182, 0.05); border-color: var(--shop);">
+        <div style="font-size: 12px; text-transform: uppercase; color: var(--shop); font-weight: 800; margin-bottom: 10px;">Top Partner Schaan</div>
+        <h3 style="font-size: 24px; margin: 0;">Ospelt</h3>
+        <p style="font-style: italic; color: var(--muted); margin-bottom: 15px;">"Wo ma mi kennt"</p>
+        <p>Löse deine "Dialekt-Punkte" direkt bei Ospelt ein. Ob beim täglichen Einkauf oder beim Zmittag – regionale Treue zahlt sich aus.</p>
       </div>
       <div class="feature-box">
-        <h3>Gewerbe-Loop</h3>
-        <p>Wir vernetzen kleine Läden mit der digitalen Plattform. Ein lokales Bonussystem, das Kaufkraft im Land hält.</p>
-        <a href="#kontakt" style="color: var(--shop); font-size: 13px; font-weight: bold; margin-top: 15px; display: block;">Laden anmelden →</a>
+        <h3>Hoi Laden Vaduz</h3>
+        <p>Der zentrale Punkt für Souvenirs und liechtensteinische Geschenkartikel. Auch hier sind deine "Ländle-Points" willkommen.</p>
+        <div style="margin-top: 15px; display: flex; gap: 8px;">
+          <span style="background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 6px; font-size: 11px;">🎁 Geschenke</span>
+          <span style="background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 6px; font-size: 11px;">🍲 Delikatessen</span>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-header">
+      <h2>🎙️ Dialekt-Sammlung</h2>
+      <p>Üseri Sproch muass blieba. Wähl dini Region.</p>
+    </div>
+    <div class="grid-3">
+      <div class="dialect-btn"><h3>Oberland</h3><p style="font-size:12px; color:var(--muted);">Vaduz, Schaan, Balzers...</p></div>
+      <div class="dialect-btn"><h3>Unterland</h3><p style="font-size:12px; color:var(--muted);">Eschen, Mauren, Ruggell...</p></div>
+      <div class="dialect-btn" style="border-color: var(--walser); color: var(--walser);"><h3>Triesabärg</h3><p style="font-size:12px; color:var(--muted);">Walser Dialekt</p></div>
     </div>
   </section>
 
   <div class="grid-3">
     <div class="card">
+      <h3>🏛️ Museen</h3>
+      <p>Landesmuseum & Kunstmuseum digital entdecken. Scanne Exponate für Dialekt-Infos.</p>
+    </div>
+    <div class="card">
       <h3>➕ Heimat-Mathe</h3>
-      <p>Rechnen mit Bezug zur Heimat. Klafter, Höhenmeter und historische Daten aus Liechtenstein.</p>
+      <p>Sachaufgaben mit regionalen Daten. Rechnen mit der Geschichte Liechtensteins.</p>
     </div>
     <div class="card">
       <h3>💼 Jobs & Immo</h3>
-      <p>Regionale Angebote für Arbeit und Wohnen. Von Liechtensteinern für Liechtensteiner.</p>
-    </div>
-    <div class="card">
-      <h3>🍲 Rezepte</h3>
-      <p>Das kulinarische Erbe: Von Käsknöpfle bis Ribel, inklusive der richtigen Dialekt-Begriffe.</p>
+      <p>Regionale Plattform für den heimischen Markt.</p>
     </div>
   </div>
 

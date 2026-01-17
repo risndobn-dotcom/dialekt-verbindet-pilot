@@ -9,205 +9,170 @@
             --li-blue: #002B7F;
             --li-red: #CE1126;
             --li-gold: #FFD700;
-            --bg-white: #ffffff;
-            /* Prisma-Effekt für das Hologramm */
-            --glass-shine: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            --soft-bg: #F0F2F5;
+            --card-white: #ffffff;
         }
 
-        * { box-sizing: border-box; transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        * { box-sizing: border-box; transition: all 0.4s ease; }
 
         body {
-            margin: 0; background: var(--bg-white); color: #1d1d1f;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
+            margin: 0; background: var(--soft-bg); color: #1d1d1f;
+            font-family: 'Inter', -apple-system, sans-serif;
         }
 
-        /* Subtile Tiefenstruktur im Hintergrund */
-        body::before {
-            content: ""; position: fixed; inset: 0;
-            background: radial-gradient(circle at 50% 50%, #fdfdfd 0%, #f2f2f7 100%);
-            z-index: -2;
+        .app-shell {
+            max-width: 500px; /* Handy-App Fokus */
+            margin: 40px auto; background: var(--card-white);
+            border-radius: 50px; overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+            border: 8px solid #1d1d1f; /* Simulierter Screen-Rand */
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-
-        /* HEADER MIT DEINER VISION */
-        header { text-align: center; padding: 120px 20px 80px; }
-        .subtitle { color: var(--li-blue); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 20px; }
-        .main-title { font-size: clamp(45px, 8vw, 85px); font-weight: 900; letter-spacing: -3px; color: #1d1d1f; margin: 0; line-height: 1.1; }
-        
-        .vision-box {
-            max-width: 850px; margin: 40px auto 0; padding: 35px;
-            background: rgba(255, 255, 255, 0.6); border-radius: 35px;
-            backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-        .vision-text { font-size: 22px; font-weight: 600; color: #1d1d1f; margin: 10px 0; }
-        .highlight-red { color: var(--li-red); }
-
-        /* INTERAKTIVE HOLOGRAMM-KARTEN */
-        .holo-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(40px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50px; padding: 60px; margin-bottom: 60px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+        /* HERO BEREICH (Wie im Bild) */
+        .hero {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff); /* Frisches Blau */
+            padding: 40px 20px; text-align: center; color: white;
             position: relative; overflow: hidden;
         }
 
-        /* Der Hologramm-Lichtstrahl */
-        .holo-card::before {
-            content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
-            background: var(--glass-shine); transform: skewX(-20deg);
-            animation: holo-swipe 7s infinite ease-in-out;
+        /* Der Hologramm-Schimmer über das Hero-Bild */
+        .hero::after {
+            content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.3) 50%, transparent 55%);
+            animation: shine 8s infinite; transform: rotate(20deg);
         }
 
-        @keyframes holo-swipe {
-            0% { left: -150%; opacity: 0; }
-            40% { opacity: 1; }
-            60% { opacity: 1; }
-            100% { left: 150%; opacity: 0; }
+        @keyframes shine {
+            0% { transform: translate(-30%, -30%) rotate(20deg); }
+            100% { transform: translate(30%, 30%) rotate(20deg); }
         }
 
-        .holo-card:hover {
-            transform: translateY(-12px) scale(1.01);
-            box-shadow: 0 50px 100px rgba(0,0,0,0.08);
-            background: rgba(255, 255, 255, 0.9);
+        .hero h1 { font-size: 28px; margin: 0; font-weight: 800; }
+        .hero p { font-size: 16px; opacity: 0.9; margin: 10px 0 20px; }
+
+        .btn-entdecken {
+            background: var(--li-blue); color: white; border: none;
+            padding: 12px 30px; border-radius: 25px; font-weight: 700;
+            cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .border-blue { border-top: 12px solid var(--li-blue); }
-        .border-red { border-top: 12px solid var(--li-red); }
+        /* CONTENT */
+        .content { padding: 25px; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-
-        .content-box {
-            background: rgba(255, 255, 255, 0.5); padding: 35px; border-radius: 35px;
-            border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        .section-header { 
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; font-weight: 700; color: #444;
         }
 
-        /* PARTNER / SPONSOREN */
-        .logo-slot {
-            height: 140px; background: #fff; border-radius: 30px;
-            border: 2px dashed #d2d2d7; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; font-weight: 600; color: #86868b;
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        /* KARTEN-STIL WIE IM BILD */
+        .app-card {
+            background: #f8f9fa; border-radius: 25px; padding: 20px;
+            text-align: center; border: 1px solid #eee;
+            cursor: pointer; position: relative;
         }
 
-        footer { background: #fafafa; padding: 100px 20px; border-top: 1px solid #efefef; }
+        .app-card:hover { 
+            transform: scale(1.05); background: white; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border-color: var(--li-blue);
+        }
 
-        h2 { font-size: 34px; font-weight: 800; margin-top: 0; margin-bottom: 45px; }
+        .icon-circle {
+            width: 50px; height: 50px; background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px; font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .app-card h3 { font-size: 14px; margin: 0; color: #1d1d1f; }
+        .app-card p { font-size: 11px; color: #86868b; margin: 5px 0 0; }
+
+        /* LIECHTENSTEIN SPEZIAL */
+        .li-special {
+            grid-column: span 2; background: linear-gradient(to right, #ffffff, #fffdf0);
+            border: 2px solid var(--li-gold);
+        }
+
+        /* FOOTER / SPONSOREN */
+        .sponsor-bar {
+            background: #fdfdfd; padding: 30px 20px; text-align: center;
+            border-top: 1px solid #eee;
+        }
+        .sponsor-grid { display: flex; justify-content: space-around; margin-top: 15px; }
+        .mini-logo { font-size: 10px; font-weight: 800; color: #ccc; text-transform: uppercase; }
+
     </style>
 </head>
 <body>
 
-<header class="container">
-    <span class="subtitle">Üsri Sproch</span>
-    <h1 class="main-title">Dialekt Verbindet</h1>
-    <div class="vision-box">
-        <p class="vision-text">"An Standort wo sini Sproch zagt, bliebt im Gedächtnis."</p>
-        <p style="font-size: 18px; color: #515154;">Dialekt ist mehr als Sprache – er ist <span class="highlight-red">Identität, Alltag und Zugehörigkeit</span>.</p>
+<div class="app-shell">
+    <div class="hero">
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 10px;">ÜSRI SPROCH</div>
+        <h1>Dialekt Verbindet</h1>
+        <p>"An Standort wo sini Sproch zagt, bliebt im Gedächtnis."</p>
+        <button class="btn-entdecken">JETZT ENTDECKEN</button>
     </div>
-</header>
 
-<main class="container">
-
-    <section class="holo-card border-blue">
-        <h2>🎙️ Dialekt Einspeisung</h2>
+    <div class="content">
+        <div class="section-header"><span>Finde Deine Community</span></div>
         <div class="grid">
-            <div class="content-box"><h3>Oberland</h3><p>Vaduz, Schaan, Triesen, Balzers, Planken</p></div>
-            <div class="content-box"><h3>Unterland</h3><p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p></div>
-            <div class="content-box" style="border: 2px solid var(--li-gold);">
-                <h3 style="color:var(--li-blue)">Triesabärg</h3>
-                <p>Authentischer Walser Dialekt</p>
+            <div class="app-card">
+                <div class="icon-circle">🎙️</div>
+                <h3>Einspeisung</h3>
+                <p>Ober- & Unterland</p>
+            </div>
+            <div class="app-card">
+                <div class="icon-circle">📖</div>
+                <h3>Sagenwelt</h3>
+                <p>Alte Geschichten</p>
+            </div>
+            <div class="app-card li-special">
+                <div class="icon-circle" style="background: var(--li-gold);">👑</div>
+                <h3>Triesabärg Spezial</h3>
+                <p>Authentischer Walser Dialekt & Bräuche</p>
             </div>
         </div>
-    </section>
 
-    <section class="holo-card border-red">
-        <h2>➕ Heimat-Mathe</h2>
-        <div class="content-box">
-            <p>Interaktives Rechnen mit lokalen Bezügen und regionalen Statistiken.</p>
-        </div>
-    </section>
-
-    <section class="holo-card border-blue">
-        <h2>🏛️ Museen</h2>
+        <div class="section-header" style="margin-top: 30px;"><span>Lernen & Erleben</span></div>
         <div class="grid">
-            <div class="content-box"><h3>Landesmuseum</h3></div>
-            <div class="content-box"><h3>Kunstmuseum</h3></div>
-            <div class="content-box"><h3>Landwirtschaftsmuseum</h3></div>
-        </div>
-    </section>
-
-    <section class="holo-card border-red">
-        <h2>📜 Sagen, Traditionen & Bräuche</h2>
-        <div class="grid">
-            <div class="content-box"><h3>Sagen-Welt</h3></div>
-            <div class="content-box"><h3>Traditionen</h3></div>
-            <div class="content-box"><h3>Bräuche</h3></div>
-        </div>
-    </section>
-
-    <section class="holo-card border-blue">
-        <h2>🍲 Rezepte & Geschichten</h2>
-        <div class="grid">
-            <div class="content-box"><h3>Rezepte</h3></div>
-            <div class="content-box"><h3>Geschichten</h3></div>
-        </div>
-    </section>
-
-    <section class="holo-card border-red">
-        <h2>🛍️ Lokale Läden & Gewinnspiel</h2>
-        <div class="grid">
-            <div class="content-box" style="border-left: 10px solid var(--li-gold);">
-                <h3>Ospelt Schaan</h3>
-                <p>Exklusiver Partner</p>
+            <div class="app-card">
+                <div class="icon-circle">🏛️</div>
+                <h3>Museen</h3>
+                <p>Kultur erleben</p>
             </div>
-            <div class="content-box">
-                <h3>Gewinnspiel</h3>
-                <p>Punkte sammeln und Preise gewinnen.</p>
+            <div class="app-card">
+                <div class="icon-circle">🍲</div>
+                <h3>Rezepte</h3>
+                <p>Kochen wie früher</p>
             </div>
         </div>
-    </section>
-
-    <section class="holo-card border-blue">
-        <div class="grid">
-            <div class="content-box"><h3>💼 Jobbörse</h3></div>
-            <div class="content-box"><h3>🏠 Immobörse</h3></div>
-        </div>
-    </section>
-
-    <section class="holo-card border-red">
-        <h2>📰 News vom Ländle</h2>
-        <div class="content-box"><p>Aktuelle Meldungen aus den 11 Gemeinden.</p></div>
-    </section>
-
-    <section style="text-align: center; padding: 100px 0;">
-        <h2 style="margin-bottom: 60px;">🤝 Unsere Partner & Sponsoren</h2>
-        <div class="grid">
-            <div><div class="logo-slot">LOGO OSPELT</div><strong>Ospelt Schaan</strong></div>
-            <div><div class="logo-slot">LOGO HOI LADEN</div><strong>Hoi Laden Vaduz</strong></div>
-            <div><div class="logo-slot">LOGO INFOMANIAK</div><strong>Infomaniak SA</strong></div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
-        <div>
-            <h3>Impressum</h3>
-            <p><strong>Sandro Ritter</strong><br>Dammstrasse 4, 9444 Diepoldsau</p>
-            <p>E-Mail: info@dialektverbindet.li</p>
-        </div>
-        <div style="background: #fff; padding: 40px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-            <h4>🔒 Datensicherheit</h4>
-            <p style="font-size: 14px; color: #86868b;">
-                Infrastruktur: Infomaniak (Schweiz).<br>
-                Zertifiziert gemäß DPA vom 04.01.2026.
-            </p>
+        
+        <div class="grid" style="margin-top: 15px;">
+            <div class="app-card" style="border-left: 5px solid var(--li-blue);">
+                <div class="icon-circle">💼</div>
+                <h3>Jobbörse</h3>
+            </div>
+            <div class="app-card" style="border-left: 5px solid var(--li-red);">
+                <div class="icon-circle">🏠</div>
+                <h3>Immo</h3>
+            </div>
         </div>
     </div>
-</footer>
+
+    <div class="sponsor-bar">
+        <div style="font-size: 12px; font-weight: 700;">UNSERE PARTNER</div>
+        <div class="sponsor-grid">
+            <div class="mini-logo">Ospelt</div>
+            <div class="mini-logo">Hoi Laden</div>
+            <div class="mini-logo">Infomaniak</div>
+        </div>
+        <div style="margin-top: 25px; font-size: 9px; color: #bbb;">
+            STANDORT LIECHTENSTEIN | DPA 04.01.2026
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

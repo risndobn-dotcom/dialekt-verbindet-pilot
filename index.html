@@ -3,335 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dialekt Verbindet | Das Liechtenstein Portal</title>
+  <title>Dialekt Verbindet | Liechtenstein</title>
 
   <style>
-    /* --- DESIGN SYSTEM --- */
     :root{
       --bg: #070B14;
       --panel: rgba(255,255,255,0.03);
-      --panel-hover: rgba(255,255,255,0.06);
       --text: rgba(255,255,255,0.92);
       --muted: rgba(255,255,255,0.6);
       --line: rgba(255,255,255,0.1);
       --accent: #3B82F6; 
       --accent2: #22C55E; 
-      --walser: #F59E0B; /* Triesenberg Gold */
-      --culture: #8B5CF6; /* Lila für Kultur */
-      --shop: #EC4899; /* Pink für Shops */
+      --walser: #F59E0B; 
+      --culture: #A78BFA; /* Sanftes Lila für Museen */
+      --shop: #F472B6;    /* Pink für Läden */
       --radius: 24px;
       --max: 1200px;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --sans: system-ui, -apple-system, sans-serif;
       --grad: linear-gradient(135deg, var(--accent), var(--accent2));
-      --shadow: 0 20px 70px rgba(0,0,0,0.6);
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     body{
       margin:0; font-family:var(--sans); color:var(--text);
-      background: #070B14;
-      min-height:100vh;
-      overflow-x: hidden;
+      background: #070B14; overflow-x: hidden;
     }
 
-    /* HINTERGRUND & BERGE */
+    /* Hintergründe */
     .mountains {
       position: fixed; bottom: 0; left: 0; width: 100%; height: 35vh;
       background: linear-gradient(to top, rgba(15, 23, 42, 1), transparent);
       z-index: -1;
-      clip-path: polygon(0% 100%, 10% 40%, 25% 80%, 40% 25%, 55% 70%, 70% 30%, 85% 75%, 100% 100%);
-      opacity: 0.2; pointer-events: none;
-    }
-    .bg-glow {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -2;
-      background: radial-gradient(circle at 50% 0%, rgba(59,130,246,0.15), transparent 70%);
+      clip-path: polygon(0% 100%, 12% 35%, 28% 75%, 45% 20%, 60% 65%, 75% 28%, 92% 80%, 100% 100%);
+      opacity: 0.18; pointer-events: none;
     }
 
-    /* HEADER */
     .topbar{
       position:sticky; top:0; z-index:100;
-      backdrop-filter:saturate(160%) blur(15px);
-      background: rgba(7,11,20,0.85);
+      backdrop-filter: blur(15px); background: rgba(7,11,20,0.8);
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
-      max-width:var(--max); margin:0 auto; padding:16px 24px;
+      max-width:var(--max); margin:0 auto; padding:18px 24px;
       display:flex; align-items:center; justify-content:space-between;
     }
     .brand-title {
-      font-weight: 800; font-size: 18px; letter-spacing: -0.5px;
+      font-weight: 800; font-size: 20px;
       background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .nav-links a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 13px; font-weight: 500; transition: 0.2s; }
-    .nav-links a:hover { color: #fff; }
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 20px; border-radius:12px; font-size: 13px; font-weight:700; 
-      text-decoration: none; transition: 0.2s; cursor: pointer; border: none;
-    }
-    .btn.primary{ background: var(--grad); color:#06101f; }
-    
-    /* LAYOUT & CARDS */
     .wrap{max-width:var(--max); margin:0 auto; padding:40px 20px;}
-    .grid-sidebar { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 50px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media(max-width: 900px) { .grid-sidebar, .grid-2 { grid-template-columns: 1fr; } }
-
-    .card {
-      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 30px; position: relative; overflow: hidden;
-    }
-
-    /* DIALEKT CARDS */
-    .region-card {
-      background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 20px; padding: 25px;
-      text-align: center; transition: 0.3s; cursor: pointer;
-    }
-    .region-card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(255,255,255,0.06); }
-    .mic-icon {
-      width: 50px; height: 50px; border-radius: 50%; background: rgba(0,0,0,0.3); margin: 0 auto 15px;
-      display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid var(--line);
-    }
-    .region-card.walser:hover { border-color: var(--walser); }
-    .region-card.walser .mic-icon { color: var(--walser); border-color: var(--walser); }
-
-    /* SHOP CARDS */
-    .shop-card {
-      background: linear-gradient(180deg, rgba(236, 72, 153, 0.05), rgba(0,0,0,0));
-      border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 15px;
-    }
-    .shop-icon { font-size: 24px; background: rgba(236, 72, 153, 0.1); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-
-    /* MUSEUM CARDS */
-    .museum-card {
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.05), rgba(0,0,0,0));
-      border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 20px; padding: 0; overflow: hidden;
-    }
-    .museum-img { height: 120px; background: rgba(139, 92, 246, 0.1); display: flex; align-items: center; justify-content: center; color: var(--culture); font-size: 40px; }
-    .museum-content { padding: 20px; }
-
-    /* TEXT */
-    h1 { font-size: 42px; line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; }
-    .section-title { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: white; display: flex; align-items: center; gap: 10px; }
-    .section-lead { color: var(--muted); margin-bottom: 30px; line-height: 1.6; max-width: 700px; }
-
-    input, textarea, select {
-      width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--line);
-      padding: 15px; border-radius: 12px; color: white; font-family: inherit; margin-bottom: 10px;
-    }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; margin-bottom: 30px; }
     
-    footer { border-top: 1px solid var(--line); padding: 60px 0; margin-top: 80px; text-align: center; color: var(--muted); font-size: 12px; }
+    /* Sektions-Styling */
+    .section-header { margin-bottom: 30px; border-left: 4px solid var(--accent); padding-left: 20px; }
+    .section-header.culture { border-color: var(--culture); }
+    .section-header.shop { border-color: var(--shop); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+    /* Spezifische Inhalts-Boxen */
+    .feature-box {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--line);
+      padding: 25px; border-radius: 20px; transition: 0.3s;
+    }
+    .feature-box:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+
+    /* Dialekt-Buttons */
+    .dialect-btn {
+      padding: 20px; border-radius: 18px; border: 1px solid var(--line);
+      text-align: center; cursor: pointer; transition: 0.2s; background: rgba(0,0,0,0.2);
+    }
+    .dialect-btn:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); }
+    .dialect-btn.walser:hover { border-color: var(--walser); background: rgba(245,158,11,0.1); }
+
+    .btn-main {
+      display: inline-block; padding: 12px 25px; border-radius: 12px;
+      background: var(--grad); color: #000; font-weight: 700; text-decoration: none;
+    }
+
+    footer { text-align: center; padding: 60px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
   </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
 <div class="mountains"></div>
 
 <header class="topbar">
   <div class="inner">
-    <div>
-      <div class="brand-title">Dialekt Verbindet</div>
-      <div style="font-size: 10px; text-transform: uppercase; color: var(--muted);">Liechtenstein</div>
-    </div>
-    <div class="nav-links" style="display: none; @media(min-width:700px){display:flex;}">
-      <a href="#kultur">Museen & Sagen</a>
-      <a href="#shops">Lokale Läden</a>
-      <a href="#kontakt">Partner</a>
-    </div>
-    <a href="#kontakt" class="btn primary">Mitmachen</a>
+    <div class="brand-title">Dialekt Verbindet</div>
+    <div style="font-size: 11px; font-weight: 600; color: var(--muted);">INFRASTRUKTUR LIECHTENSTEIN</div>
+    <a href="#kontakt" class="btn-main" style="font-size: 12px;">Partner werden</a>
   </div>
 </header>
 
 <main class="wrap">
 
-  <div class="grid-sidebar">
-    <div class="card">
-      <div style="font-size: 11px; color: var(--accent); font-weight: 800; text-transform: uppercase; margin-bottom: 15px;">Infrastruktur Projekt</div>
-      <h1>Eusi Sproch.<br>Eusäs Land.</h1>
-      <p style="font-size: 18px; color: var(--muted); line-height: 1.6;">
-        Die zentrale Plattform für Liechtensteins Identität. Wir verbinden Dialekt-Sammlung mit Bildung, Kultur und dem lokalen Gewerbe.
-      </p>
-      <div style="margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap;">
-         <span style="border:1px solid var(--line); padding: 8px 14px; border-radius: 50px; font-size: 12px;">🎙️ Dialekt KI</span>
-         <span style="border:1px solid var(--line); padding: 8px 14px; border-radius: 50px; font-size: 12px;">➕ Heimat-Mathe</span>
-         <span style="border:1px solid var(--line); padding: 8px 14px; border-radius: 50px; font-size: 12px;">🍲 Rezepte</span>
-      </div>
-    </div>
-
-    <div class="card" style="display:flex; flex-direction:column; justify-content:center;">
-      <h3>🔒 Hosting & DPA</h3>
-      <p style="font-size:13px; margin-top:10px; color:var(--muted); line-height:1.5;">
-        Datenverarbeitung sicher bei <strong>Infomaniak (Schweiz)</strong>. Wir garantieren Datenschutz für unser Kulturerbe und alle Nutzerdaten gemäss DPA.
-      </p>
-      <div style="margin-top:20px; padding-top:15px; border-top:1px solid var(--line);">
-        <small style="color:var(--accent2); font-weight:bold;">PROJEKTLEITUNG</small><br>
-        <b>Sandro Ritter</b>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-bottom: 80px;">
-    <h2 class="section-title">🎙️ Dialekt Einspeisung</h2>
-    <p class="section-lead">Wähle deine Region und hilf der KI, unseren Klang zu lernen.</p>
-    <div class="grid-3">
-      <div class="region-card">
-        <div class="mic-icon">🏰</div>
-        <h3>Oberland</h3>
-        <p>Vaduz, Balzers, Triesen, Schaan, Planken</p>
-      </div>
-      <div class="region-card">
-        <div class="mic-icon">🌾</div>
-        <h3>Unterland</h3>
-        <p>Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p>
-      </div>
-      <div class="region-card walser" style="border-color: rgba(245, 158, 11, 0.3);">
-        <div class="mic-icon">🏔️</div>
-        <h3 style="color: var(--walser);">Triesabärg</h3>
-        <p>Der einzigartige <b>Walser Dialekt</b>.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="kultur" style="margin-bottom: 80px;">
-    <h2 class="section-title" style="color: var(--culture);">📜 Sagen & Museen</h2>
-    <p class="section-lead">Geschichte erleben. Unsere Kulturpartner bieten digitale Inhalte, die du vor Ort oder in der App entdecken kannst.</p>
-    
-    <div class="grid-3">
-      <div class="museum-card">
-        <div class="museum-img">🏛️</div>
-        <div class="museum-content">
-          <h3>Landesmuseum</h3>
-          <p>Digitale Führung im Dialekt. Scanne Exponate und höre die Geschichte von unseren Vorfahren.</p>
-          <div style="margin-top:15px; font-size:12px; color:var(--culture); font-weight:bold;">● Gamified Guide</div>
-        </div>
-      </div>
-      <div class="museum-card">
-        <div class="museum-img">🎨</div>
-        <div class="museum-content">
-          <h3>Kunstmuseum</h3>
-          <p>Moderne Kunst trifft auf Mundart. Interpretiere Werke in deiner eigenen Sprache.</p>
-          <div style="margin-top:15px; font-size:12px; color:var(--culture); font-weight:bold;">● Audio-Tour</div>
-        </div>
-      </div>
-      <div class="museum-card">
-        <div class="museum-img">🐉</div>
-        <div class="museum-content">
-          <h3>Sagen-Wanderweg</h3>
-          <p>Der Lindwurm und die Wildmannli. GPS-gesteuerte Hörspiele an den Originalschauplätzen.</p>
-          <div style="margin-top:15px; font-size:12px; color:var(--culture); font-weight:bold;">● Outdoor App</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="shops" style="margin-bottom: 80px;">
-    <h2 class="section-title" style="color: var(--shop);">🎁 Der Ländle-Marktplatz</h2>
-    <p class="section-lead">
-      Punkte sammeln, lokal einlösen. Dein Fleiss in der App (Quiz, Mathe, Sprache) unterstützt diese lokalen Geschäfte.
+  <section style="margin-bottom: 80px; text-align: center;">
+    <div style="font-size: 12px; color: var(--accent2); font-weight: 800; letter-spacing: 2px; margin-bottom: 20px;">PROJEKT-LEITUNG: SANDRO RITTER</div>
+    <h1 style="font-size: 64px; margin: 0;">Üseri Sproch.<br>Üsers Land.</h1>
+    <p style="font-size: 20px; color: var(--muted); max-width: 800px; margin: 25px auto;">
+      Ein digitales Ökosystem, das die liechtensteinische Identität bewahrt und mit der Zukunft vernetzt. Gehostet auf Schweizer Servern bei <b>Infomaniak</b> (DPA konform).
     </p>
+  </section>
 
-    <div class="card" style="border-color: var(--shop);">
-      <div class="grid-sidebar" style="margin:0;">
-        <div>
-          <h3 style="color: var(--shop);">So funktioniert der Loop</h3>
-          <ul style="list-style:none; padding:0; line-height:2; color:var(--muted);">
-            <li>1. Löse eine Mathe-Aufgabe oder sprich ein Dialekt-Wort ein.</li>
-            <li>2. Erhalte "Ländle-Points" auf dein Konto.</li>
-            <li>3. Zeige die App an der Kasse unserer Partner und kassiere Rabatte.</li>
-          </ul>
-        </div>
-        
-        <div style="display:grid; gap:15px;">
-          <div class="shop-card">
-            <div class="shop-icon">🎁</div>
-            <div>
-              <div style="font-weight:bold;">Hoi Laden</div>
-              <div style="font-size:12px; color:var(--shop);">Souvenirs & Geschenke</div>
-            </div>
-          </div>
-          <div class="shop-card">
-            <div class="shop-icon">☕</div>
-            <div>
-              <div style="font-weight:bold;">Walser Bäckerei</div>
-              <div style="font-size:12px; color:var(--shop);">Kaffee & Kuchen Gutschein</div>
-            </div>
-          </div>
-          <div class="shop-card">
-            <div class="shop-icon">📚</div>
-            <div>
-              <div style="font-weight:bold;">Bücherwurm</div>
-              <div style="font-size:12px; color:var(--shop);">Rabatt auf Schulbücher</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section class="card">
+    <div class="section-header">
+      <h2>🎙️ Dialekt-Einspeisung</h2>
+      <p>Wähle deine Region für die KI-Datensammlung.</p>
     </div>
-  </div>
-
-  <div style="margin-bottom: 80px;">
-    <h2 class="section-title">Bildung & Wirtschaft</h2>
     <div class="grid-3">
-      <div class="card">
-        <h3>➕ Heimat-Mathe</h3>
-        <p>Rechnen mit Bezug zur Heimat. Klafter, Elle und Höhenmeter.</p>
+      <div class="dialect-btn">
+        <div style="font-size: 30px; margin-bottom: 10px;">🏰</div>
+        <h3>Oberland</h3>
+        <p style="font-size: 12px; color: var(--muted);">Vaduz, Balzers, Triesen, Schaan, Planken</p>
       </div>
-      <div class="card">
-        <h3>💼 Jobbörse</h3>
-        <p>Regionale Stellenangebote für Fachkräfte.</p>
+      <div class="dialect-btn">
+        <div style="font-size: 30px; margin-bottom: 10px;">🌾</div>
+        <h3>Unterland</h3>
+        <p style="font-size: 12px; color: var(--muted);">Eschen, Mauren, Gamprin, Ruggell, Schellenberg</p>
       </div>
-      <div class="card">
-        <h3>🏠 Immobilien</h3>
-        <p>Wohnen im Fürstentum. Inserate aus der Region.</p>
+      <div class="dialect-btn walser">
+        <div style="font-size: 30px; margin-bottom: 10px; color: var(--walser);">🏔️</div>
+        <h3 style="color: var(--walser);">Triesabärg</h3>
+        <p style="font-size: 12px; color: var(--muted);">Authentischer <b>Walser Dialekt</b></p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="kontakt">
-    <div class="card">
-      <div class="grid-sidebar" style="margin:0;">
-        <div>
-          <h2>Partner werden</h2>
-          <p class="section-lead">
-            Unterstützen Sie als Sponsor ein Modul (z.B. "Sagen-Weg" oder "Mathe") oder schliessen Sie Ihren Laden an das Punktesystem an.
-          </p>
-        </div>
-        <div>
-          <form onsubmit="return sendMail(event)">
-            <input id="org" placeholder="Firma / Institution" required />
-            <select id="interest">
-              <option>Partner: Lokaler Laden (Hoi Laden etc.)</option>
-              <option>Sponsoring: Museen & Kultur</option>
-              <option>Sponsoring: Heimat-Mathe</option>
-            </select>
-            <textarea id="msg" rows="3" placeholder="Nachricht..."></textarea>
-            <button class="btn primary" style="width:100%;">Anfrage senden</button>
-          </form>
+  <section class="card" style="border-color: var(--culture);">
+    <div class="section-header culture">
+      <h2 style="color: var(--culture);">📜 Sagen & Museen</h2>
+      <p>Kultur erleben – digital und vor Ort.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-box">
+        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🏛️</div>
+        <h3>Landesmuseum</h3>
+        <p>Interaktive Audio-Guides im Dialekt. Geschichte zum Mitnehmen auf dem Smartphone.</p>
+      </div>
+      <div class="feature-box">
+        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🎨</div>
+        <h3>Kunstmuseum</h3>
+        <p>Digitale Kunstvermittlung. Werke verstehen in der Sprache, in der wir denken.</p>
+      </div>
+      <div class="feature-box">
+        <div style="color: var(--culture); font-size: 24px; margin-bottom: 15px;">🐉</div>
+        <h3>Sagen-Welt</h3>
+        <p>Vom Lindwurm bis zu den Wildmannli. GPS-gesteuerte Wander-Hörspiele durch das ganze Land.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="border-color: var(--shop);">
+    <div class="section-header shop">
+      <h2 style="color: var(--shop);">🛍️ Lokale Läden & Marktplatz</h2>
+      <p>Unterstütze das liechtensteinische Gewerbe.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; @media(max-width:800px){grid-template-columns:1fr;}">
+      <div class="feature-box" style="background: rgba(244, 114, 182, 0.05);">
+        <h3>Hoi Laden & Partner</h3>
+        <p>Wer in der App Punkte sammelt (durch Dialekt-Einspeisung oder Mathe), kann diese hier direkt in Gutscheine umwandeln.</p>
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">🎁 Souvenirs</span>
+          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">☕ Gastronomie</span>
+          <span style="background: #000; padding: 5px 10px; border-radius: 8px; font-size: 11px;">📚 Buchhandel</span>
         </div>
       </div>
+      <div class="feature-box">
+        <h3>Gewerbe-Loop</h3>
+        <p>Wir vernetzen kleine Läden mit der digitalen Plattform. Ein lokales Bonussystem, das Kaufkraft im Land hält.</p>
+        <a href="#kontakt" style="color: var(--shop); font-size: 13px; font-weight: bold; margin-top: 15px; display: block;">Laden anmelden →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>➕ Heimat-Mathe</h3>
+      <p>Rechnen mit Bezug zur Heimat. Klafter, Höhenmeter und historische Daten aus Liechtenstein.</p>
+    </div>
+    <div class="card">
+      <h3>💼 Jobs & Immo</h3>
+      <p>Regionale Angebote für Arbeit und Wohnen. Von Liechtensteinern für Liechtensteiner.</p>
+    </div>
+    <div class="card">
+      <h3>🍲 Rezepte</h3>
+      <p>Das kulinarische Erbe: Von Käsknöpfle bis Ribel, inklusive der richtigen Dialekt-Begriffe.</p>
     </div>
   </div>
 
 </main>
 
 <footer>
-  DIALEKT VERBINDET · SANDRO RITTER · LIECHTENSTEIN · INFO@DIALEKTVERBINDET.LI<br>
-  <span style="opacity:0.5; font-size:10px;">Hosted by Infomaniak (CH) · DPA Compliant</span>
+  DIALEKT VERBINDET · SANDRO RITTER · LIECHTENSTEIN<br>
+  <span style="opacity: 0.5;">Infrastruktur gehostet bei Infomaniak (Schweiz) · DPA / Datenschutz konform</span>
 </footer>
-
-<script>
-  function sendMail(e){
-    e.preventDefault();
-    const org = document.getElementById("org").value;
-    const interest = document.getElementById("interest").value;
-    const msg = document.getElementById("msg").value;
-    window.location.href = `mailto:info@dialektverbindet.li?subject=Anfrage: ${interest}&body=Organisation: ${org}%0A%0ANachricht: ${msg}`;
-  }
-</script>
 
 </body>
 </html>

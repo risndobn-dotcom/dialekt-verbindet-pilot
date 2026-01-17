@@ -3,79 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dialekt – Raster Demo</title>
+<title>Dialekt verbindet</title>
 
 <style>
 :root{
-  --c-ident:#002b7f;
-  --c-base:#ffffff;
-  --c-context:#f2f3f5;
-  --c-line:#e0e0e0;
-  --radius:24px;
-  --space:32px;
+  --ident:#002b7f;
+  --base:#ffffff;
+  --context:#f3f4f6;
+  --line:#e1e1e1;
+  --text:#1f1f1f;
+
+  --radius:36px;
+  --r-small:20px;
+  --space:40px;
   --maxw:1000px;
-  --text:#222;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
+  background:var(--context);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--c-context);
   color:var(--text);
 }
-.app
-  
+
+.app{
   max-width:var(--maxw);
-  margin:24px auto;
-  background:var(--c-base);
-  border-radius:40px;
+  margin:32px auto;
+  background:var(--base);
+  border-radius:48px;
   overflow:hidden;
-  border:1px solid var(--c-line);
+  border:1px solid var(--line);
 }
+
+/* IDENTITÄT */
 .header{
-  height:40vh;
-  background:var(--c-ident);
+  height:42vh;
+  background:var(--ident);
+  color:#fff;
   display:flex;
   align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-align:center;
+  padding:var(--space);
 }
+
 .header h1{
-  font-size:42px;
-  margin:0;
+  font-size:44px;
   font-weight:700;
+  margin:0;
 }
+
 .header p{
-  margin-top:16px;
+  margin-top:18px;
+  font-size:18px;
   opacity:.9;
 }
+
+/* SEKTIONEN */
 .section{
   padding:var(--space);
-  border-top:1px solid var(--c-line);
+  border-top:1px solid var(--line);
 }
-.split{
-  display:grid;
-  grid-template-columns:60% 40%;
-  gap:var(--space);
+
+.statement{
+  font-size:20px;
+  line-height:1.5;
 }
+
+/* GEOGRAFIE */
+.geo{
+  margin-top:24px;
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* FUNKTIONALE RÄUME */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:var(--space);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
 }
+
 .card{
-  border:1px solid var(--c-line);
-  border-radius:var(--radius);
-  padding:24px;
+  border:1px solid var(--line);
+  border-radius:var(--r-small);
+  padding:28px;
+  min-height:140px;
 }
+
 .card h3{
   margin:0 0 12px 0;
   font-size:18px;
+  font-weight:600;
 }
+
+.card p{
+  margin:0;
+  line-height:1.5;
+}
+
+/* ABSCHLUSS */
 .footer{
-  padding:var(--space);
-  background:var(--c-context);
+  padding:32px 40px;
+  background:var(--context);
   font-size:14px;
 }
 </style>
@@ -89,58 +119,30 @@ body{
   <div class="header">
     <div>
       <h1>Dialekt verbindet</h1>
-      <p>Sprache ist Herkunft. Alltag. Zugehörigkeit.</p>
+      <p>Sprache ist Alltag. Herkunft. Zugehörigkeit.</p>
     </div>
   </div>
 
-  <!-- SINN / KONTEXT -->
-  <div class="section split">
-    <div class="card">
-      <h3>Worum es geht</h3>
-      <p>
-        Dialekt ist kein Lerninhalt.<br>
-        Er ist gelebter Alltag.<br><br>
-        Diese Plattform bewahrt Sprache digital,
-        ohne sie zu glätten oder zu erklären.
-      </p>
+  <!-- HALTUNG -->
+  <div class="section">
+    <div class="statement">
+      Dialekt ist kein Lernobjekt.<br>
+      Er wird gesprochen, gehört, weitergegeben.
     </div>
-    <div class="card">
-      <h3>Für wen</h3>
-      <p>
-        Gemeinden<br>
-        Bildung<br>
-        Menschen mit Bezug zur Region
-      </p>
+
+    <div class="geo">
+      Bi üs im Ländle.<br>
+      Vo Schaa bis Balzers.<br>
+      Vo Bendera bis in Hinterschellabärg.
     </div>
   </div>
 
-  <!-- FUNKTIONALE RÄUME -->
+  <!-- RÄUME -->
   <div class="section grid">
     <div class="card">
       <h3>Regionen</h3>
-      <p>
-      Oberland: vo Schaa bis Balzers<br>
-      Unterland: vo Bendera bis Hinterschellabärg
-      </p>
+      <p>Oberland, Unterland, Walserraum.</p>
     </div>
     <div class="card">
-      <h3>Sprache hören</h3>
-      <p>Originalstimmen. Kein Studio.</p>
-    </div>
-    <div class="card">
-      <h3>Kultur</h3>
-      <p>Alltag, Bräuche, Erzählungen.</p>
-    </div>
-  </div>
-
-  <!-- RUHIGER ABSCHLUSS -->
-  <div class="footer">
-    Serverstandort Schweiz · Datenschutz konform ·
-    Digitale Kulturplattform
-  </div>
-
-</div>
-
-</body>
-</html>
-
+      <h3>Stimmen</h3>
+      <p>Original. Unglätt

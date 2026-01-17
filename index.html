@@ -3,159 +3,573 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dialekt Verbindet | Digitale Sprach-Infrastruktur</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <title>Dialekt Verbindet</title>
+
+  <meta name="description"
+        content="Dialekt Verbindet ist digitale Infrastruktur für regionale Sprache: ein System für Teilhabe, kulturellen Kontext und lebendige Weitergabe." />
+  <meta name="theme-color" content="#0B1220" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Dialekt Verbindet" />
+  <meta property="og:description"
+        content="Digitale Infrastruktur für regionale Sprache, kulturellen Kontext und Verständigung – souverän, skalierbar, institutionsfähig." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Project",
+    "name":"Dialekt Verbindet",
+    "description":"Digitale Infrastruktur für regionale Sprache, kulturellen Kontext und gesellschaftliche Verständigung.",
+    "url":"https://dialektverbindet.li/"
+  }
+  </script>
 
   <style>
-    :root {
-      --bg: #05080f;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.65);
-      --accent: #3b82f6;
-      --accent-grad: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
-      --radius-lg: 28px;
+    :root{
+      --bg:#070B14;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.085);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.66);
+      --line:rgba(255,255,255,.12);
+      --accent:#3B82F6;
+      --accent2:#22C55E;
+      --warn:#F59E0B;
+      --radius:22px;
+      --radius2:30px;
+      --max:1160px;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --shadow:0 18px 60px rgba(0,0,0,.55);
     }
 
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-    body {
-      margin: 0; font-family: 'Inter', sans-serif;
-      background-color: var(--bg); color: var(--text);
-      background-image: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1), transparent 40%);
-      line-height: 1.6;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(980px 640px at 12% 10%, rgba(59,130,246,.20), transparent 55%),
+        radial-gradient(980px 640px at 88% 16%, rgba(34,197,94,.14), transparent 60%),
+        radial-gradient(980px 640px at 62% 92%, rgba(245,158,11,.09), transparent 62%),
+        linear-gradient(180deg,#060A12,#070B14 38%,#050813);
+      min-height:100vh;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    
-    .grid { 
-      display: grid; 
-      grid-template-columns: 1.35fr 0.65fr; 
-      gap: 24px; 
-      margin: 24px 0; 
-      align-items: stretch; /* Sorgt für bündiges Layout */
+    a{color:inherit; text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(7,11,20,.90), rgba(7,11,20,.65));
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 22px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:260px;
+    }
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.78));
+      box-shadow:0 12px 28px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.16);
+      flex:0 0 34px;
+    }
+    .brand .t1{font-weight:900; letter-spacing:.2px; line-height:1.05}
+    .brand .t2{font-size:12px; color:var(--muted); margin-top:2px}
+
+    nav{
+      display:flex; gap:8px; flex-wrap:wrap;
+      justify-content:flex-end;
+      flex:1;
+    }
+    nav a{
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color:rgba(255,255,255,.82);
+    }
+    nav a:hover{
+      border-color:var(--line);
+      background:rgba(255,255,255,.04);
+      text-decoration:none;
     }
 
-    header {
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--card-border);
-      background: rgba(5, 8, 15, 0.8); padding: 16px 0;
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:rgba(255,255,255,.90);
+      font-weight:650;
+      font-size:13.5px;
+      box-shadow:0 12px 26px rgba(0,0,0,.22);
+      cursor:pointer;
+    }
+    .btn:hover{background:rgba(255,255,255,.08); text-decoration:none}
+    .btn.primary{
+      border-color: rgba(59,130,246,.45);
+      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.70));
+      color:#06101f;
+      box-shadow:0 18px 48px rgba(59,130,246,.22);
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.03)}
+
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 22px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .brand{min-width:auto}
+      nav{display:none}
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
-    .logo-icon { width: 35px; height: 35px; border-radius: 10px; background: var(--accent-grad); }
+    .card{
+      border-radius:var(--radius2);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .pad{padding:24px}
 
-    .card { 
-      background: var(--card-bg); 
-      border: 1px solid var(--card-border); 
-      border-radius: var(--radius-lg); 
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+    /* Hero */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:rgba(255,255,255,.78);
+      width:max-content;
     }
 
-    .padding { padding: 40px; }
-
-    h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.05; font-weight: 900; margin: 20px 0; letter-spacing: -2px; }
-    .gradient-text { background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-    /* Bild-Kachel Layout */
-    .image-card {
-      position: relative;
-      height: 320px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--card-border);
-      background: #000;
+    h1{
+      margin:12px 0 10px;
+      font-size:46px;
+      line-height:1.04;
+      letter-spacing:-.9px;
     }
-    .image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
+    @media (max-width:520px){h1{font-size:36px}}
+
+    .lead{
+      color:rgba(255,255,255,.78);
+      font-size:16px;
+      line-height:1.55;
+      max-width:72ch;
+      margin:0;
     }
-    .image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, var(--bg) 5%, transparent 100%);
+    .hero-claim{
+      margin:14px 0 0;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+      line-height:1.55;
+      max-width:78ch;
+    }
+    .hero-claim strong{color:rgba(255,255,255,.92)}
+
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:18px;
+    }
+    @media (max-width:520px){.kpis{grid-template-columns:1fr}}
+    .kpi{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      padding:12px;
+    }
+    .kpi .n{font-weight:900; font-size:18px; margin-bottom:4px}
+    .kpi .d{color:var(--muted); font-size:12px; line-height:1.35}
+
+    /* Sections */
+    .section{
+      margin-top:16px;
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      overflow:hidden;
+    }
+    .section .head{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .section .head h2{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.35px;
+      color:rgba(255,255,255,.86);
+      text-transform:uppercase;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:rgba(255,255,255,.72);
+    }
+    .section .body{padding:16px}
+
+    .cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width:780px){.cols{grid-template-columns:1fr}}
+
+    .item{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.035);
+      padding:14px;
+    }
+    .item h3{margin:0 0 8px; font-size:16px}
+    .item p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      padding:10px 12px;
+      color:rgba(255,255,255,.82);
+      font-size:13px;
+      line-height:1.4;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;flex:0 0 10px;
+      background:linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.90));
+      margin-top:4px;
+      box-shadow:0 10px 18px rgba(0,0,0,.25);
     }
 
-    .btn-primary { background: #fff; color: #000; padding: 12px 24px; border-radius: 12px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
-    
-    @media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+    .callout{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      padding:14px;
+      margin-top:12px;
+      font-size:13px;
+      color:rgba(255,255,255,.82);
+      line-height:1.55;
+    }
+    .callout b{color:rgba(255,255,255,.92)}
+    .tiny{font-size:12px; color:var(--muted); line-height:1.45}
+
+    .hr{height:1px; background:rgba(255,255,255,.10); margin:14px 0}
+
+    /* Contact form (mailto only) */
+    .form{display:grid; gap:10px; margin-top:12px}
+    label{font-size:12px; color:rgba(255,255,255,.70)}
+    input, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      color:rgba(255,255,255,.90);
+      outline:none;
+      font-family:var(--sans);
+    }
+    textarea{min-height:96px; resize:vertical}
+    input:focus, textarea:focus{
+      border-color:rgba(59,130,246,.55);
+      box-shadow:0 0 0 4px rgba(59,130,246,.12);
+    }
+
+    /* Footer */
+    .footer{
+      margin:34px 0 14px;
+      color:rgba(255,255,255,.62);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:16px;
+    }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-    <a href="#" class="brand">
-      <div class="logo-icon"></div>
-      <div><b style="display:block">Dialekt Verbindet</b><small style="opacity:0.5; font-size:10px; letter-spacing:1px">SOUVERÄNE INFRASTRUKTUR</small></div>
+<header class="topbar" id="top">
+  <div class="inner">
+    <a class="brand" href="#top" aria-label="Dialekt Verbindet (Start)">
+      <span class="logo" aria-hidden="true"></span>
+      <span>
+        <div class="t1">Dialekt Verbindet</div>
+        <div class="t2">Regionale Sprache · Kultur · Verständigung</div>
+      </span>
     </a>
-    <a href="mailto:info@dialektverbindet.li" class="btn-primary" style="padding: 10px 20px;">Anfragen</a>
+
+    <nav aria-label="Navigation">
+      <a href="#kern">Kern</a>
+      <a href="#wirkung">Wirkung</a>
+      <a href="#struktur">Struktur</a>
+      <a href="#datenschutz">Datenschutz</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <div class="cta">
+      <a class="btn" href="#datenschutz">Vertrauen</a>
+      <a class="btn primary" href="#kontakt">Kontakt</a>
+    </div>
   </div>
 </header>
 
-<main class="container">
+<main class="wrap">
   <div class="grid">
-    
-    <section class="card">
-      <div class="padding">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-           <span style="background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 4px 10px; border-radius: 50px; font-size: 10px; font-weight: 800;">PROJEKT STATUS: ONLINE</span>
-           <span id="date" style="font-size: 11px; color: var(--text-muted);"></span>
-        </div>
-        <h1>Dini Sproch. <br>Dini Wält. <br><span class="gradient-text">Dialekt Verbindet.</span></h1>
-        <p style="font-size: 18px; color: var(--text-muted); max-width: 600px;">
-          Wir bauen die digitale Basis für regionale Identität. Keine statische Datenbank, sondern ein lebendiges Ökosystem für Gemeinden und Kulturinstitutionen.
+
+    <!-- Left -->
+    <section class="card" id="kern">
+      <div class="pad">
+        <span class="pill">Sovereign Infrastructure · Stand: <span id="date"></span></span>
+
+        <h1>Dini Sproch.<br/>Dini Wält.<br/><span style="color:rgba(255,255,255,.92)">Dialekt Verbindet.</span></h1>
+
+        <p class="lead">
+          <strong>Dialekt Verbindet ist digitale Infrastruktur für regionale Sprache.</strong>
+          Nicht als Sammlung von Inhalten, sondern als konsistentes System:
+          Menschen finden lokale Gemeinschaften, hören authentische Aussprache,
+          lernen strukturiert und treten direkt in Austausch.
         </p>
 
-        <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border); padding: 25px; border-radius: 20px; margin: 30px 0; display: flex; align-items: center; gap: 20px;">
-           <div style="width: 44px; height: 44px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(59,130,246,0.3)">▶</div>
-           <div>
-              <div style="font-weight: 800; font-size: 18px;">«Verzell mol»</div>
-              <div style="font-size: 12px; color: var(--text-muted);">System-Vorschau: Audio-Context Unit (Region FL)</div>
-           </div>
+        <p class="hero-claim">
+          So wird Dialekt nicht konsumiert, sondern <strong>gelebt</strong>, <strong>verstanden</strong> und <strong>weitergetragen</strong>.
+          Eine Plattform, die kulturellen Kontext zugänglich macht – ohne Lärm, ohne Übertreibung.
+        </p>
+
+        <div class="kpis" aria-label="Kurzüberblick">
+          <div class="kpi">
+            <div class="n">1 System</div>
+            <div class="d">Community, Lernen, Wörterbuch und Audio in einer klaren Struktur.</div>
+          </div>
+          <div class="kpi">
+            <div class="n">Audio-first</div>
+            <div class="d">Aussprache als Realität – nicht als Ornament.</div>
+          </div>
+          <div class="kpi">
+            <div class="n">Institutionsfähig</div>
+            <div class="d">Konzipiert für verlässlichen Betrieb und langfristige Wartbarkeit.</div>
+          </div>
         </div>
+
+        <div class="section" id="wirkung">
+          <div class="head">
+            <h2>Wirkung</h2>
+            <span class="badge">Zugehörigkeit · Orientierung · Teilhabe</span>
+          </div>
+          <div class="body">
+            <div class="cols">
+              <div class="item">
+                <h3>Sprache schafft Zugehörigkeit</h3>
+                <p>
+                  Sprache vermittelt Haltung, Gewohnheiten und unausgesprochene Regeln des Zusammenlebens.
+                  Dialekt Verbindet öffnet einen Zugang zu regionaler Sprache und kulturellem Kontext – für alle Menschen.
+                </p>
+              </div>
+              <div class="item">
+                <h3>Integration ohne Druck</h3>
+                <p>
+                  Menschen, die neu in einer Region ankommen, erhalten Orientierung:
+                  wie gesprochen wird, wie man sich begegnet, welche Gepflogenheiten und Regeln den Alltag prägen.
+                  Integration wird nicht verordnet, sondern ermöglicht.
+                </p>
+              </div>
+            </div>
+
+            <div class="callout">
+              <b>Leiser Effekt, echte Tiefe:</b><br/>
+              Wenn Sprache verstanden wird, entsteht Sicherheit im Alltag – und Verständigung wird zur Gewohnheit.
+            </div>
+          </div>
+        </div>
+
+        <div class="section" id="struktur">
+          <div class="head">
+            <h2>Struktur</h2>
+            <span class="badge">Klar · Modular · Erweiterbar</span>
+          </div>
+          <div class="body">
+            <div class="cols">
+              <div class="item">
+                <h3>Architekturprinzip</h3>
+                <p>
+                  Fokus auf klare Strukturen, nachvollziehbare Abläufe und langfristige Wartbarkeit.
+                  Nicht Technik um der Technik willen – sondern tragfähige Infrastruktur.
+                </p>
+                <ul class="list">
+                  <li class="li"><span class="dot"></span>Gemeinschaften, Lernpfade, Wörter und Audio als eigenständige Module</li>
+                  <li class="li"><span class="dot"></span>Rollen & Verantwortlichkeiten (Administration, Redaktion, Moderation)</li>
+                  <li class="li"><span class="dot"></span>API-fähig für spätere Integrationen (bei Bedarf)</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <h3>Systemlogik</h3>
+                <p>
+                  Dialekt wird nicht nur dokumentiert, sondern in Nutzung gebracht:
+                  hören, nachsprechen, verstehen, anwenden – im Kontext echter Begegnungen.
+                </p>
+                <ul class="list">
+                  <li class="li"><span class="dot"></span>Audio-first Aussprache und Varianten</li>
+                  <li class="li"><span class="dot"></span>Kurze Lernsequenzen mit Wiederholung</li>
+                  <li class="li"><span class="dot"></span>Gemeinschaft als Verstärker (Austausch statt Konsum)</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="tiny" style="margin-top:12px">
+              Hinweis: Technische Detaildokumentation (falls erforderlich) wird separat bereitgestellt.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <aside style="display: flex; flex-direction: column; gap: 24px;">
-      
-      <div class="image-card">
-        <img src="image_81e15a.jpg" alt="Schloss Vaduz">
-        <div class="image-overlay"></div>
-        <div style="position: absolute; bottom: 30px; left: 30px;">
-          <small style="color: var(--accent); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 10px;">Heimat & Technik</small>
-          <div style="font-size: 28px; font-weight: 900; letter-spacing: -0.5px;">Liechtenstein</div>
-          <p style="font-size: 13px; color: var(--text-muted); margin: 8px 0 0 0; max-width: 250px;">
-            Verwurzelt im Fürstentum, entwickelt für die digitale Zukunft unserer regionalen Sprache.
-          </p>
-        </div>
-      </div>
+    <!-- Right -->
+    <aside class="card" id="datenschutz">
+      <div class="pad">
+        <span class="pill">Vertrauen</span>
 
-      <div class="card" style="padding: 35px; flex-grow: 1;">
-        <h3 style="margin-top: 0; font-size: 20px;">Vertrauen & Hosting</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">
-          Infrastruktur betrieben bei <b>Infomaniak Network SA</b> (Schweiz). Vollständige DSG/GDPR-Konformität.
+        <h2 style="margin:12px 0 8px">Datenschutz & Hosting</h2>
+        <p class="tiny">
+          Die Datenverarbeitung erfolgt auf einer in der Schweiz betriebenen Infrastruktur bei
+          <strong>Infomaniak Network SA</strong>.
+          Die Verarbeitung unterliegt dem schweizerischen Datenschutzrecht (DSG) sowie – soweit anwendbar –
+          der EU-Datenschutz-Grundverordnung. Eine Auftragsverarbeitungsvereinbarung (DPA) besteht.
         </p>
-        <div style="border-top: 1px solid var(--card-border); margin-top: auto; padding-top: 20px;">
-           <small style="display: block; opacity: 0.5; margin-bottom: 5px;">HERAUSGEBER</small>
-           <b style="font-size: 15px;">Sandro Ritter</b><br>
-           <a href="mailto:info@dialektverbindet.li" style="color: var(--accent); text-decoration: none; font-size: 14px;">info@dialektverbindet.li</a>
-        </div>
-      </div>
 
+        <div class="hr"></div>
+
+        <h2 style="margin:12px 0 6px">Kontakt</h2>
+        <p class="tiny" id="kontakt">
+          <strong>Dialekt Verbindet</strong><br/>
+          Sandro Ritter<br/>
+          <a href="mailto:info@dialektverbindet.li">info@dialektverbindet.li</a>
+        </p>
+
+        <div class="callout">
+          <b>Kontakt aufnehmen:</b><br/>
+          Kurz schreiben genügt. Wir klären Ziel, Kontext und nächsten Schritt ohne Umwege.
+        </div>
+
+        <form class="form" onsubmit="return sendMail(event)" aria-label="Kontaktformular (mailto)">
+          <div>
+            <label for="org">Organisation (optional)</label>
+            <input id="org" name="org" placeholder="z.B. Gemeinde / Schule / Institution" autocomplete="organization" />
+          </div>
+          <div>
+            <label for="name">Name (optional)</label>
+            <input id="name" name="name" placeholder="Vorname Nachname" autocomplete="name" />
+          </div>
+          <div>
+            <label for="email">E-Mail (optional)</label>
+            <input id="email" name="email" placeholder="name@domain.li" autocomplete="email" />
+          </div>
+          <div>
+            <label for="msg">Nachricht</label>
+            <textarea id="msg" name="msg" placeholder="Kurz: Was ist euer Ziel? (Sprache, Bildung, Kultur, Integration, Gemeinschaft)"></textarea>
+          </div>
+          <button class="btn primary" type="submit">E-Mail vorbereiten</button>
+          <p class="tiny" style="margin-top:10px">
+            Hinweis: Diese Seite sendet keine Daten an einen Server. Der Button öffnet dein Mailprogramm mit vorausgefülltem Text.
+          </p>
+        </form>
+      </div>
     </aside>
+
   </div>
+
+  <footer class="footer">
+    <div>
+      <div><b>Dialekt Verbindet</b> · Souveräne Infrastruktur für regionale Sprache</div>
+      <div class="tiny">© <span id="year"></span> – Alle Rechte vorbehalten</div>
+    </div>
+    <div class="tiny">
+      <a href="#top">Nach oben</a> · <a href="#kontakt">Kontakt</a>
+    </div>
+  </footer>
 </main>
 
 <script>
-  document.getElementById('date').textContent = new Date().toLocaleDateString('de-CH');
+  (function(){
+    const d = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    const el = document.getElementById("date");
+    const y = document.getElementById("year");
+    if (el) el.textContent = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
+    if (y) y.textContent = d.getFullYear();
+  })();
+
+  function sendMail(e){
+    e.preventDefault();
+    const org = (document.getElementById("org").value || "").trim();
+    const name = (document.getElementById("name").value || "").trim();
+    const email = (document.getElementById("email").value || "").trim();
+    const msg = (document.getElementById("msg").value || "").trim();
+
+    const TO = "info@dialektverbindet.li";
+    const subject = encodeURIComponent("Kontakt – Dialekt Verbindet");
+    const body = encodeURIComponent(
+`Hoi zäma
+
+Organisation: ${org || "-"}
+Name: ${name || "-"}
+E-Mail: ${email || "-"}
+
+Nachricht:
+${msg || "-"}
+
+Gruss
+${name || ""}`
+    );
+
+    window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
+    return false;
+  }
 </script>
 
 </body>

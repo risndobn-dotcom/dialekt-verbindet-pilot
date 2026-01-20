@@ -1,145 +1,218 @@
-<!DOCTYPE html>
-<html lang="de-LI">
+@@ -3,79 +3,109 @@
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIALEKT CONNECT | Holographic Portal</title>
-    <style>
-        :root {
-            --li-blue: #002B7F; --li-red: #CE1126; --li-gold: #FFD700;
-            --hologram-cyan: rgba(0, 255, 242, 0.4);
-            --bg: #010204;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dialekt – Raster Demo</title>
+<title>Dialekt verbindet</title>
 
-        body {
-            margin: 0; background: var(--bg); color: white;
-            font-family: 'Inter', sans-serif; overflow-x: hidden;
-        }
+<style>
+:root{
+  --c-ident:#002b7f;
+  --c-base:#ffffff;
+  --c-context:#f2f3f5;
+  --c-line:#e0e0e0;
+  --radius:24px;
+  --space:32px;
+  --ident:#002b7f;
+  --base:#ffffff;
+  --context:#f3f4f6;
+  --line:#e1e1e1;
+  --text:#1f1f1f;
 
-        /* Animierter Hologramm-Hintergrund */
-        .holo-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,43,127,0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(206,17,38,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            perspective: 1000px; transform-style: preserve-3d; z-index: -1;
-        }
+  --radius:36px;
+  --r-small:20px;
+  --space:40px;
+  --maxw:1000px;
+  --text:#222;
+}
 
-        /* Hologramm-Effekt für Karten */
-        .holo-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--hologram-cyan);
-            border-radius: 20px; padding: 30px;
-            position: relative; overflow: hidden;
-            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 0 15px var(--hologram-cyan);
-        }
+*{box-sizing:border-box}
 
-        .holo-card:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 0 40px var(--hologram-cyan), inset 0 0 20px var(--hologram-cyan);
-            background: rgba(255, 255, 255, 0.05);
-        }
+body{
+  margin:0;
+  background:var(--context);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--c-context);
+  color:var(--text);
+}
+.app
+  
 
-        /* Scanner-Licht Effekt */
-        .holo-card::after {
-            content: ""; position: absolute; top: -100%; left: 0; width: 100%; height: 20%;
-            background: linear-gradient(to bottom, transparent, var(--hologram-cyan), transparent);
-            animation: scan 4s infinite linear; opacity: 0.5;
-        }
+.app{
+  max-width:var(--maxw);
+  margin:24px auto;
+  background:var(--c-base);
+  border-radius:40px;
+  margin:32px auto;
+  background:var(--base);
+  border-radius:48px;
+  overflow:hidden;
+  border:1px solid var(--c-line);
+  border:1px solid var(--line);
+}
 
-        @keyframes scan { 0% { top: -100%; } 100% { top: 200%; } }
+/* IDENTITÄT */
+.header{
+  height:40vh;
+  background:var(--c-ident);
+  height:42vh;
+  background:var(--ident);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-align:center;
+  padding:var(--space);
+}
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px; }
-        
-        .header-section { text-align: center; margin-bottom: 80px; }
-        .header-section h1 { 
-            font-size: 80px; font-weight: 900; letter-spacing: -4px;
-            text-shadow: 0 0 30px var(--li-blue);
-        }
+.header h1{
+  font-size:42px;
+  margin:0;
+  font-size:44px;
+  font-weight:700;
+  margin:0;
+}
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.header p{
+  margin-top:16px;
+  margin-top:18px;
+  font-size:18px;
+  opacity:.9;
+}
 
-        /* Landesfarben Akzente */
-        .border-blue { border-color: var(--li-blue); box-shadow: 0 0 20px var(--li-blue); }
-        .border-red { border-color: var(--li-red); box-shadow: 0 0 20px var(--li-red); }
+/* SEKTIONEN */
+.section{
+  padding:var(--space);
+  border-top:1px solid var(--c-line);
+  border-top:1px solid var(--line);
+}
+.split{
+  display:grid;
+  grid-template-columns:60% 40%;
+  gap:var(--space);
 
-        footer { 
-            padding: 60px; border-top: 1px solid var(--hologram-cyan); 
-            background: rgba(0,0,0,0.8); margin-top: 100px;
-        }
+.statement{
+  font-size:20px;
+  line-height:1.5;
+}
 
-        .api-status {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 8px 15px; border-radius: 20px; background: rgba(0,255,0,0.1);
-            color: #00ff00; font-size: 12px; margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
+/* GEOGRAFIE */
+.geo{
+  margin-top:24px;
+  font-size:17px;
+  line-height:1.6;
+}
 
-<div class="holo-bg"></div>
+/* FUNKTIONALE RÄUME */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--space);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
 
-<main class="container">
-    <header class="header-section">
-        <div class="api-status">● SYSTEM LIVE: INFOMANIAK CLUSTER GENF (DPA 04.01.2026)</div>
-        <h1>DIALEKT CONNECT</h1>
-        <p style="color: var(--hologram-cyan); font-weight: bold; letter-spacing: 2px;">Dini Sproch. Dini Wält. Dialekt verbindet.</p>
-    </header>
+.card{
+  border:1px solid var(--c-line);
+  border-radius:var(--radius);
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:var(--r-small);
+  padding:28px;
+  min-height:140px;
+}
 
-    <div class="grid">
-        <div class="holo-card border-blue">
-            <h3 style="color: var(--li-gold);">🎙️ KI-DIALEKT FEED</h3>
-            <p>Einspeisung Oberland, Unterland & Triesabärg.</p>
-            <div style="margin-top: 20px; height: 50px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <div style="width: 100%; height: 2px; background: var(--hologram-cyan); box-shadow: 0 0 10px var(--hologram-cyan);"></div>
-            </div>
-        </div>
+.card h3{
+  margin:0 0 12px 0;
+  font-size:18px;
+  font-weight:600;
+}
 
-        <div class="holo-card border-red">
-            <h3>➕ HEIMAT-MATHE</h3>
-            <p>Interaktive Rechenmodule mit Geodaten Liechtensteins.</p>
-            <button style="background: var(--li-red); border: none; color: white; padding: 10px; width: 100%; border-radius: 8px; margin-top: 15px; cursor: pointer;">MODUL STARTEN</button>
-        </div>
+.card p{
+  margin:0;
+  line-height:1.5;
+}
 
-        <div class="holo-card border-blue">
-            <h3>🏛️ MUSEUMS-HUB</h3>
-            <p>Landes-, Kunst- & Landwirtschaftsmuseum interaktiv.</p>
-        </div>
-
-        <div class="holo-card border-red">
-            <h3>📜 SAGEN & BRÄUCHE</h3>
-            <p>Holographische Erzählungen üserer Traditionen.</p>
-        </div>
-
-        <div class="holo-card border-gold" style="border-color: var(--li-gold); box-shadow: 0 0 20px var(--li-gold);">
-            <h3 style="color: var(--li-gold);">🛍️ OSPELT SCHAAN</h3>
-            <p>"Wo ma mi kennt" - Vernetztes Shopping & Belohnung.</p>
-        </div>
-
-        <div class="holo-card">
-            <h3>🎁 GEWINNSPIEL</h3>
-            <div style="font-size: 32px; font-weight: 900; color: var(--li-gold);">1'450 PTS</div>
-            <p>Deine Dialekt-Punkte via API.</p>
-        </div>
+/* ABSCHLUSS */
+.footer{
+  padding:var(--space);
+  background:var(--c-context);
+  padding:32px 40px;
+  background:var(--context);
+  font-size:14px;
+}
+</style>
+@@ -89,58 +119,30 @@
+  <div class="header">
+    <div>
+      <h1>Dialekt verbindet</h1>
+      <p>Sprache ist Herkunft. Alltag. Zugehörigkeit.</p>
+      <p>Sprache ist Alltag. Herkunft. Zugehörigkeit.</p>
     </div>
-</main>
+  </div>
 
-<footer>
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
-        <div>
-            <h4>Impressum</h4>
-            <p>Sandro Ritter | Dammstrasse 4, 9444 Diepoldsau</p>
-            <p>Infrastruktur: Infomaniak Network SA</p>
-        </div>
-        <div style="background: rgba(0,43,127,0.2); padding: 20px; border-radius: 15px; border-left: 5px solid var(--li-blue);">
-            <h4>🔒 Sicherheits-Zertifikat</h4>
-            <p style="font-size: 13px;">Verarbeitung gemäss DPA vom 04.01.2026.</p>
-            <p style="font-size: 13px;">Hostet in der Schweiz (Genf/Winterthur) unter Einhaltung DSGVO & Art. 9 DSG.</p>
-        </div>
+  <!-- SINN / KONTEXT -->
+  <div class="section split">
+    <div class="card">
+      <h3>Worum es geht</h3>
+      <p>
+        Dialekt ist kein Lerninhalt.<br>
+        Er ist gelebter Alltag.<br><br>
+        Diese Plattform bewahrt Sprache digital,
+        ohne sie zu glätten oder zu erklären.
+      </p>
+  <!-- HALTUNG -->
+  <div class="section">
+    <div class="statement">
+      Dialekt ist kein Lernobjekt.<br>
+      Er wird gesprochen, gehört, weitergegeben.
     </div>
-</footer>
+    <div class="card">
+      <h3>Für wen</h3>
+      <p>
+        Gemeinden<br>
+        Bildung<br>
+        Menschen mit Bezug zur Region
+      </p>
+
+    <div class="geo">
+      Bi üs im Ländle.<br>
+      Vo Schaa bis Balzers.<br>
+      Vo Bendera bis in Hinterschellabärg.
+    </div>
+  </div>
+
+  <!-- FUNKTIONALE RÄUME -->
+  <!-- RÄUME -->
+  <div class="section grid">
+    <div class="card">
+      <h3>Regionen</h3>
+      <p>
+      Oberland: vo Schaa bis Balzers<br>
+      Unterland: vo Bendera bis Hinterschellabärg
+      </p>
+      <p>Oberland, Unterland, Walserraum.</p>
+    </div>
+    <div class="card">
+      <h3>Sprache hören</h3>
+      <p>Originalstimmen. Kein Studio.</p>
+    </div>
+    <div class="card">
+      <h3>Kultur</h3>
+      <p>Alltag, Bräuche, Erzählungen.</p>
+    </div>
+  </div>
+
+  <!-- RUHIGER ABSCHLUSS -->
+  <div class="footer">
+    Serverstandort Schweiz · Datenschutz konform ·
+    Digitale Kulturplattform
+  </div>
+
+</div>
 
 </body>
 </html>
+
+      <h3>Stimmen</h3>

@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller-Build-Ausgaben
+app/build/
+app/dist/
+
+# Website-Backup der App
+index.html.bak

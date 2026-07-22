@@ -1,0 +1,6 @@
+# Laufzeit: keine - die App nutzt ausschliesslich die Python-Standardbibliothek
+# (tkinter, sqlite3, csv, json). Auf Windows ist tkinter in der offiziellen
+# Python-Installation bereits enthalten; unter Linux ggf. `python3-tk` nachinstallieren.
+#
+# Nur fuer den .exe-Build (siehe .github/workflows/build-windows-exe.yml):
+pyinstaller==6.11.1

@@ -632,6 +632,7 @@ height:80px;
 
 <button onclick="showPage('home')">Home</button>
 <button onclick="showPage('dialekt')">Dialekte</button>
+<button onclick="showPage('woerter')">Wörterbuch</button>
 <button onclick="showPage('gemeinden')">Gemeinden</button>
 <button onclick="showPage('kultur')">Kultur</button>
 <button onclick="showPage('shops')">Lokale Läden</button>
@@ -706,6 +707,18 @@ Dialekt Lernen starten
 <h2>Triesenberger Dialekt</h2>
 
 <div id="walserWords"></div>
+
+</div>
+
+<!-- WOERTERBUCH -->
+
+<div id="woerter" class="page">
+
+<h2>Liachtastaner Wörterbuch</h2>
+
+<p>Grundwortschatz Hochdeutsch → Liachtastaner Dialekt. Auf „Audio" tippen zum Anhören.</p>
+
+<div id="woerterWords"></div>
 
 </div>
 
@@ -895,9 +908,61 @@ document.getElementById(element).innerHTML=html
 
 }
 
+const liachtastaner = [
+{hoch:"antworten",dialekt:"antwarta"},
+{hoch:"arbeiten",dialekt:"schaffa"},
+{hoch:"aufhören",dialekt:"uufhöra"},
+{hoch:"beginnen",dialekt:"aafanga"},
+{hoch:"bekommen",dialekt:"kriaga"},
+{hoch:"benötigen",dialekt:"brucha"},
+{hoch:"beschädigt",dialekt:"bruch"},
+{hoch:"bringen",dialekt:"bringa"},
+{hoch:"defekt",dialekt:"im Arsch"},
+{hoch:"draußen",dialekt:"dusse"},
+{hoch:"drinnen",dialekt:"dinne"},
+{hoch:"ein bisschen",dialekt:"a bizli"},
+{hoch:"erklären",dialekt:"erklära"},
+{hoch:"erledigen",dialekt:"mache"},
+{hoch:"erledigt",dialekt:"gschafft"},
+{hoch:"fragen",dialekt:"froga"},
+{hoch:"funktioniert nicht",dialekt:"tuat nöd"},
+{hoch:"geben",dialekt:"gäba"},
+{hoch:"gestern",dialekt:"gäscht"},
+{hoch:"helfen",dialekt:"hälfa"},
+{hoch:"herum",dialekt:"umma"},
+{hoch:"herumgehen",dialekt:"umma go"},
+{hoch:"hinten",dialekt:"hinta"},
+{hoch:"holen",dialekt:"hola"},
+{hoch:"kaputt",dialekt:"hin"},
+{hoch:"langsam",dialekt:"langsam (gleich)"},
+{hoch:"lesen",dialekt:"läsä"},
+{hoch:"morgen",dialekt:"morn"},
+{hoch:"nehmen",dialekt:"näma"},
+{hoch:"nicht möglich",dialekt:"goht nöd"},
+{hoch:"oben",dialekt:"oba"},
+{hoch:"probieren",dialekt:"probiera"},
+{hoch:"schließen",dialekt:"zuto"},
+{hoch:"schnell",dialekt:"gschwind"},
+{hoch:"schreiben",dialekt:"schriiba"},
+{hoch:"sehr",dialekt:"seher"},
+{hoch:"sofort",dialekt:"grad"},
+{hoch:"sprechen",dialekt:"redä"},
+{hoch:"später",dialekt:"spöter"},
+{hoch:"unten",dialekt:"unta"},
+{hoch:"verstehen",dialekt:"verstoh"},
+{hoch:"versuchen",dialekt:"versuacha"},
+{hoch:"viel",dialekt:"viu"},
+{hoch:"vorne",dialekt:"vora"},
+{hoch:"warten",dialekt:"warte"},
+{hoch:"wenig",dialekt:"weni"},
+{hoch:"öffnen",dialekt:"ufto"},
+{hoch:"übermorgen",dialekt:"übermorn"}
+]
+
 renderWords(unterland,"unterlandWords")
 renderWords(oberland,"oberlandWords")
 renderWords(walser,"walserWords")
+renderWords(liachtastaner,"woerterWords")
 
 function speak(text){
 

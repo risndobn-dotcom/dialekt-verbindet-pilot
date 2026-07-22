@@ -1,0 +1,50 @@
+name: Windows-.exe bauen
+
+# Baut den Dialekt-Vokabel-Manager als Windows-.exe. Laeuft automatisch bei
+# Aenderungen unter app/ und kann jederzeit manuell gestartet werden
+# (Actions-Tab -> "Windows-.exe bauen" -> "Run workflow"). Die fertige .exe
+# liegt danach als Artefakt am Workflow-Lauf zum Download bereit.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'app/**'
+      - '.github/workflows/build-windows-exe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build-Abhaengigkeiten installieren
+        run: python -m pip install --upgrade pip -r app/requirements.txt
+
+      - name: Kernlogik testen (ohne GUI)
+        working-directory: app
+        run: python -c "from core import VocabStore, import_into, update_index_html; s=VocabStore(); assert s.add('unterland','Hallo','Hoi'); print('core ok:', s.counts())"
+
+      - name: GUI-Import pruefen (tkinter vorhanden)
+        working-directory: app
+        run: python -c "import dialekt_app; assert callable(dialekt_app.main); print('gui import ok')"
+
+      - name: .exe mit PyInstaller bauen
+        working-directory: app
+        run: pyinstaller --clean --noconfirm dialekt-app.spec
+
+      - name: .exe als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: dialekt-vokabel-manager-windows
+          path: app/dist/dialekt-vokabel-manager.exe
+          if-no-files-found: error

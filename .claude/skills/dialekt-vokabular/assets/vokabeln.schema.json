@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dialekt verbindet - kanonische Vokabeldatei",
+  "description": "Von scripts/import_vocab.py erzeugt und von scripts/update_site.py gelesen. Ein Objekt mit genau den drei Dialektregionen als Schluessel.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["unterland", "oberland", "walser"],
+  "properties": {
+    "unterland": { "$ref": "#/definitions/vokabelliste" },
+    "oberland": { "$ref": "#/definitions/vokabelliste" },
+    "walser": { "$ref": "#/definitions/vokabelliste" }
+  },
+  "definitions": {
+    "vokabelliste": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/eintrag" }
+    },
+    "eintrag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hoch", "dialekt"],
+      "properties": {
+        "hoch": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Hochdeutsch / Schriftsprache"
+        },
+        "dialekt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Dialektform der jeweiligen Region"
+        }
+      }
+    }
+  }
+}
